@@ -1,111 +1,8 @@
-% NOTES
-% ONLY THE DROUGHT INDEX CODES WILL RUN UNLESS YOU ARE AN AUTHORISED USER OF AUSTRALIAN SUICIDE DATA
-% THEREFORE THE ENTIRE SWEAVE FILE CANNOT BE COMPILED UNTIL ACCESS IS ARRANGED
-% USERS ARE RECOMMENDED TO REPLACE eval=TRUE with TRUE 
-% AND THEN USE > Stangle('SuiDrtNSW_SupportingInfo.Rnw') TO CREATE AN R FILE FIRST
-% THEN RUN EACH R CHUNK INDIVIDUALLY (AND NOTE INSTRUCTIONS IN THE COMMENTS)
-% SORRY FOR THE INCONVENIENCE AND THANKYOU FOR YOUR PATIENCE
-% IVAN HANIGAN, 2012-05-28
+### R code from vignette source 'SuiDrtNSW_SupportingInfo.Rnw'
 
-%%%%%%%%%%%%%%%%%%%% PREAMBLE BEGINS %%%%%%%%%%%%%%%%%%%%
-\documentclass[a4paper]{article}                % Default font size = 10pt
-\usepackage[top=1.5in,bottom=1in,left=1.25in,right=1.25in]{geometry}
-%% For font size >10pt, set margins to 1in, or use 'fullpage' package
-%% instead of 'geometry' package
-%\usepackage{fullpage}
-\usepackage[T1]{fontenc}
-\usepackage{ae,aecompl}
-\usepackage{amsmath,amsfonts,amssymb}  % Amer Math Society stuff
-\usepackage{graphicx}                  % Enables \includegraphics
-\usepackage{setspace}                  % Enables doublespacing
-\usepackage{tabularx}                  % Better tables
-\usepackage{verbatim}                  % Enables comment environment
-\usepackage{cite}                      % Citations appear [1, 2-7, 9]
-\usepackage{url}                       % Proper display of URLs
-\usepackage{hyperref}                 % Enables hyperlinks
-%\usepackage{breakurl}                 % Proper linebreaking of URLs
-
-%%%%%%%%%% Miscellaneous commands %%%%%%%%%%
-% \pagestyle{headings}   
-
-%%%%%%%%%% User-defined commands %%%%%%%%%%
-\usepackage{Sweave}
-%%%%%%%%%%%%%%%%%%%% PREAMBLE ENDS %%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
-\SweaveOpts{concordance=TRUE}
-%%++++++++ Title page begins ++++++++%%
-\title{Online Supporting Information for the article:\\ ``Suicide and Drought in NSW, Australia, 1970-2007''.}
-%.\\ Unabridged}
-\author{Ivan C. Hanigan$^1$$^,$$^2$ \and Colin D. Butler$^1$ \and
-  Philip N. Kokic$^2$ \and
-  Michael F. Hutchinson$^3$} 
-\date{}
-\maketitle
-
-
-\noindent [$^1$]National Centre for Epidemiology and Population Health, Australian National University  
-
-
-\noindent [$^2$]Commonwealth Scientific and Industrial Research Organisation
-
-\noindent [$^3$]Fenner School of Environment and Society, Australian National University.
-
-
-
-\setcounter{page}{1}
-\pagenumbering{roman}
-\tableofcontents 
-\pagenumbering{arabic}
-\setcounter{page}{1}
-%%++++++++ Title page ends ++++++++%%
-
-\doublespacing   %% Switching to DOUBLE SPACING
-
-
-
-
-\section{Introduction}
-
-%%\section{Introduction}
-        This document accompanies the R code at this website \url{http://quicklink.anu.edu.au/9wrg} to calculate the Hutchinson Drought Index and fit the regression models for the paper `Suicide and Drought in New South Wales (NSW), Australia, 1970-2007'.  The calculation of the Drought Index is demonstrated using free data from the Australian Bureau of Meteorology. The suicide mortality data are not publicly available due to confidentiality restrictions. The R code we ran the regressions with is included but the original data are only available for authorised users approved by the Australian Bureau of Statistics and the NSW Registrar of Births Deaths and Marriages.
-
-
-%% \subsection{Copyright}
-
-
-        
-        
-        %################################################################################
-        %## Copyright 2011, Ivan C Hanigan <ivan.hanigan@gmail.com> and Michael F Hutchinson
-        %## This program is free software; you can redistribute it and/or modify
-        %## it under the terms of the GNU General Public License as published by
-        %## the Free Software Foundation; either version 2 of the License, or
-        %## (at your option) any later version.
-        %## 
-        %## This program is distributed in the hope that it will be useful,
-        %## but WITHOUT ANY WARRANTY; without even the implied warranty of
-        %## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        %## GNU General Public License for more details.
-        %## Free Software
-        %## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-        %## 02110-1301, USA
-        %################################################################################
-        
-        
-        
-        
-
-\section{Drought Index}
-
-%%\section{Drought Index}
-        The R code includes a demonstration of the Hutchinson Drought Index \cite{Smith1992}.  This climatic drought index is shown graphically for a location in the `Central West' SD of NSW in Figure \ref{fig:CentralWestDrought8283.png}.
-
-        
-
-%% \subsection{Drought tools}
-
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>= 
+###################################################
+### code chunk number 1: SuiDrtNSW_SupportingInfo.Rnw:108-120
+###################################################
 ######################
 #tools,  Drought tools
 ######################
@@ -118,12 +15,11 @@
         
         
         
-@
 
-%% \subsection{dlMonthly}
 
- 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 2: SuiDrtNSW_SupportingInfo.Rnw:126-146
+###################################################
 ######################
 #tools,  dlMonthly
 ######################
@@ -144,11 +40,11 @@
         }
         
         
-@
 
-%% \subsection{droughtIndex}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 3: SuiDrtNSW_SupportingInfo.Rnw:151-261
+###################################################
 ######################
 #tools,  droughtIndex
 ######################
@@ -259,11 +155,11 @@
         }
         
         
-@
 
-%% \subsection{create download directories}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 4: SuiDrtNSW_SupportingInfo.Rnw:266-284
+###################################################
 ######################
 #tools,  create download directories
 ######################
@@ -282,14 +178,11 @@
         rootdir <- getwd()
         
         
-@
 
-%% \subsection{Download spatial data}
 
-%% \subsection{Download Weather Data}
-        Instructions for using R to download and analyse the spatial data from the Australian Bureau of Statistics (\url{http://www.abs.gov.au}) and the weather data from the Australian Bureau of Meteorology (\url{ http://www.bom.gov.au}) websites are included.
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 5: SuiDrtNSW_SupportingInfo.Rnw:292-330
+###################################################
 ######################
 #load,  Download spatial data
 ######################
@@ -328,11 +221,11 @@
         # NB You may want to change the code to calculate the index for another type of ABS spatial unit.  If so you can find data at http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1259.0.30.0022006?OpenDocument
         
         
-@
 
-%% \subsection{subset the SDs to NSW}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 6: SuiDrtNSW_SupportingInfo.Rnw:335-356
+###################################################
 ######################
 #load,  subset the SDs to NSW
 ######################
@@ -354,11 +247,11 @@
         coords <- centroid(sd2[sd2@data$SD_NAME_2006 == 'Central West' &  sd2@data$STATE_CODE_2006 == 1,])
         
         
-@
 
-%% \subsection{subset the SDs to Vic}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 7: SuiDrtNSW_SupportingInfo.Rnw:361-386
+###################################################
 ######################
 #load,  subset the SDs to Vic
 ######################
@@ -384,12 +277,11 @@
         
         setwd(rootdir)
         
-@
-
-%% \subsection{Download the Rainfall Station location data}
 
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 8: SuiDrtNSW_SupportingInfo.Rnw:392-432
+###################################################
 ######################
 #load,  Download the Rainfall Station location data
 ######################
@@ -430,11 +322,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 }
         
         
-@
 
-%% \subsection{revert to project root dir}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 9: SuiDrtNSW_SupportingInfo.Rnw:437-444
+###################################################
 ######################
 #load,  revert to project root dir
 ######################
@@ -442,11 +334,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
  setwd(rootdir)
         
-@
 
-%% \subsection{Plot the NSW SD and stations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 10: SuiDrtNSW_SupportingInfo.Rnw:449-487
+###################################################
 ######################
 #load,  Plot the NSW SD and stations
 ######################
@@ -485,11 +377,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         dev.off()
         
         
-@
 
-%% \subsection{go for a SD wide average rainfall using these stations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 11: SuiDrtNSW_SupportingInfo.Rnw:492-546
+###################################################
 ######################
 #load,  go for a SD wide average rainfall using these stations
 ######################
@@ -544,25 +436,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         names(df5) <- c('date',  'year' , 'month' ,'rain')
         
         
-@
 
-\subsection{Calculate the Drought Index}
 
-%%\subsection{Calculate the Drought Index}
-        The Drought index is shown in Figure \ref{fig:CentralWestDrought8283.png} for the SD of `Central West NSW' during a period which includes a strong drought (1979-83). The raw monthly rainfall totals are integrated to rolling 6-monthly totals (both shown in first panel) which are then ranked into percentiles by month and this is rescaled to range between -4 and +4 in keeping with the range of the Palmer Index \cite{Palmer1965} (second panel).  Mild drought is below -1 in the Palmer index and so consecutive months below this threshold are counted. In the original method 5 or more consecutive months was defined as the beginning of a drought, which continued until the rescaled percentiles exceed -1 again  (third panel).  The enhanced method imposes a more conservative threshold of zero (the median) to break a drought (fourth panel).
-
-        There was also an alternative method devised by Hutchinson where the rescaled percentile values are integrated using conditional cumulative sums.  That method is included in the R code however we decided not to use it in this study because the counting method is simpler and gives similar results.
-        
-        \begin{figure}[!h]
-        \centering
-        \includegraphics[width=1\textwidth]{CentralWestDrought8283.png}
-        \caption{The Drought index in Central West NSW with the enhanced method shown in the fourth panel.}
-        \label{fig:CentralWestDrought8283.png}
-        \end{figure}
-        %\clearpage
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 12: SuiDrtNSW_SupportingInfo.Rnw:565-597
+###################################################
 ######################
 #do,  Calculate the Drought Index
 ######################
@@ -595,11 +473,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         dev.off()
         
         
-@
 
-%% \subsection{replicate Fig3.5 from Hutchinson}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 13: SuiDrtNSW_SupportingInfo.Rnw:602-610
+###################################################
 ######################
 #do,  replicate Fig3.5 from Hutchinson
 ######################
@@ -608,11 +486,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 # Figure 3.5 from the original paper shows the index at Seymour Victoria 1966-1986.  
         # This town is in the Goulburn Statistical Division
         
-@
 
-%% \subsection{plot the Victorian SD and stations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 14: SuiDrtNSW_SupportingInfo.Rnw:615-652
+###################################################
 ######################
 #load,  plot the Victorian SD and stations
 ######################
@@ -650,11 +528,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         dev.off()
         
         
-@
 
-%% \subsection{SD wide average}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 15: SuiDrtNSW_SupportingInfo.Rnw:657-711
+###################################################
 ######################
 #load,  SD wide average
 ######################
@@ -709,11 +587,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         names(df5) <- c('date',  'year' , 'month' ,'rain')
         
         
-@
 
-%% \subsection{Seymour drought index}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 16: SuiDrtNSW_SupportingInfo.Rnw:716-749
+###################################################
 ######################
 #do,  Seymour drought index
 ######################
@@ -747,25 +625,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         dev.off()
         
         
-@
 
-%% \subsection{Integration by Conditional Summation}
 
- %% unabridged
-        %\subsection{The Summation Method}
-        % When the index is calculated using the sum of each consecutive month's rainfall deficiency score the resulting measure addresses  the question of how intense the drought is, rather than just the duration which is provided by the counting method.  This version  of the index is shown in Figure \ref{fig:SeymourDrought9499enhanced.png}.
- 
-        
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=\textwidth]{SeymourDrought9499enhanced.png}
-        %\caption{SeymourDrought9499enhanced.png}
-        %\label{fig:SeymourDrought9499enhanced.png}
-        %\end{figure}
-        %\clearpage
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 17: SuiDrtNSW_SupportingInfo.Rnw:768-802
+###################################################
 ######################
 #do,  Integration by Conditional Summation
 ######################
@@ -800,16 +664,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         dev.off()
         
         
-@
 
-\section{Suicide and Drought Modeling}
 
-%%\section{Suicide and Drought Modeling}
-        
-
-%% \subsection{Extract preprocessed data from database}
-
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 18: SuiDrtNSW_SupportingInfo.Rnw:812-867
+###################################################
 ######################
 #analysis_data,  Extract preprocessed data from database
 ######################
@@ -865,11 +724,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
  
         
         
-@
 
-%% \subsection{Load data to R server}
- 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+
+###################################################
+### code chunk number 19: SuiDrtNSW_SupportingInfo.Rnw:872-942
+###################################################
 ######################
 #analysis_data,  Load data to R server
 ######################
@@ -940,12 +799,11 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         
         
         
-@
 
-\subsection{Descriptive Statistics of Drought and Suicide}
-Descriptive statistics for the Drought Index are shown in Table~1.  Summary statistics for Suicide rates are shown in Table~2.  
- 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+
+###################################################
+### code chunk number 20: SuiDrtNSW_SupportingInfo.Rnw:948-1052
+###################################################
 ######################
 #data,  Descriptive Statistics of Drought and Suicide
 ######################
@@ -1050,76 +908,11 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
         ")
  
         
-@
 
-%% \subsection{Descriptive statistics of Drought}
 
-% TASK PNAS
-        % latex table generated in R 2.12.0 by xtable 1.5-6 package
-        % Mon Aug 08 09:39:16 2011
-        \begin{table}[!ht]
-        \begin{center}
-        \caption{Descriptive statistics for the drought index}
-        \label{tab:tab1}
-        \begin{tabular}{lrrr}
-        \hline
-        SD group & N droughts & Avg Duration & Max Duration \\ 
-        \hline
-        1 Central West & 9 & 8 & 12 \\ 
-        2 Hunter & 11 & 7 & 15 \\ 
-        3 Illawarra & 7 & 9 & 16 \\ 
-        4 Mid-North Coast & 8 & 8 & 15 \\ 
-        5 Murray & 7 & 8 & 11 \\ 
-        6 Murrumbidgee & 10 & 7 & 11 \\ 
-        7 North and Far Western & 8 & 7 & 12 \\ 
-        8 Northern & 5 & 8 & 11 \\ 
-        9 Richmond-Tweed & 13 & 8 & 17 \\ 
-        10 South Eastern & 8 & 8 & 11 \\ 
-        11 Sydney & 9 & 9 & 20 \\ 
-        \hline
-        \end{tabular}
-        \end{center}
-        \end{table}
-        
-
-%% \subsection{Descriptive statistics of Suicide}
-
-% TASK PNAS
-        % latex table generated in R 2.12.0 by xtable 1.5-6 package
-        % Mon Aug 08 09:39:16 2011
-        \begin{table}[!ht]
-        \begin{center}
-        \caption{Descriptive statistics for suicide (PYL = Person Years Lived)}
-        \label{tab:tab2}
-        \begin{tabular}{lrrr}
-        \hline
-        SD group & Avg Death/Month & Avg Pop & Rate/100000 PYL \\ 
-        \hline
-        1 Central West & 2 & 138202 & 13 \\ 
-        2 Hunter & 5 & 430403 & 13 \\ 
-        3 Illawarra & 3 & 280037 & 13 \\ 
-        4 Mid-North Coast & 2 & 183521 & 12 \\ 
-        5 Murray & 1 & 86221 & 14 \\ 
-        6 Murrumbidgee & 1 & 118778 & 13 \\ 
-        7 North and Far Western & 2 & 114460 & 16 \\ 
-        8 Northern & 2 & 146465 & 14 \\ 
-        9 Richmond-Tweed & 2 & 139356 & 14 \\ 
-        10 South Eastern & 2 & 135091 & 14 \\ 
-        11 Sydney & 34 & 3040952 & 13 \\ 
-        \hline
-        \end{tabular}
-        \end{center}
-        \end{table}
-        
-\clearpage
-
-\subsection{Correlation between Temperature and Drought}
-
- We found that monthly maximum temperature variables are not strongly correlated with the drought index in our dataset.  Correlation coefficients for the variables are shown in Table 3.
-        
-        %Table \ref{tab:Correlations}
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 21: SuiDrtNSW_SupportingInfo.Rnw:1122-1138
+###################################################
 ######################
 #data,  Correlation between Temperature and Drought
 ######################
@@ -1136,31 +929,22 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
         write.table(correlations[order(correlations[,2]),],'correlations.csv',row.names=F,sep=',')
         
         
-@
 
-<<label=Correlations,echo=FALSE,results=tex>>=
+
+###################################################
+### code chunk number 22: Correlations
+###################################################
 library(xtable)
 foo <- read.csv('correlations.csv')
 
 print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 	digits = , align = ), table.placement = 'ht',
 	caption.placement = 'top',include.rownames=F)
-@
-
-\subsection{Core Model Diagnostics and Variable Selection}
 
 
-        %%\subsection{Core Model Diagnostics and Variable Selection}
-        
-        We initially fitted age stratified time series Poisson Generalized Linear Models (GLMs). We identified a Core Model that included age, sex, region, season and long term trend.  We assessed standard model diagnostics for this.  
-        Then we used Generalized Additive Models (GAMs) with the automatic estimation of the optimal amount of smoothing on the drought index using penalised regression splines from the R package: mgcv \cite{Wood2008}.  These estimated smooths were then explored in GLMs. Many models were fitted to test different combinations of variables.  The models are ranked by their Bayesian Information Criterion (BIC) scores in Table 4 (AIC is shown for interest).
-        
-        
-        % WHEN COMPILING THE FULL DOCUMENT THE DATA ANALYSIS MUST BE COMPLETED AND THE aic_table.csv CREATED, THEN CHANGE THE REFERENCE ABOVE TO Table \ref{tab:tab3}
-        
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 23: SuiDrtNSW_SupportingInfo.Rnw:1163-1172
+###################################################
 ######################
 #do,  Core Model Diagnostics and Variable Selection
 ######################
@@ -1170,23 +954,11 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         
         
         
-@
 
-%% \subsection{core model}
 
- %% unabridged
-        % Diagnostic plots of the core model are shown in Figure \ref{fig:coreModelDiagnosticPlot.png}.
-        
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=\textwidth]{coreModelDiagnosticPlot.png}
-        %\caption{coreModelDiagnosticPlot.png}
-        %\label{fig:coreModelDiagnosticPlot.png}
-        %\end{figure}
-        %%\clearpage
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 24: SuiDrtNSW_SupportingInfo.Rnw:1189-1227
+###################################################
 ######################
 #do,  core model
 ######################
@@ -1225,11 +997,11 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         dev.off()
         
         
-@
 
-%% \subsection{check for overdispersion}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 25: SuiDrtNSW_SupportingInfo.Rnw:1232-1249
+###################################################
 ######################
 #do,  check for overdispersion
 ######################
@@ -1247,22 +1019,11 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         # so Poisson model will be OK
         
         
-@
 
-%% \subsection{check climate}
 
- %% unabridged
-        % The effect estimates for initial models of climate are shown in Figure \ref{fig:droughtTmaxAnomGAMS.png}.  The drought effect was found to be complicated by the countervailing effects in men and women during subsequent modelling.
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=.6\textwidth]{droughtTmaxAnomGAMS.png}
-        %\caption{droughtTmaxAnomGAMS.png}
-        %\label{fig:droughtTmaxAnomGAMS.png}
-        %\end{figure}
-        %%\clearpage
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 26: SuiDrtNSW_SupportingInfo.Rnw:1265-1317
+###################################################
 ######################
 #do,  check climate
 ######################
@@ -1315,11 +1076,11 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         dev.off()
         
         
-@
 
-%% \subsection{check interaction combinations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 27: SuiDrtNSW_SupportingInfo.Rnw:1322-1462
+###################################################
 ######################
 #do,  check interaction combinations
 ######################
@@ -1460,12 +1221,11 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         write.csv(aic_table, 'aic_table.csv',row.names=F)  
         
         
-@
-
-%% \subsection{show aic table}
 
 
-<<label=tab3,echo=FALSE,results=tex>>=
+###################################################
+### code chunk number 28: tab3
+###################################################
 library(xtable)
 
 foo1=read.csv('aic_table.csv', as.is=T)
@@ -1479,38 +1239,11 @@ foo1=foo1[order(foo1$BIC),]
 print(xtable(foo1[,c('Model','Parameters','BIC','AIC')], caption = 'Models ranked by Bayesian Information Criterion (BIC).', label = 'tab:tab3',
 digits = c(0,0, 0, 0,0)), table.placement = '!ht',
 caption.placement = 'top', include.rownames = FALSE)
-@
-        
-        
-        
-        \clearpage
-        
-        
 
-\subsection{Suicide and Drought Model by Age, Sex and Region}
 
-%%\subsection{Suicide and Drought Model by Age, Sex and Region}
-        Our final GAM estimated curved response functions for drought and suicide by age, sex and region are shown in Figure \ref{fig:interactionDrtAgeSexRuralModel2.png}. This model is labelled `interactionDrtAgeSexRuralModel2' in Table \ref{tab:tab3}.  It included drought effects for each age/sex/region subgroup: 
-\begin{eqnarray*}
-        log(O_{ijk})  & = & s(Drought \times Sex \times AgeGroupBy20years \times RuralOrUrbanRegion)  \\	
-        & &   + AgeGroupBy10years_{i} \times Sex_{j} \times s(Time, df = 3, basis = NaturalCubic Spline) \\
-        & &   + StatisticalDivision_{k}  \\
-        & & 	+ s(Month, df = 4, basis = CyclicCubicSpline) \\
-        & & 	+ s(tmaxAnomaly) \\
-        & &   + offset(log(Pop_{ijk}))\\
-        \end{eqnarray*}
-        \noindent Where:\\
-        \indent $O_{ijk}$ = monthly suicide counts by AgeGroupBy10years$_{i}$, Sex$_{j}$ and StatisticalDivision$_{k}$ \\
-        \indent  s(Drought $\times$ Sex $\times$ AgeGroupBy20years $\times$ RuralOrUrbanRegion) are interaction effects \\
-        \indent Time = the month number in the sequence from Jan-1970 until Oct-2007\\
-        \indent Month = the months of the year ranked from 1 to 12 \\
-        \indent s( ) = penalized regression splines, degrees of freedom (df) may be specified \\
-        \indent tmaxAnomaly = monthly averaged temperature maxima anomalies from long term averages \\
-        \indent $Pop_{ijk}$ = interpolated population by month in each group\\
-        
-        The eleven regions were classified as rural or urban based on the locations of the three major cities of NSW: Sydney, Newcastle and Wollongong. All other regions were classed as rural.
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 29: SuiDrtNSW_SupportingInfo.Rnw:1513-1581
+###################################################
 ######################
 #do,  Suicide and Drought Model by Age, Sex and Region
 ######################
@@ -1579,11 +1312,11 @@ caption.placement = 'top', include.rownames = FALSE)
         
         
         
-@
 
-%% \subsection{Final drought model}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 30: SuiDrtNSW_SupportingInfo.Rnw:1586-1680
+###################################################
 ######################
 #do,  Final drought model
 ######################
@@ -1678,21 +1411,11 @@ caption.placement = 'top', include.rownames = FALSE)
         Rsquared.glm.gsm(interactionDrtAgeSexRuralModel3)
         
         
-@
-
-%% \subsection{summary of model}
 
 
-        \begin{figure}[!h]
-        \centering
-        \includegraphics[width=.8\textwidth]{interactionDrtAgeSexRuralModel2.png}
-        \caption{Estimated response functions for suicide and drought in each of the subgroups.}
-        \label{fig:interactionDrtAgeSexRuralModel2.png}
-        \end{figure}
-        %\clearpage
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 31: SuiDrtNSW_SupportingInfo.Rnw:1695-1780
+###################################################
 ######################
 #do,  summary of model
 ######################
@@ -1778,11 +1501,11 @@ caption.placement = 'top', include.rownames = FALSE)
         
         
         
-@
 
-%% \subsection{best figures}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 32: SuiDrtNSW_SupportingInfo.Rnw:1785-1835
+###################################################
 ######################
 #do,  best figures
 ######################
@@ -1833,16 +1556,11 @@ caption.placement = 'top', include.rownames = FALSE)
         dev.off()
         
         
-@
-
-%% \subsection{The final drought model estimates by age, sex and region}
 
 
-        The estimated degrees of freedom from the GAM were then used with parametric splines in a GLM to estimate the effect sizes.  A key drought effect reported in the paper was for rural males aged 30-49 where an Interquartile Range (IQR) rise in drought index gave a Relative Risk (RR) of 1.15 (95CI 1.08 to 1.22).  The IQR for the drought index is about 2 months. 
-        For the temperature anomaly term there was a RR of 1.03 (95CI 1.01 to 1.05) per IQR rise (1.6 degrees C).
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 33: SuiDrtNSW_SupportingInfo.Rnw:1845-1946
+###################################################
 ######################
 #do,  The final drought model estimates by age, sex and region
 ######################
@@ -1944,45 +1662,11 @@ caption.placement = 'top', include.rownames = FALSE)
 
         #  
         
-@
-\clearpage
-
-\subsection{Attributable Number of Deaths}
-
-  
-        The predicted number of rural male suicides aged 30-49 per annum associated with droughts over our study period was 4.01 (95\%CI 2.14 to 6.05, p = 0.000015), accounting for 9\% of the total in 38 years.
-        
-However this effect only applies in the months that were in
-drought, and to a greater extent depending on the intensity of the drought. 
-As drought is a rare and episodic event this estimate is obviously an underestimate of the real impact in terms of numbers of deaths during droughts and potential years of life lost.
 
 
-        
-        % unabridged
- % The final predictive model was estimated using drought index values across the full range (including months less than 5).  For the estimated number of deaths associated with drought we could have only used months beyond the threshold (ie deaths during Predicted Declared Droughts) but decided not to because of the many assumptions that need to be made and the difficulty explaining these.  
-         %BUT FOR NOW WE ARE NOT HAPPY TO INCORPORATE THE ARBITRARY DROUGHT THRESHOLDS IN OUR PREDICTION.
-        
-        
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=1\textwidth]{CentralWestDrought19702007.png}
-        %\caption{The Predicted Declared Droughts in Central West NSW 1970 to 2007.}
-        %\label{fig:CentralWestDrought19702007.png}
-        %\end{figure}
-        
-        
-        % We use the formula:
-        % $$Y_{ijk}=\sum_{lmn: SD/month/age1}(e^{(\beta_{ijk} * X_{lm})} - 1) * BaselineRate_{jkl} * population_{jklm}$$
-        % Where:\\
-        % $\beta_{ijk}$ = the drought coefficient for Rural/Urban zone$_i$, age$_j$ and sex$_{k}$ \\
-        % $X_{lm}$ = drought in Statistical-Division (SD)$_l$ and month$_m$ \\
-        % BaselineRate$_{jkl}$ = avgDeathsPerMonth/avgPopPerMonth in age$_j$, sex$_k$ and SD$_l$ \\
-        % population$_{jklm}$ = interpolated populations by age$_j$, sex$_k$, SD$_l$ and month$_m$ \\
-        % \\
-        % \textbf{TASK, this formula is not right yet, needs work on the agegroupings, decided not to include in the document anyway} 
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 34: SuiDrtNSW_SupportingInfo.Rnw:1985-2244
+###################################################
 ######################
 #do,  Attributable Number of Deaths
 ######################
@@ -2242,11 +1926,11 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         # 27.28826 
         
         
-@
 
-%% \subsection{Attributable Number of Deaths, rural males 10-29}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 35: SuiDrtNSW_SupportingInfo.Rnw:2249-2368
+###################################################
 ######################
 #do,  Attributable Number of Deaths, rural males 10-29
 ######################
@@ -2366,11 +2050,11 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         # [1] 3.791449
         
         
-@
 
-%% \subsection{Attributable Number of Female Deaths}
-The predicted number of rural female suicides aged 30-49 per annum associated with droughts are estimated for comparison with the figure for males. The decreased number of rural female suicides aged 30-49 per annum associated with droughts over our study period was -0.72 (95\%CI -1.32 to -0.01,  p = 0.041787).
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+
+###################################################
+### code chunk number 36: SuiDrtNSW_SupportingInfo.Rnw:2373-2506
+###################################################
 ######################
 #do,  Attributable Number of Female Deaths
 ######################
@@ -2504,11 +2188,11 @@ The predicted number of rural female suicides aged 30-49 per annum associated wi
         
         
         
-@
 
-\subsection{Test the Sex Stratification}
-To find out if the inclusion of a seperate term for Rural Males and Rural Females aged 30-49 is warranted we performed a likelihood ratio test with an alternative model where the drought effect was not stratified by sex. The model was significantly better when including the Rural 30-49 sex stratification (likelihood ratio test p = 0.000077).
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+
+###################################################
+### code chunk number 37: SuiDrtNSW_SupportingInfo.Rnw:2511-2598
+###################################################
 ######################
 #do,  Test the Sex Stratification
 ######################
@@ -2596,36 +2280,11 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         # [bic,] "69873.3465009432"              
         # [5,] "24.5102710907194"  
         
-@
 
-\section{Sensitivity Analyses}
 
-%%\section{Sensitivity Analyses}
-        
-        
-        
-
-\subsection{Enhanced Drought Index}
- 
- %%\subsection{Enhanced Drought Index}
-        
-        We conducted sensitivity analyses for the drought exposure variable.  The drought index was enhanced with the threshold needed to end a drought made more stringent.  For example in Figure~\ref{fig:CentralWestDrought8283.png} the drought in 1980 would not have ended in the middle of that year given the new threshold but would have continued into 1981 (the fourth panel).
-        
-        The drought effects estimated were similar to those from our previous modeling.
-        
-        % unabridged 
-        % The key effect estimates are shown for the enhanced drought index in Figure \ref{fig:interactionDrtAgeSexRuralModel2enhanced.png}.
-        
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=.8\textwidth]{interactionDrtAgeSexRuralModel2enhanced.png}
-        %\caption{interactionDrtAgeSexRuralModel2enhanced.png}
-        %\label{fig:interactionDrtAgeSexRuralModel2enhanced.png}
-        %\end{figure}
-        %\clearpage
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 38: SuiDrtNSW_SupportingInfo.Rnw:2628-2718
+###################################################
 ######################
 #do,  Enhanced Drought Index
 ######################
@@ -2716,27 +2375,11 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         dev.off()
         
         
-@
 
-\subsection{Self-harm Coded as Undetermined}
 
- %%\subsection{Self-harm Coded as `Undetermined if Intentional'}
-
-        A sensitivity analysis was conducted that combined the suicide deaths with deaths coded as `Self inflicted injury, undetermined if intentional'. This analysis agreed with our previous modelling.
-
-        % unabridged
-        % The key effect estimates for the drought index effect on Suicides Plus Undetermined are shown in Figure \ref{fig:interactionDrtAgeSexRuralModel2SuicidePlusUndetermined.png}.
-        
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=.8\textwidth]{interactionDrtAgeSexRuralModel2SuicidePlusUndetermined.png}
-        %\caption{interactionDrtAgeSexRuralModel2SuicidePlusUndetermined.png}
-        %\label{fig:interactionDrtAgeSexRuralModel2SuicidePlusUndetermined.png}
-        %\end{figure}
-        %\clearpage
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 39: SuiDrtNSW_SupportingInfo.Rnw:2739-2819
+###################################################
 ######################
 #do,  Self-harm Coded as Undetermined
 ######################
@@ -2817,17 +2460,11 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         
         
         
-@
 
-\subsection{Drop High Leverage Points}
 
- %%\subsection{Drop High Leverage Points}
-        
-        A sensitivity analysis was finally conducted that dropped any observations identified as having high leverage. Dropping these observations from the final model produced effect estimates that also agreed with our prior modeling results 
-        
-        
-        
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+###################################################
+### code chunk number 40: SuiDrtNSW_SupportingInfo.Rnw:2830-2900
+###################################################
 ######################
 #do,  Drop High Leverage Points
 ######################
@@ -2898,165 +2535,87 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         plot(interactionDrtAgeSexRuralModel3noLeverage)
         
         
-@
-
-%% \subsection{plots}
-
-% unabridged
-        
-        %A diagnostic plot of the leverage and residuals is shown in Figure \ref{fig:interactionDrtAgeSexRuralModel3checkLeverage.png}.  Dropping observations with high leverage produced effect estimates that also agreed with our prior modeling results (Figure \ref{fig:interactionDrtAgeSexRuralModel3noLeverage.png}).  
-        
-        
-
-%% \subsection{plot check}
 
 
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=.6\textwidth]{interactionDrtAgeSexRuralModel3checkLeverage.png}
-        %\caption{interactionDrtAgeSexRuralModel3checkLeverage.png}
-        %\label{fig:interactionDrtAgeSexRuralModel3checkLeverage.png}
-        %\end{figure}
-        %%\clearpage
-        
-        
-
-%% \subsection{plot do}
-
- %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=.8\textwidth]{interactionDrtAgeSexRuralModel3noLeverage.png}
-        %\caption{interactionDrtAgeSexRuralModel3noLeverage.png}
-        %\label{fig:interactionDrtAgeSexRuralModel3noLeverage.png}
-        %\end{figure}
-        %\clearpage
-        
-
-%% \subsection{Conclusions and Refs}
-
-
-        \begin{thebibliography}{1}
-        
-        \bibitem{Smith1992}
-        Smith, D.~I, Hutchinson, M.~F,  \& McArthur, R.~J.
-        \newblock (1992) {\em {Climatic and Agricultural Drought: Payments and
-        Policy}}.
-        \newblock (Centre for Resource and Environmental Studies, Australian National
-        University, Canberra, Australia).
-        
-        \bibitem{Palmer1965}
-        Palmer, W.
-        \newblock (1965) {\em {Meteorological drought. Research paper No. 45}}.
-        \newblock (U.S. Department of Commerce Weather Bureau, Washington, D.C.).
-        
-        \bibitem{Wood2008}
-        Wood, S.
-        \newblock (2008) {Fast stable direct fitting and smoothness selection for
-        generalized additive models}.
-        \newblock {\em Journal of the Royal Statistical Society: Series B (Statistical
-        Methodology)} {\bf 70}, 495--518.
-        
-        \end{thebibliography}
-        
-
-%% \subsection{show model fig1 and 2}
-
-%\singlespace
-        % unabridged 
-        %\clearpage
-        %\section{Code for Figures 1 and 2}
-        %The R codes to fit the model and display the exposure-response relationships for the drought index on rural suicides (Figures 1 and 2 of the paper) are shown below using Sweave.
-        % unabridged change the echoCode
-        
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
-######################
-#do,  show model fig1 and 2
-######################
-      
-
-# first fit the model			
-        interactionDrtAgeSexRuralModel2 <- gam(deaths ~  s(mm, k=3, fx=T, bs = 'cp')  
-        + s(DrtMales10_29rural)
-        + s(DrtMales30_49rural)
-        + s(DrtMales50plusrural)	
-        + s(DrtFemales10_29rural)
-        + s(DrtFemales30_49rural)
-        + s(DrtFemales50plusrural)	
-        + s(DrtMales10_29urban)
-        + s(DrtMales30_49urban)
-        + s(DrtMales50plusurban)	
-        + s(DrtFemales10_29urban)
-        + s(DrtFemales30_49urban)
-        + s(DrtFemales50plusurban)	
-        + s(tmax_anomaly) 
-        + agegp2
-        + rural
-        + sd_group	
-        + sex
-        + agegp	
-        + agegp*sex*ns(time,df = 3) 
-        + offset(log(pop)), data=data,family=poisson)
-        
-@
-
-%% \subsection{show plot fig 1 and 2}
+###################################################
+### code chunk number 41: SuiDrtNSW_SupportingInfo.Rnw:2971-2999 (eval = FALSE)
+###################################################
+## ######################
+## #do,  show model fig1 and 2
+## ######################
+##       
+## 
+## # first fit the model			
+##         interactionDrtAgeSexRuralModel2 <- gam(deaths ~  s(mm, k=3, fx=T, bs = 'cp')  
+##         + s(DrtMales10_29rural)
+##         + s(DrtMales30_49rural)
+##         + s(DrtMales50plusrural)	
+##         + s(DrtFemales10_29rural)
+##         + s(DrtFemales30_49rural)
+##         + s(DrtFemales50plusrural)	
+##         + s(DrtMales10_29urban)
+##         + s(DrtMales30_49urban)
+##         + s(DrtMales50plusurban)	
+##         + s(DrtFemales10_29urban)
+##         + s(DrtFemales30_49urban)
+##         + s(DrtFemales50plusurban)	
+##         + s(tmax_anomaly) 
+##         + agegp2
+##         + rural
+##         + sd_group	
+##         + sex
+##         + agegp	
+##         + agegp*sex*ns(time,df = 3) 
+##         + offset(log(pop)), data=data,family=poisson)
+##         
 
 
-        
-        % unabridged 
-        % \clearpage
-        %The code to create this graph is shown next: 
-        
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
-######################
-#do,  show plot fig 1 and 2
-######################
-      
+###################################################
+### code chunk number 42: SuiDrtNSW_SupportingInfo.Rnw:3010-3054 (eval = FALSE)
+###################################################
+## ######################
+## #do,  show plot fig 1 and 2
+## ######################
+##       
+## 
+## 
+##         # now make a plot of each group effects
+##         
+##         png('RuralMales20.png',res=200,width = 600, height = 1000)
+##         layout(matrix(c(1:4),ncol=1),heights=c(1,1,1,0.2))
+##         par(mfrow=c(4,1), mar=c(0.1,4,1.5,0.5), cex=.7)
+##         plot(interactionDrtAgeSexRuralModel2,select=2,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '', xaxt='n')
+##         abline(0,0)
+##         title('Rural Males aged 10-29', cex=.5, font.main = 1)
+##         plot(interactionDrtAgeSexRuralModel2,select=3,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = 'log(Relative Risk)',xlab = '', xaxt='n')
+##         abline(0,0)
+##         title('Rural Males aged 30-49', cex=.5, font.main = 1)
+##         plot(interactionDrtAgeSexRuralModel2,select=4,rug=F,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '')
+##         abline(0,0)
+##         title('Rural Males aged 50 plus', cex=.5, font.main = 1)
+##         par(mar=c(1,4,6,0.5))
+##         plot(1,1,type = 'n', xaxt = 'n', yaxt='n',ylab='',xlab='', axes = F)  
+##         title(main = 'Drought Index: log(1 + count months)',  font.main = 1,cex.main=.9)
+##         dev.off()
+##         
+##         
+##         png('RuralFemales20.png',res=200,width = 600, height = 1000)
+##         layout(matrix(c(1:4),ncol=1),heights=c(1,1,1,0.2))
+##         par(mfrow=c(4,1), mar=c(0.1,4,1.5,0.5), cex=.7)
+##         plot(interactionDrtAgeSexRuralModel2,select=5,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '', xaxt='n')
+##         abline(0,0)
+##         title('Rural Females aged 10-29', cex=.5, font.main = 1)
+##         plot(interactionDrtAgeSexRuralModel2,select=6,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = 'log(Relative Risk)',xlab = '', xaxt='n')
+##         abline(0,0)
+##         title('Rural Females aged 30-49', cex=.5, font.main = 1)
+##         plot(interactionDrtAgeSexRuralModel2,select=7,rug=F,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '')
+##         abline(0,0)
+##         title('Rural Females aged 50 plus', cex=.5, font.main = 1)
+##         par(mar=c(1,4,6,0.5))
+##         plot(1,1,type = 'n', xaxt = 'n', yaxt='n',ylab='',xlab='', axes = F)	
+##         title(main = 'Drought Index: log(1 + count months)',  font.main = 1,cex.main=.9)
+##         dev.off()
+##         
+##         
 
 
-        # now make a plot of each group effects
-        
-        png('RuralMales20.png',res=200,width = 600, height = 1000)
-        layout(matrix(c(1:4),ncol=1),heights=c(1,1,1,0.2))
-        par(mfrow=c(4,1), mar=c(0.1,4,1.5,0.5), cex=.7)
-        plot(interactionDrtAgeSexRuralModel2,select=2,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '', xaxt='n')
-        abline(0,0)
-        title('Rural Males aged 10-29', cex=.5, font.main = 1)
-        plot(interactionDrtAgeSexRuralModel2,select=3,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = 'log(Relative Risk)',xlab = '', xaxt='n')
-        abline(0,0)
-        title('Rural Males aged 30-49', cex=.5, font.main = 1)
-        plot(interactionDrtAgeSexRuralModel2,select=4,rug=F,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '')
-        abline(0,0)
-        title('Rural Males aged 50 plus', cex=.5, font.main = 1)
-        par(mar=c(1,4,6,0.5))
-        plot(1,1,type = 'n', xaxt = 'n', yaxt='n',ylab='',xlab='', axes = F)  
-        title(main = 'Drought Index: log(1 + count months)',  font.main = 1,cex.main=.9)
-        dev.off()
-        
-        
-        png('RuralFemales20.png',res=200,width = 600, height = 1000)
-        layout(matrix(c(1:4),ncol=1),heights=c(1,1,1,0.2))
-        par(mfrow=c(4,1), mar=c(0.1,4,1.5,0.5), cex=.7)
-        plot(interactionDrtAgeSexRuralModel2,select=5,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '', xaxt='n')
-        abline(0,0)
-        title('Rural Females aged 10-29', cex=.5, font.main = 1)
-        plot(interactionDrtAgeSexRuralModel2,select=6,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = 'log(Relative Risk)',xlab = '', xaxt='n')
-        abline(0,0)
-        title('Rural Females aged 30-49', cex=.5, font.main = 1)
-        plot(interactionDrtAgeSexRuralModel2,select=7,rug=F,se=T, ylim = c(-0.8,0.8), shade=TRUE,shade.col='grey', ylab = '',xlab = '')
-        abline(0,0)
-        title('Rural Females aged 50 plus', cex=.5, font.main = 1)
-        par(mar=c(1,4,6,0.5))
-        plot(1,1,type = 'n', xaxt = 'n', yaxt='n',ylab='',xlab='', axes = F)	
-        title(main = 'Drought Index: log(1 + count months)',  font.main = 1,cex.main=.9)
-        dev.off()
-        
-        
-@
-
-%% \subsection{The end}
-
-
-
-
-\end{document}
