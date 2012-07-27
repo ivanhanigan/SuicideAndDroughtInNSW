@@ -2,6 +2,7 @@
 % ONLY THE DROUGHT INDEX CODES WILL RUN UNLESS YOU ARE AN AUTHORISED USER OF AUSTRALIAN SUICIDE DATA
 % THEREFORE THE ENTIRE SWEAVE FILE CANNOT BE COMPILED UNTIL ACCESS IS ARRANGED
 % USERS ARE RECOMMENDED TO REPLACE eval=TRUE with TRUE 
+% USERS ARE RECOMMENDED TO REPLACE eval=FALSE with TRUE 
 % AND THEN USE > Stangle('SuiDrtNSW_SupportingInfo.Rnw') TO CREATE AN R FILE FIRST
 % THEN RUN EACH R CHUNK INDIVIDUALLY (AND NOTE INSTRUCTIONS IN THE COMMENTS)
 % SORRY FOR THE INCONVENIENCE AND THANKYOU FOR YOUR PATIENCE
@@ -68,7 +69,7 @@
 \section{Introduction}
 
 %%\section{Introduction}
-        This document accompanies the R code at this website \url{http://quicklink.anu.edu.au/9wrg} to calculate the Hutchinson Drought Index and fit the regression models for the paper `Suicide and Drought in New South Wales (NSW), Australia, 1970-2007'.  The calculation of the Drought Index is demonstrated using free data from the Australian Bureau of Meteorology. The suicide mortality data are not publicly available due to confidentiality restrictions. The R code we ran the regressions with is included but the original data are only available for authorised users approved by the Australian Bureau of Statistics and the NSW Registrar of Births Deaths and Marriages.
+        This document accompanies the R code at this website \url{https://github.com/ivanhanigan/SuicideAndDroughtInNSW} to calculate the Hutchinson Drought Index and fit the regression models for the paper `Suicide and Drought in New South Wales (NSW), Australia, 1970-2007'.  The calculation of the Drought Index is demonstrated using free data from the Australian Bureau of Meteorology. The suicide mortality data are not publicly available due to confidentiality restrictions. The R code we ran the regressions with is included but the original data are only available for authorised users approved by the Australian Bureau of Statistics and the NSW Registrar of Births Deaths and Marriages.
 
 
 %% \subsection{Copyright}
@@ -105,7 +106,7 @@
 
 %% \subsection{Drought tools}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>= 
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>= 
 ######################
 #tools,  Drought tools
 ######################
@@ -123,7 +124,7 @@
 %% \subsection{dlMonthly}
 
  
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #tools,  dlMonthly
 ######################
@@ -148,7 +149,7 @@
 
 %% \subsection{droughtIndex}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #tools,  droughtIndex
 ######################
@@ -263,7 +264,7 @@
 
 %% \subsection{create download directories}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #tools,  create download directories
 ######################
@@ -289,7 +290,7 @@
 %% \subsection{Download Weather Data}
         Instructions for using R to download and analyse the spatial data from the Australian Bureau of Statistics (\url{http://www.abs.gov.au}) and the weather data from the Australian Bureau of Meteorology (\url{ http://www.bom.gov.au}) websites are included.
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  Download spatial data
 ######################
@@ -332,7 +333,7 @@
 
 %% \subsection{subset the SDs to NSW}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  subset the SDs to NSW
 ######################
@@ -358,7 +359,7 @@
 
 %% \subsection{subset the SDs to Vic}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  subset the SDs to Vic
 ######################
@@ -389,7 +390,7 @@
 %% \subsection{Download the Rainfall Station location data}
 
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  Download the Rainfall Station location data
 ######################
@@ -434,7 +435,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{revert to project root dir}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  revert to project root dir
 ######################
@@ -446,7 +447,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Plot the NSW SD and stations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  Plot the NSW SD and stations
 ######################
@@ -489,7 +490,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{go for a SD wide average rainfall using these stations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  go for a SD wide average rainfall using these stations
 ######################
@@ -562,7 +563,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         %\clearpage
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Calculate the Drought Index
 ######################
@@ -599,7 +600,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{replicate Fig3.5 from Hutchinson}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  replicate Fig3.5 from Hutchinson
 ######################
@@ -612,7 +613,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{plot the Victorian SD and stations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  plot the Victorian SD and stations
 ######################
@@ -654,7 +655,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{SD wide average}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #load,  SD wide average
 ######################
@@ -713,7 +714,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Seymour drought index}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Seymour drought index
 ######################
@@ -765,7 +766,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         %\clearpage
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Integration by Conditional Summation
 ######################
@@ -809,7 +810,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Extract preprocessed data from database}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #analysis_data,  Extract preprocessed data from database
 ######################
@@ -869,7 +870,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Load data to R server}
  
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #analysis_data,  Load data to R server
 ######################
@@ -945,7 +946,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 \subsection{Descriptive Statistics of Drought and Suicide}
 Descriptive statistics for the Drought Index are shown in Table~1.  Summary statistics for Suicide rates are shown in Table~2.  
  
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #data,  Descriptive Statistics of Drought and Suicide
 ######################
@@ -1119,7 +1120,7 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
         
         %Table \ref{tab:Correlations}
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #data,  Correlation between Temperature and Drought
 ######################
@@ -1160,7 +1161,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Core Model Diagnostics and Variable Selection
 ######################
@@ -1186,7 +1187,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         %%\clearpage
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  core model
 ######################
@@ -1229,7 +1230,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 %% \subsection{check for overdispersion}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  check for overdispersion
 ######################
@@ -1262,7 +1263,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         %%\clearpage
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  check climate
 ######################
@@ -1319,7 +1320,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 %% \subsection{check interaction combinations}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  check interaction combinations
 ######################
@@ -1510,7 +1511,7 @@ caption.placement = 'top', include.rownames = FALSE)
         
         The eleven regions were classified as rural or urban based on the locations of the three major cities of NSW: Sydney, Newcastle and Wollongong. All other regions were classed as rural.
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Suicide and Drought Model by Age, Sex and Region
 ######################
@@ -1583,7 +1584,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 %% \subsection{Final drought model}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Final drought model
 ######################
@@ -1692,7 +1693,7 @@ caption.placement = 'top', include.rownames = FALSE)
         %\clearpage
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  summary of model
 ######################
@@ -1782,7 +1783,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 %% \subsection{best figures}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  best figures
 ######################
@@ -1842,7 +1843,7 @@ caption.placement = 'top', include.rownames = FALSE)
         For the temperature anomaly term there was a RR of 1.03 (95CI 1.01 to 1.05) per IQR rise (1.6 degrees C).
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  The final drought model estimates by age, sex and region
 ######################
@@ -1982,7 +1983,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         % \textbf{TASK, this formula is not right yet, needs work on the agegroupings, decided not to include in the document anyway} 
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Attributable Number of Deaths
 ######################
@@ -2246,7 +2247,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
 
 %% \subsection{Attributable Number of Deaths, rural males 10-29}
 
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Attributable Number of Deaths, rural males 10-29
 ######################
@@ -2370,7 +2371,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
 
 %% \subsection{Attributable Number of Female Deaths}
 The predicted number of rural female suicides aged 30-49 per annum associated with droughts are estimated for comparison with the figure for males. The decreased number of rural female suicides aged 30-49 per annum associated with droughts over our study period was -0.72 (95\%CI -1.32 to -0.01,  p = 0.041787).
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Attributable Number of Female Deaths
 ######################
@@ -2508,7 +2509,7 @@ The predicted number of rural female suicides aged 30-49 per annum associated wi
 
 \subsection{Test the Sex Stratification}
 To find out if the inclusion of a seperate term for Rural Males and Rural Females aged 30-49 is warranted we performed a likelihood ratio test with an alternative model where the drought effect was not stratified by sex. The model was significantly better when including the Rural 30-49 sex stratification (likelihood ratio test p = 0.000077).
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Test the Sex Stratification
 ######################
@@ -2625,7 +2626,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         %\clearpage
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Enhanced Drought Index
 ######################
@@ -2736,7 +2737,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         %\clearpage
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Self-harm Coded as Undetermined
 ######################
@@ -2827,7 +2828,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         
         
         
-<<eval=TRUE,echo=FALSE,keep.source=TRUE>>=	
+<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
 ######################
 #do,  Drop High Leverage Points
 ######################
