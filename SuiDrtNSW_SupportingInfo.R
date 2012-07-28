@@ -843,7 +843,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         subset(descstatOut, sd_group == 'Central West' & drought == 3)
         # TASK CHECK THIS IS BECAUSE OF THE AVERAGING OVER MANY PIXELS
         
-        sqldf("select sd_group, drought,  max(avcount), min(dthyy), max(dthyy)
+        sqldf(drv='SQLite',"select sd_group, drought,  max(avcount), min(dthyy), max(dthyy)
  from descstatOut
         where drought >= 1 and sd_group = 'Central West'
         group by sd_group, drought
@@ -860,7 +860,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         group by sd_group, drought
         ) t1
         group by sd_group
-        ')
+        ', drv='SQLite')
  descDrt
         # sd_group max(drought) avg(maxavcount) max(maxavcount)
         # 1           Central West            9        7.994281        11.56618
@@ -885,7 +885,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         group by sd_group, dthyy, dthmm
         ) t1
         group by sd_group
-        ')
+        ', drv='SQLite')
  desc
         # sd_group avg(summary)  avg(pop)     rate
         # 1           Central West    1.5198238  138202.2 13.19653
@@ -905,7 +905,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
  from data
         group by sd_group, dthyy, dthmm
         having sd_group = 'Sydney'
-        ")
+        ", drv='SQLite')
  
         
 
@@ -969,7 +969,9 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         ageSexRegionTrend <- glm(deaths ~ sin(timevar*2*pi) + cos(timevar*2*pi) +  
         sd_group * agegp *  sex * ns(time,3) +
         offset(log(pop)), data=data,family=poisson) 
-        
+# Warning message:
+#   glm.fit: fitted rates numerically 0 occurred   
+# this is not a problem
         aic_table <- estat(ageSexRegionTrend, 'sd_group*age*sex*ns(time,df=3)')
         
         # then drop the interaction with trend
@@ -1039,9 +1041,12 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         offset(log(pop)), data=data,family=poisson)
         
         # drtedf <- summary(droughtModel)$edf
-        #[1] 3.824836
         # summary(droughtModel)
-        
+# Approximate significance of smooth terms:
+#   edf Ref.df Chi.sq  p-value    
+#   s(logDroughtCount) 3.808  4.697  13.61 0.014757 *  
+#   s(mm)              2.000  2.000  18.40 0.000101 ***
+   
         # now do for tmax, and then tmax anomaly.
         tmaxModel <- gam(deaths ~ s(tmax) + 
         agegp * sex * ns(time,3) + 
@@ -1049,7 +1054,6 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         s(mm, k=4, fx=T, bs = 'cc')	+ 
         offset(log(pop)), data=data,family=poisson)
         # tmaxedf <- summary(tmaxModel)$edf
-        #[1] 2.184725
         #summary(tmaxModel)
         
         
@@ -1059,7 +1063,6 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         s(mm, k=4, fx=T, bs = 'cc')	+ 
         offset(log(pop)), data=data,family=poisson)
         # tmaxanomedf <- summary(tmaxanomModel)$edf
-        #[1] 1.2653
         #summary(tmaxanomModel)
         
         
@@ -1353,27 +1356,26 @@ caption.placement = 'top', include.rownames = FALSE)
         
         # great so how many degrees of freedom to allow in the parametric glm splines?
         summary(interactionDrtAgeSexRuralModel2)
-        #  Approximate significance of smooth terms:
-        #                            edf Ref.df Chi.sq  p-value    
-        # s(mm)                    2.000  2.000 18.750 8.48e-05 ***
-        # s(DrtMales10_29rural)    1.001  1.003  4.874 0.027381 *  
-        # s(DrtMales30_49rural)    1.915  2.371 20.566 5.81e-05 ***
-        # s(DrtMales50plusrural)   1.655  2.047  2.467 0.300079    
-        # s(DrtFemales10_29rural)  1.015  1.029  0.315 0.586602    
-        # s(DrtFemales30_49rural)  1.019  1.038  4.323 0.039790 *  
-        # s(DrtFemales50plusrural) 3.976  4.895 42.760 3.64e-08 ***
-        # s(DrtMales10_29urban)    4.903  5.943 21.243 0.001588 ** 
-        # s(DrtMales30_49urban)    1.025  1.050  3.122 0.082686 .  
-        # s(DrtMales50plusurban)   2.633  3.270  6.538 0.105906    
-        # s(DrtFemales10_29urban)  1.001  1.001  0.987 0.321001    
-        # s(DrtFemales30_49urban)  2.112  2.630  1.091 0.715930    
-        # s(DrtFemales50plusurban) 1.002  1.004  0.906 0.342291    
-        # s(tmax_anomaly)          1.098  1.191 12.249 0.000662 ***
-        # ---
-        
-        # 
-        # R-sq.(adj) =   0.66   Deviance explained = 24.7%
-        # UBRE score = -0.44662  Scale est. = 1         n = 69916
+# Approximate significance of smooth terms:
+#   edf Ref.df Chi.sq  p-value    
+#   s(mm)                    2.000  2.000 18.744 8.51e-05 ***
+#   s(DrtMales10_29rural)    1.001  1.003  4.875 0.027359 *  
+#   s(DrtMales30_49rural)    1.915  2.371 19.404 0.000103 ***
+#   s(DrtMales50plusrural)   1.655  2.047  2.422 0.307000    
+#   s(DrtFemales10_29rural)  1.016  1.031  0.346 0.569116    
+#   s(DrtFemales30_49rural)  1.020  1.040  4.396 0.038269 *  
+#   s(DrtFemales50plusrural) 3.976  4.896 42.768 3.63e-08 ***
+#   s(DrtMales10_29urban)    4.903  5.943 21.322 0.001536 ** 
+#   s(DrtMales30_49urban)    1.027  1.054  3.087 0.084957 .  
+#   s(DrtMales50plusurban)   2.633  3.270  6.628 0.101964    
+#   s(DrtFemales10_29urban)  1.001  1.001  0.987 0.320924    
+#   s(DrtFemales30_49urban)  2.112  2.630  2.425 0.419286    
+#   s(DrtFemales50plusurban) 1.002  1.004  0.907 0.342178    
+#   s(tmax_anomaly)          1.100  1.194 11.015 0.001281 ** 
+#   ---
+# 
+# R-sq.(adj) =   0.66   Deviance explained = 24.7%
+# UBRE score = -0.44662  Scale est. = 1         n = 69916
         
         # just checking the Adjusted R-squared
         Rsquared.glm.gsm(interactionDrtAgeSexRuralModel2)
@@ -1436,13 +1438,13 @@ caption.placement = 'top', include.rownames = FALSE)
         ylimits <- 0.5
         # for the names
         summary(interactionDrtAgeSexRuralModel2)$formula[3]
-        #  s(mm, k = 4, fx = T, bs = 'cc') + s(DrtMales10_29rural) + s(DrtMales30_49rural) + 
-        #     s(DrtMales50plusrural) + s(DrtFemales10_29rural) + s(DrtFemales30_49rural) + 
-        #     s(DrtFemales50plusrural) + s(DrtMales10_29urban) + s(DrtMales30_49urban) + 
-        #     s(DrtMales50plusurban) + s(DrtFemales10_29urban) + s(DrtFemales30_49urban) + 
-        #     s(DrtFemales50plusurban) + s(tmax_anomaly) + agegp2 + rural + 
-        #     sd_group + sex + agegp + agegp * sex * ns(time, df = 3) + 
-        #     offset(log(pop))()
+# s(mm, k = 3, fx = T, bs = "cp") + s(DrtMales10_29rural) + s(DrtMales30_49rural) + 
+#   s(DrtMales50plusrural) + s(DrtFemales10_29rural) + s(DrtFemales30_49rural) + 
+#   s(DrtFemales50plusrural) + s(DrtMales10_29urban) + s(DrtMales30_49urban) + 
+#   s(DrtMales50plusurban) + s(DrtFemales10_29urban) + s(DrtFemales30_49urban) + 
+#   s(DrtFemales50plusurban) + s(tmax_anomaly) + agegp2 + rural + 
+#   sd_group + sex + agegp + agegp * sex * ns(time, df = 3) + 
+#   offset(log(pop))()
         
         png('interactionDrtAgeSexRuralModel2.png',res=200,width = 1000, height = 1600)#, pointsize =30)                                        
         par(mfcol=c(6,2),mar=c(4,5,2,1), cex = .5)
