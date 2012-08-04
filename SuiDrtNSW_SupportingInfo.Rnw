@@ -6,6 +6,7 @@
 % THEN RUN EACH R CHUNK INDIVIDUALLY (AND NOTE INSTRUCTIONS IN THE COMMENTS)
 % SORRY FOR THE INCONVENIENCE AND THANKYOU FOR YOUR PATIENCE
 % IVAN HANIGAN, 2012-05-28
+% PS THIS IS THE UNABRIDGED VERSION, IT DIFFERS TO THE PUBLISHED SI APPENDIX ONLY BY COMMENTED SECTIONS LABELLED 'UNABRIDGED'
 
 %%%%%%%%%%%%%%%%%%%% PREAMBLE BEGINS %%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper]{article}                % Default font size = 10pt
@@ -35,8 +36,7 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 %%++++++++ Title page begins ++++++++%%
-\title{Online Supporting Information for the article:\\ ``Suicide and Drought in NSW, Australia, 1970-2007''.}
-%.\\ Unabridged}
+\title{Online Supporting Information for the article:\\ ``Suicide and Drought in NSW, Australia, 1970-2007''.\\ Unabridged}
 \author{Ivan C. Hanigan$^1$$^,$$^2$ \and Colin D. Butler$^1$ \and
   Philip N. Kokic$^2$ \and
   Michael F. Hutchinson$^3$} 
@@ -752,16 +752,16 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 %% \subsection{Integration by Conditional Summation}
 
  %% unabridged
-        %\subsection{The Summation Method}
-        % When the index is calculated using the sum of each consecutive month's rainfall deficiency score the resulting measure addresses  the question of how intense the drought is, rather than just the duration which is provided by the counting method.  This version  of the index is shown in Figure \ref{fig:SeymourDrought9499enhanced.png}.
+        \subsection{The Summation Method}
+        When the index is calculated using the sum of each consecutive month's rainfall deficiency score the resulting measure addresses  the question of how intense the drought is, rather than just the duration which is provided by the counting method.  This version  of the index is shown in Figure \ref{fig:SeymourDrought9499enhanced.png}.
  
         
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=\textwidth]{SeymourDrought9499enhanced.png}
-        %\caption{SeymourDrought9499enhanced.png}
-        %\label{fig:SeymourDrought9499enhanced.png}
-        %\end{figure}
+        \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\textwidth]{SeymourDrought9499enhanced.png}
+        \caption{SeymourDrought9499enhanced.png}
+        \label{fig:SeymourDrought9499enhanced.png}
+        \end{figure}
         %\clearpage
         
         
@@ -1175,14 +1175,14 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 %% \subsection{core model}
 
  %% unabridged
-        % Diagnostic plots of the core model are shown in Figure \ref{fig:coreModelDiagnosticPlot.png}.
+        Diagnostic plots of the core model are shown in Figure \ref{fig:coreModelDiagnosticPlot.png}.
         
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=\textwidth]{coreModelDiagnosticPlot.png}
-        %\caption{coreModelDiagnosticPlot.png}
-        %\label{fig:coreModelDiagnosticPlot.png}
-        %\end{figure}
+        \begin{figure}[!h]
+        \centering
+        \includegraphics[width=\textwidth]{coreModelDiagnosticPlot.png}
+        \caption{coreModelDiagnosticPlot.png}
+        \label{fig:coreModelDiagnosticPlot.png}
+        \end{figure}
         %%\clearpage
         
         
