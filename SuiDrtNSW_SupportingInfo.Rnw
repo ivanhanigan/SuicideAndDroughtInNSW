@@ -6,7 +6,7 @@
 % THEN RUN EACH R CHUNK INDIVIDUALLY (AND NOTE INSTRUCTIONS IN THE COMMENTS)
 % SORRY FOR THE INCONVENIENCE AND THANKYOU FOR YOUR PATIENCE
 % IVAN HANIGAN, 2012-05-28
-% PS THIS IS THE UNABRIDGED VERSION, IT DIFFERS TO THE PUBLISHED SI APPENDIX ONLY BY COMMENTED SECTIONS LABELLED 'UNABRIDGED'
+% PS THIS IS THE UNABRIDGED VERSION, IT DIFFERS TO THE PUBLISHED SI APPENDIX ONLY BY (UN)COMMENTED SECTIONS LABELLED 'UNABRIDGED'
 
 %%%%%%%%%%%%%%%%%%%% PREAMBLE BEGINS %%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper]{article}                % Default font size = 10pt
@@ -1252,14 +1252,14 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 %% \subsection{check climate}
 
  %% unabridged
-        % The effect estimates for initial models of climate are shown in Figure \ref{fig:droughtTmaxAnomGAMS.png}.  The drought effect was found to be complicated by the countervailing effects in men and women during subsequent modelling.
-        %\begin{figure}[!h]
-        %\centering
-        %\includegraphics[width=.6\textwidth]{droughtTmaxAnomGAMS.png}
-        %\caption{droughtTmaxAnomGAMS.png}
-        %\label{fig:droughtTmaxAnomGAMS.png}
-        %\end{figure}
-        %%\clearpage
+        The effect estimates for initial models of climate are shown in Figure \ref{fig:droughtTmaxAnomGAMS.png}.  The drought effect was found to be complicated by the countervailing effects in men and women during subsequent modelling.
+        \begin{figure}[!h]
+        \centering
+        \includegraphics[width=.6\textwidth]{droughtTmaxAnomGAMS.png}
+        \caption{droughtTmaxAnomGAMS.png}
+        \label{fig:droughtTmaxAnomGAMS.png}
+        \end{figure}
+        \clearpage
         
         
 <<eval=FALSE,echo=FALSE,keep.source=TRUE>>=	
