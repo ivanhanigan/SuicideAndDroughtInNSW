@@ -2657,7 +2657,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 
 
 
-        interactionDrtAgeSexRuralModel2enhanced <- gam(deaths ~  s(mm, k=4, fx=T, bs = 'cp')
+        interactionDrtAgeSexRuralModel2enhanced <- gam(deaths ~  s(mm, k=3, fx=T, bs = 'cp')
         + s(Drt2Males10_29rural)
         + s(Drt2Males30_49rural)
         + s(Drt2Males50plusrural)
@@ -2751,13 +2751,13 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         group by dthyy
         order by dthyy
         ')
-
+        png('undetermined.png')
         with(d2,plot(dthyy,sui_und,type='l',ylim=c(0,950)))
         with(d2,lines(dthyy,sui,col='red'))
-
+        dev.off()
         # sensitivity model
         strt=Sys.time()
-        interactionDrtAgeSexRuralModel2SuicidePlusUndetermined <- gam(sui_und ~  s(mm, k=4, fx=T, bs = 'cc')
+        interactionDrtAgeSexRuralModel2SuicidePlusUndetermined <- gam(sui_und ~  s(mm, k=3, fx=T, bs = 'cp')
         + s(DrtMales10_29rural)
         + s(DrtMales30_49rural)
         + s(DrtMales50plusrural)
