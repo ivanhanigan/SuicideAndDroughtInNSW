@@ -2961,7 +2961,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 
 %% \subsection{show model fig1 and 2}
 
-%\singlespace
+\singlespace
         % unabridged
         \clearpage
         \section{Code for Figures 1 and 2}
