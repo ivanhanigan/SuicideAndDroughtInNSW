@@ -132,7 +132,7 @@ print(endd-strt)
 summary(interactionDrtAgeSexRuralModel2)
 
 pdf('tmaxanom2.pdf')
-par(mar=c(4,4.2,.5,1))
+par(mar=c(4,4.2,.5,1), cex = 1.5)
 plot(interactionDrtAgeSexRuralModel2,select=14,rug = T, all.terms=T,se=T,ylab = 'log Relative Risk',xlab='Maximum Temperature Anomaly', ylim=c (-.15,0.15), shade=T)
 abline(0,0,lwd=1.5)
 dev.off()
