@@ -116,7 +116,7 @@
         if (!require(rgdal)) install.packages('rgdal'); require(rgdal)
         if (!require(geosphere)) install.packages('geosphere'); require(geosphere)
         if (!require(plyr)) install.packages('plyr'); require(plyr)
-
+        if (!require(rgeos)) install.packages('rgeos'); require(rgeos)
 
 
 @
@@ -144,7 +144,63 @@
         setwd(wd)
         }
 
+# THIS IS BROKEN
+# USE THE DOWNLOADED HQ_PRCP DATA
+################################################################
+# name:ZipFunctions.R
+uncompress_linux <- function(filename)
+  {
+    print(filename)
+    system(sprintf('uncompress %s',filename))
+  }
 
+# tries to find 7 zip exe
+ExecutableFileName7Zip <- function()
+{
+  executableName <- "C:\\Program Files\\7-Zip\\7z.exe"
+
+  if(file.exists(executableName))
+  {
+    return (executableName)
+  }
+
+  #other executable file names and ideas go here ...
+  stop("failed to find 7zip")
+}
+
+# simple function to extract 7zip file
+# need to have 7zip installed
+Decompress7Zip <- function(zipFileName, outputDirectory, delete)
+{
+  executableName <- ExecutableFileName7Zip()
+
+# fileName = GetFileName(zipFileName)
+# fileName = PathCombine(outputDirectory, fileName)
+
+
+# if(file.exists(fileName))
+# {
+# unlink(zipFileName);
+# }
+
+  arguments <- paste(sep="",
+                    "e ",
+                    "\"", zipFileName, "\" ",
+                    "\"-o", outputDirectory, "\" ",
+    "")
+
+  print( arguments)
+
+  RunProcess(executableName, arguments)
+
+  if(delete)
+  {
+    unlink(zipFileName);
+  }
+}
+
+#test
+# Decompress7Zip("D:\\Development\\Awap Work\\2013010820130108.grid.Z", "D:\\Development\\Awap Work\\", TRUE)
 @
 
 %% \subsection{droughtIndex}
@@ -464,7 +520,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
         # get distances
-        coords <- centroid(sd2[sd2@data$SD_NAME_2006 == 'Central West' &  sd2@data$STATE_CODE_2006 == 1,])
+        coords <- gCentroid(sd2[sd2@data$SD_NAME_2006 == 'Central West' &  sd2@data$STATE_CODE_2006 == 1,])
         summary(pt.stations)
         dist2pt <- distVincentyEllipsoid(pt.stations,coords)
 
@@ -497,24 +553,42 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 
-        setwd(bomDir)
+        setwd(file.path(bomDir,"HQ_monthly_prcp_txt"))
         df4 <- matrix(nrow=0,ncol=4)
-        for(i in 1:nrow(d@data)){
-        # i <- 1
+        for(i in 2:nrow(d@data)){
+        # i <- 2
         filename <- paste('0',as.character(d@data[i,1]),sep='')
-        if(!file.exists(paste('IDCJAC0001_', filename,'_Data1.csv',sep=''))){
-        dlMonthly(filename, getwd())
+        fname_i <- paste("prcphq.",filename,'.month.txt.Z',sep='')
+        fname_out <- gsub("\\.", "_", gsub(".Z", "", fname_i))
+        if(!file.exists(fname_out)){
+        #this no work anymore
+          # dlMonthly(filename, getwd())
+          
+        Decompress7Zip(zipFileName=fname_i, 
+                       outputDirectory=fname_out,
+                       delete=T)
         }
-        df <- read.csv(paste('IDCJAC0001_', filename,'_Data1.csv',sep=''))
-        df$date <- as.Date(paste(df$Year,df$Month,1,sep='-'))
-        df<-subset(df,Quality == 'Y',select=c(date,Year,Month,Monthly.Precipitation.Total..millimetres.))
+        #df <- read.csv(paste('IDCJAC0001_', filename,'_Data1.csv',sep=''))
+        df <- read.table(dir(fname_out, full.names = T), skip = 1)
+        names(df) <- c("startdate", "enddate", "rainfall")
+        #df$date <- as.Date(paste(df$Year,df$Month,1,sep='-'))
+        df$date <- as.Date(paste(
+          substr(df$startdate,1,4)
+          ,
+          substr(df$startdate,5,6)
+          ,1,sep='-'))
+        #df<-subset(df,Quality == 'Y',select=c(date,Year,Month,Monthly.Precipitation.Total..millimetres.))
         head(df)
         fulldaterange <- as.data.frame(seq(min(df$date),max(df$date),1))
         fulldaterange$day <- substring(fulldaterange[,1],9,10)
         fulldaterange <- subset(fulldaterange, day == '01')
         names(fulldaterange) <- c('date','day')
         df2 <- merge(fulldaterange,df,all.x=T)
-        df2 <- subset(df2, select = c(date,Year, Month,Monthly.Precipitation.Total..millimetres.))
+        #df2 <- subset(df2, select = c(date,Year, Month,Monthly.Precipitation.Total..millimetres.))
+        df2 <- subset(df2, select = c(date,rainfall))
+        df2$Year <- substr(df2$date,1,4)
+        df2$Month <- substr(df2$date,6,7)
+        tail(df2)
         # what happens with NAs?
         # stupid impute
         df2$rain <- as.numeric(0)
@@ -525,9 +599,13 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         for(i in 1:nrow(df2)){
         # i <- 1
         mm <- df2[i,'month']
-        df2$rain[i] <- ifelse(is.na(df2$Monthly.Precipitation.Total..millimetres.[i]),
-        mean(subset(df2, month == mm,select = c(Monthly.Precipitation.Total..millimetres.)),na.rm=T),
-        df2$Monthly.Precipitation.Total..millimetres.[i])
+        #df2$rain[i] <- ifelse(is.na(df2$Monthly.Precipitation.Total..millimetres.[i]),
+        #mean(subset(df2, month == mm,select = c(Monthly.Precipitation.Total..millimetres.)),na.rm=T),
+        #df2$Monthly.Precipitation.Total..millimetres.[i])
+        df2$rain[i] <- ifelse(is.na(df2$rainfall[i]),
+        mean(subset(df2, month == mm,select = c(rainfall)),na.rm=T),
+        df2$rainfall[i])
+
         }
 
         tail(df2)
@@ -572,6 +650,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
         drt <- droughtIndex(data=df5,years=length(names(table(df5$year))))
+        write.csv(drt, "CentralWestNSWDrought18812012.csv", row.names = F)
         qc3=drt[drt$year>=1979 & drt$year < 1984,]
 
         png(file.path(rootdir,'CentralWestDrought8283.png'),res=200,width = 2100, height = 1000)
