@@ -1,7 +1,7 @@
 ### R code from vignette source 'SuiDrtNSW_SupportingInfo.Rnw'
 
 ###################################################
-### code chunk number 1: SuiDrtNSW_SupportingInfo.Rnw:109-121
+### code chunk number 1: SuiDrtNSW_SupportingInfo.Rnw:109-122
 ###################################################
 ######################
 #tools,  Drought tools
@@ -13,12 +13,13 @@
         if (!require(geosphere)) install.packages('geosphere'); require(geosphere)
         if (!require(plyr)) install.packages('plyr'); require(plyr)
         if (!require(rgeos)) install.packages('rgeos'); require(rgeos)
-
+        if (!require(rgeos)) install.packages('rgeos'); require(rgeos)
+        require(swishdbtools) # get from http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools-downloads.html
 
 
 
 ###################################################
-### code chunk number 2: SuiDrtNSW_SupportingInfo.Rnw:127-203
+### code chunk number 2: SuiDrtNSW_SupportingInfo.Rnw:128-204
 ###################################################
 ######################
 #tools,  dlMonthly
@@ -99,7 +100,7 @@ Decompress7Zip <- function(zipFileName, outputDirectory, delete)
 
 
 ###################################################
-### code chunk number 3: SuiDrtNSW_SupportingInfo.Rnw:208-318
+### code chunk number 3: SuiDrtNSW_SupportingInfo.Rnw:209-319
 ###################################################
 ######################
 #tools,  droughtIndex
@@ -214,7 +215,7 @@ Decompress7Zip <- function(zipFileName, outputDirectory, delete)
 
 
 ###################################################
-### code chunk number 4: SuiDrtNSW_SupportingInfo.Rnw:323-341
+### code chunk number 4: SuiDrtNSW_SupportingInfo.Rnw:324-342
 ###################################################
 ######################
 #tools,  create download directories
@@ -237,7 +238,7 @@ Decompress7Zip <- function(zipFileName, outputDirectory, delete)
 
 
 ###################################################
-### code chunk number 5: SuiDrtNSW_SupportingInfo.Rnw:349-387
+### code chunk number 5: SuiDrtNSW_SupportingInfo.Rnw:350-388
 ###################################################
 ######################
 #load,  Download spatial data
@@ -280,7 +281,7 @@ Decompress7Zip <- function(zipFileName, outputDirectory, delete)
 
 
 ###################################################
-### code chunk number 6: SuiDrtNSW_SupportingInfo.Rnw:392-413
+### code chunk number 6: SuiDrtNSW_SupportingInfo.Rnw:393-414
 ###################################################
 ######################
 #load,  subset the SDs to NSW
@@ -306,7 +307,7 @@ Decompress7Zip <- function(zipFileName, outputDirectory, delete)
 
 
 ###################################################
-### code chunk number 7: SuiDrtNSW_SupportingInfo.Rnw:418-443
+### code chunk number 7: SuiDrtNSW_SupportingInfo.Rnw:419-444
 ###################################################
 ######################
 #load,  subset the SDs to Vic
@@ -336,7 +337,7 @@ Decompress7Zip <- function(zipFileName, outputDirectory, delete)
 
 
 ###################################################
-### code chunk number 8: SuiDrtNSW_SupportingInfo.Rnw:449-489
+### code chunk number 8: SuiDrtNSW_SupportingInfo.Rnw:450-490
 ###################################################
 ######################
 #load,  Download the Rainfall Station location data
@@ -381,7 +382,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 9: SuiDrtNSW_SupportingInfo.Rnw:494-501
+### code chunk number 9: SuiDrtNSW_SupportingInfo.Rnw:495-502
 ###################################################
 ######################
 #load,  revert to project root dir
@@ -393,7 +394,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 10: SuiDrtNSW_SupportingInfo.Rnw:506-544
+### code chunk number 10: SuiDrtNSW_SupportingInfo.Rnw:507-545
 ###################################################
 ######################
 #load,  Plot the NSW SD and stations
@@ -436,7 +437,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 11: SuiDrtNSW_SupportingInfo.Rnw:549-625
+### code chunk number 11: SuiDrtNSW_SupportingInfo.Rnw:550-631
 ###################################################
 ######################
 #load,  go for a SD wide average rainfall using these stations
@@ -446,7 +447,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
         setwd(file.path(bomDir,"HQ_monthly_prcp_txt"))
         df4 <- matrix(nrow=0,ncol=4)
-        for(i in 2:nrow(d@data)){
+        for(i in 1:nrow(d@data)){
         # i <- 2
         filename <- paste('0',as.character(d@data[i,1]),sep='')
         fname_i <- paste("prcphq.",filename,'.month.txt.Z',sep='')
@@ -454,10 +455,15 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         if(!file.exists(fname_out)){
         #this no work anymore
           # dlMonthly(filename, getwd())
-          
-        Decompress7Zip(zipFileName=fname_i, 
-                       outputDirectory=fname_out,
-                       delete=T)
+        if(LinuxOperatingSystem()){
+          uncompress_linux(filename = fname_i)
+          dir.create(fname_out)
+          file.rename(gsub(".Z", "", fname_i), file.path(fname_out, gsub(".Z", "", fname_i)))
+        } else {
+          Decompress7Zip(zipFileName=fname_i,
+                         outputDirectory=fname_out,
+                         delete=T)
+          }
         }
         #df <- read.csv(paste('IDCJAC0001_', filename,'_Data1.csv',sep=''))
         df <- read.table(dir(fname_out, full.names = T), skip = 1)
@@ -517,7 +523,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 12: SuiDrtNSW_SupportingInfo.Rnw:644-677
+### code chunk number 12: SuiDrtNSW_SupportingInfo.Rnw:650-683
 ###################################################
 ######################
 #do,  Calculate the Drought Index
@@ -555,7 +561,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 13: SuiDrtNSW_SupportingInfo.Rnw:682-690
+### code chunk number 13: SuiDrtNSW_SupportingInfo.Rnw:688-696
 ###################################################
 ######################
 #do,  replicate Fig3.5 from Hutchinson
@@ -568,7 +574,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 14: SuiDrtNSW_SupportingInfo.Rnw:695-732
+### code chunk number 14: SuiDrtNSW_SupportingInfo.Rnw:701-738
 ###################################################
 ######################
 #load,  plot the Victorian SD and stations
@@ -610,7 +616,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 15: SuiDrtNSW_SupportingInfo.Rnw:737-791
+### code chunk number 15: SuiDrtNSW_SupportingInfo.Rnw:743-797
 ###################################################
 ######################
 #load,  SD wide average
@@ -669,7 +675,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 16: SuiDrtNSW_SupportingInfo.Rnw:796-829
+### code chunk number 16: SuiDrtNSW_SupportingInfo.Rnw:802-835
 ###################################################
 ######################
 #do,  Seymour drought index
@@ -707,7 +713,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 17: SuiDrtNSW_SupportingInfo.Rnw:848-882
+### code chunk number 17: SuiDrtNSW_SupportingInfo.Rnw:854-888
 ###################################################
 ######################
 #do,  Integration by Conditional Summation
@@ -746,7 +752,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 18: SuiDrtNSW_SupportingInfo.Rnw:892-947
+### code chunk number 18: SuiDrtNSW_SupportingInfo.Rnw:898-953
 ###################################################
 ######################
 #analysis_data,  Extract preprocessed data from database
@@ -806,7 +812,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 19: SuiDrtNSW_SupportingInfo.Rnw:952-1022
+### code chunk number 19: SuiDrtNSW_SupportingInfo.Rnw:958-1028
 ###################################################
 ######################
 #analysis_data,  Load data to R server
@@ -881,7 +887,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 20: SuiDrtNSW_SupportingInfo.Rnw:1028-1132
+### code chunk number 20: SuiDrtNSW_SupportingInfo.Rnw:1034-1138
 ###################################################
 ######################
 #data,  Descriptive Statistics of Drought and Suicide
@@ -990,7 +996,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 
 ###################################################
-### code chunk number 21: SuiDrtNSW_SupportingInfo.Rnw:1202-1218
+### code chunk number 21: SuiDrtNSW_SupportingInfo.Rnw:1208-1224
 ###################################################
 ######################
 #data,  Correlation between Temperature and Drought
@@ -1022,7 +1028,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 
 ###################################################
-### code chunk number 23: SuiDrtNSW_SupportingInfo.Rnw:1243-1252
+### code chunk number 23: SuiDrtNSW_SupportingInfo.Rnw:1249-1258
 ###################################################
 ######################
 #do,  Core Model Diagnostics and Variable Selection
@@ -1036,7 +1042,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 
 ###################################################
-### code chunk number 24: SuiDrtNSW_SupportingInfo.Rnw:1269-1307
+### code chunk number 24: SuiDrtNSW_SupportingInfo.Rnw:1275-1313
 ###################################################
 ######################
 #do,  core model
@@ -1079,7 +1085,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 
 ###################################################
-### code chunk number 25: SuiDrtNSW_SupportingInfo.Rnw:1312-1329
+### code chunk number 25: SuiDrtNSW_SupportingInfo.Rnw:1318-1335
 ###################################################
 ######################
 #do,  check for overdispersion
@@ -1101,7 +1107,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 
 ###################################################
-### code chunk number 26: SuiDrtNSW_SupportingInfo.Rnw:1345-1397
+### code chunk number 26: SuiDrtNSW_SupportingInfo.Rnw:1351-1403
 ###################################################
 ######################
 #do,  check climate
@@ -1158,7 +1164,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 
 ###################################################
-### code chunk number 27: SuiDrtNSW_SupportingInfo.Rnw:1402-1542
+### code chunk number 27: SuiDrtNSW_SupportingInfo.Rnw:1408-1548
 ###################################################
 ######################
 #do,  check interaction combinations
@@ -1321,7 +1327,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 29: SuiDrtNSW_SupportingInfo.Rnw:1593-1661
+### code chunk number 29: SuiDrtNSW_SupportingInfo.Rnw:1599-1667
 ###################################################
 ######################
 #do,  Suicide and Drought Model by Age, Sex and Region
@@ -1394,7 +1400,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 30: SuiDrtNSW_SupportingInfo.Rnw:1666-1760
+### code chunk number 30: SuiDrtNSW_SupportingInfo.Rnw:1672-1766
 ###################################################
 ######################
 #do,  Final drought model
@@ -1493,7 +1499,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 31: SuiDrtNSW_SupportingInfo.Rnw:1775-1860
+### code chunk number 31: SuiDrtNSW_SupportingInfo.Rnw:1781-1866
 ###################################################
 ######################
 #do,  summary of model
@@ -1583,7 +1589,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 32: SuiDrtNSW_SupportingInfo.Rnw:1865-1915
+### code chunk number 32: SuiDrtNSW_SupportingInfo.Rnw:1871-1921
 ###################################################
 ######################
 #do,  best figures
@@ -1638,7 +1644,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 33: SuiDrtNSW_SupportingInfo.Rnw:1925-2026
+### code chunk number 33: SuiDrtNSW_SupportingInfo.Rnw:1931-2032
 ###################################################
 ######################
 #do,  The final drought model estimates by age, sex and region
@@ -1744,7 +1750,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 34: SuiDrtNSW_SupportingInfo.Rnw:2065-2324
+### code chunk number 34: SuiDrtNSW_SupportingInfo.Rnw:2071-2330
 ###################################################
 ######################
 #do,  Attributable Number of Deaths
@@ -2008,7 +2014,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 35: SuiDrtNSW_SupportingInfo.Rnw:2329-2448
+### code chunk number 35: SuiDrtNSW_SupportingInfo.Rnw:2335-2454
 ###################################################
 ######################
 #do,  Attributable Number of Deaths, rural males 10-29
@@ -2132,7 +2138,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 36: SuiDrtNSW_SupportingInfo.Rnw:2453-2586
+### code chunk number 36: SuiDrtNSW_SupportingInfo.Rnw:2459-2592
 ###################################################
 ######################
 #do,  Attributable Number of Female Deaths
@@ -2270,7 +2276,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 37: SuiDrtNSW_SupportingInfo.Rnw:2591-2678
+### code chunk number 37: SuiDrtNSW_SupportingInfo.Rnw:2597-2684
 ###################################################
 ######################
 #do,  Test the Sex Stratification
@@ -2362,7 +2368,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 38: SuiDrtNSW_SupportingInfo.Rnw:2708-2798
+### code chunk number 38: SuiDrtNSW_SupportingInfo.Rnw:2714-2804
 ###################################################
 ######################
 #do,  Enhanced Drought Index
@@ -2457,7 +2463,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 39: SuiDrtNSW_SupportingInfo.Rnw:2819-2899
+### code chunk number 39: SuiDrtNSW_SupportingInfo.Rnw:2825-2905
 ###################################################
 ######################
 #do,  Self-harm Coded as Undetermined
@@ -2542,7 +2548,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 40: SuiDrtNSW_SupportingInfo.Rnw:2910-2980
+### code chunk number 40: SuiDrtNSW_SupportingInfo.Rnw:2916-2986
 ###################################################
 ######################
 #do,  Drop High Leverage Points
@@ -2617,7 +2623,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 41: SuiDrtNSW_SupportingInfo.Rnw:3051-3079
+### code chunk number 41: SuiDrtNSW_SupportingInfo.Rnw:3057-3085
 ###################################################
 ######################
 #do,  show model fig1 and 2
@@ -2650,7 +2656,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 
 ###################################################
-### code chunk number 42: SuiDrtNSW_SupportingInfo.Rnw:3090-3134
+### code chunk number 42: SuiDrtNSW_SupportingInfo.Rnw:3096-3140
 ###################################################
 ######################
 #do,  show plot fig 1 and 2

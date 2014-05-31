@@ -117,7 +117,8 @@
         if (!require(geosphere)) install.packages('geosphere'); require(geosphere)
         if (!require(plyr)) install.packages('plyr'); require(plyr)
         if (!require(rgeos)) install.packages('rgeos'); require(rgeos)
-
+        if (!require(rgeos)) install.packages('rgeos'); require(rgeos)
+        require(swishdbtools) # get from http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools-downloads.html
 
 @
 
@@ -555,7 +556,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
         setwd(file.path(bomDir,"HQ_monthly_prcp_txt"))
         df4 <- matrix(nrow=0,ncol=4)
-        for(i in 2:nrow(d@data)){
+        for(i in 1:nrow(d@data)){
         # i <- 2
         filename <- paste('0',as.character(d@data[i,1]),sep='')
         fname_i <- paste("prcphq.",filename,'.month.txt.Z',sep='')
@@ -563,10 +564,15 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         if(!file.exists(fname_out)){
         #this no work anymore
           # dlMonthly(filename, getwd())
-          
-        Decompress7Zip(zipFileName=fname_i, 
-                       outputDirectory=fname_out,
-                       delete=T)
+        if(LinuxOperatingSystem()){
+          uncompress_linux(filename = fname_i)
+          dir.create(fname_out)
+          file.rename(gsub(".Z", "", fname_i), file.path(fname_out, gsub(".Z", "", fname_i)))
+        } else {
+          Decompress7Zip(zipFileName=fname_i,
+                         outputDirectory=fname_out,
+                         delete=T)
+          }
         }
         #df <- read.csv(paste('IDCJAC0001_', filename,'_Data1.csv',sep=''))
         df <- read.table(dir(fname_out, full.names = T), skip = 1)
