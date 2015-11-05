@@ -932,7 +932,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
  from descstatOut
         where drought >= 1 and sd_group = 'Central West'
         group by sd_group, drought
-        ")
+        ", drv = "SQLite")
 
         # avg length and number of droughts
 
@@ -945,7 +945,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         group by sd_group, drought
         ) t1
         group by sd_group
-        ')
+        ', drv = "SQLite")
  descDrt
         # sd_group max(drought) avg(maxavcount) max(maxavcount)
         # 1           Central West            9        7.994281        11.56618
@@ -1781,7 +1781,7 @@ caption.placement = 'top', include.rownames = FALSE)
         from data
         group by sd_group, sex, agegp
         order by sd_group, sex, agegp
-        ')
+        ', drv = "SQLite")
   head(desc)
         desc[1:40,]
         sqldf(
@@ -1789,7 +1789,7 @@ caption.placement = 'top', include.rownames = FALSE)
    from desc
         group by sd_group
         order by sd_group
-        ')
+        ', drv = "SQLite")
   subset(desc, sd_group == 'Sydney')
         with(subset(data, sd_group == 'Sydney' & sex == 1), plot(agegp,deaths/pop))
         with(subset(data, sd_group == 'Sydney' & sex == 1 & agegp == '70plus'),
@@ -1835,7 +1835,7 @@ caption.placement = 'top', include.rownames = FALSE)
         from attributable
         group by dthyy
         order by dthyy
-        ')
+        ', drv = "SQLite")
   summaryAttributable
         # plot the estimated deaths
         with(summaryAttributable,
@@ -1857,7 +1857,7 @@ caption.placement = 'top', include.rownames = FALSE)
         sum(deathsAttributableLower) as deathsAttributableLower,
         sum(deathsAttributableUpper) as deathsAttributableUpper
         from attributable
-        ')
+        ', drv = "SQLite")
 
         # The predicted number of rural male suicides aged 30-49 per annum associated with droughts over our study period was 4.01 (95%CI 2.14 to 6.05)
         estOut$deathsAttributable
