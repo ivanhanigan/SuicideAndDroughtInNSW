@@ -28,7 +28,7 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 %%++++++++ Title page begins ++++++++%%
-\title{Online Supporting Information for the article:\\ ``Suicide and Drought in NSW, Australia, 1970-2007''.\\ Unabridged}
+\title{Open Source Supporting Information for the article:\\ ``Suicide and Drought in NSW, Australia, 1970-2007''.}
 \author{Ivan C. Hanigan$^1$$^,$$^2$ \and Colin D. Butler$^1$ \and
   Philip N. Kokic$^2$ \and
   Michael F. Hutchinson$^3$}
@@ -1331,7 +1331,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
 %' 
 %' @
 %' 
-\subsection{check climate}
+\subsection{Check Climate}
 
  %% unabridged
         The effect estimates for initial models of climate are shown in Figure \ref{fig:droughtTmaxAnomGAMS.png}.  The drought effect was found to be complicated by the countervailing effects in men and women during subsequent modelling.
@@ -2990,7 +2990,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
 
 
 
-\subsection{plot check}
+\subsection{Plot Check}
 
 
         \begin{figure}[!h]
@@ -3003,7 +3003,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
 
 
 
-\subsection{plot do}
+\subsection{Plot Do}
 
  \begin{figure}[!h]
         \centering
