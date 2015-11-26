@@ -1,7 +1,7 @@
 % NOTES
 % ONLY THE DROUGHT INDEX CODES WILL RUN UNLESS YOU ARE AN AUTHORISED USER OF AUSTRALIAN SUICIDE DATA
 % THEREFORE THE ENTIRE SWEAVE FILE CANNOT BE COMPILED UNTIL ACCESS IS ARRANGED
-% USERS ARE RECOMMENDED TO REPLACE eval=FALSE with TRUE
+% USERS ARE RECOMMENDED TO REPLACE eval=TRUE with TRUE
 % AND THEN USE > Stangle('SuiDrtNSW_SupportingInfo.Rnw') TO CREATE AN R FILE FIRST
 % THEN RUN EACH R CHUNK INDIVIDUALLY (AND NOTE INSTRUCTIONS IN THE COMMENTS)
 % SORRY FOR THE INCONVENIENCE AND THANKYOU FOR YOUR PATIENCE
@@ -40,7 +40,7 @@
 \author{Ivan C. Hanigan$^1$$^,$$^2$ \and Colin D. Butler$^1$ \and
   Philip N. Kokic$^2$ \and
   Michael F. Hutchinson$^3$}
-\date{}
+\date{\today}
 \maketitle
 
 
@@ -105,7 +105,7 @@
 
 %% \subsection{Drought tools}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #tools,  Drought tools
 ######################
@@ -123,7 +123,7 @@
 %% \subsection{dlMonthly}
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #tools,  dlMonthly
 ######################
@@ -148,7 +148,7 @@
 
 %% \subsection{droughtIndex}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #tools,  droughtIndex
 ######################
@@ -263,7 +263,7 @@
 
 %% \subsection{create download directories}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #tools,  create download directories
 ######################
@@ -289,7 +289,7 @@
 %% \subsection{Download Weather Data}
         Instructions for using R to download and analyse the spatial data from the Australian Bureau of Statistics (\url{http://www.abs.gov.au}) and the weather data from the Australian Bureau of Meteorology (\url{ http://www.bom.gov.au}) websites are included.
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  Download spatial data
 ######################
@@ -332,7 +332,7 @@
 
 %% \subsection{subset the SDs to NSW}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  subset the SDs to NSW
 ######################
@@ -358,7 +358,7 @@
 
 %% \subsection{subset the SDs to Vic}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  subset the SDs to Vic
 ######################
@@ -389,7 +389,7 @@
 %% \subsection{Download the Rainfall Station location data}
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  Download the Rainfall Station location data
 ######################
@@ -434,7 +434,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{revert to project root dir}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  revert to project root dir
 ######################
@@ -446,7 +446,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Plot the NSW SD and stations}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  Plot the NSW SD and stations
 ######################
@@ -489,7 +489,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{go for a SD wide average rainfall using these stations}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  go for a SD wide average rainfall using these stations
 ######################
@@ -562,7 +562,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         %\clearpage
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Calculate the Drought Index
 ######################
@@ -599,7 +599,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{replicate Fig3.5 from Hutchinson}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  replicate Fig3.5 from Hutchinson
 ######################
@@ -612,7 +612,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{plot the Victorian SD and stations}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  plot the Victorian SD and stations
 ######################
@@ -654,7 +654,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{SD wide average}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #load,  SD wide average
 ######################
@@ -713,7 +713,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Seymour drought index}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Seymour drought index
 ######################
@@ -765,7 +765,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         %\clearpage
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Integration by Conditional Summation
 ######################
@@ -809,7 +809,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Extract preprocessed data from database}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #analysis_data,  Extract preprocessed data from database
 ######################
@@ -869,7 +869,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 
 %% \subsection{Load data to R server}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #analysis_data,  Load data to R server
 ######################
@@ -945,7 +945,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
 \subsection{Descriptive Statistics of Drought and Suicide}
 Descriptive statistics for the Drought Index are shown in Table~1.  Summary statistics for Suicide rates are shown in Table~2.
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #data,  Descriptive Statistics of Drought and Suicide
 ######################
@@ -985,7 +985,7 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
         subset(descstatOut, sd_group == 'Central West' & drought == 3)
         # TASK CHECK THIS IS BECAUSE OF THE AVERAGING OVER MANY PIXELS
 
-        sqldf("select sd_group, drought,  max(avcount), min(dthyy), max(dthyy)
+        sqldf(drv="SQLite","select sd_group, drought,  max(avcount), min(dthyy), max(dthyy)
  from descstatOut
         where drought >= 1 and sd_group = 'Central West'
         group by sd_group, drought
@@ -993,7 +993,7 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
 
         # avg length and number of droughts
 
-        descDrt <- sqldf('
+        descDrt <- sqldf(drv="SQLite",'
  select sd_group, max(drought) as numberOfDroughts, avg(maxavcount) as avgDuration, max(maxavcount) as maxDuration
         from (
         select sd_group, drought,  max(avcount) as maxavcount, min(dthyy), max(dthyy)
@@ -1019,7 +1019,7 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
         write.table(descDrt, 'descriptivesDrought.csv', sep = ',', row.names=F)
 
         # Descriptive statistics for suicide.
-        desc <- sqldf('
+        desc <- sqldf(drv="SQLite",'
  select sd_group, avg(summary) as avgMonthlyDeaths, avg(pop) as avgPop, ((12 * avg(summary)) / avg(pop)) * 100000 as rate
         from (
         select sd_group, dthyy, dthmm, sum(deaths) as summary, sum(pop) as pop
@@ -1043,7 +1043,7 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
         # 11                Sydney   34.0044053 3040952.3 13.41859
         write.table(desc, 'descriptives.csv', sep = ',', row.names=F)
         # qc
-        sqldf("select sd_group, dthyy, dthmm, sum(deaths) as summary, sum(pop) as pop
+        sqldf(drv="SQLite","select sd_group, dthyy, dthmm, sum(deaths) as summary, sum(pop) as pop
  from data
         group by sd_group, dthyy, dthmm
         having sd_group = 'Sydney'
@@ -1119,7 +1119,7 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
 
         %Table \ref{tab:Correlations}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #data,  Correlation between Temperature and Drought
 ######################
@@ -1138,7 +1138,7 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
 
 @
 
-<<label=Correlations,echo=FALSE,results=tex>>=
+<<label=Correlations,echo=FALSE,results=tex, cache = TRUE>>=
 library(xtable)
 foo <- read.csv('correlations.csv')
 
@@ -1160,7 +1160,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Core Model Diagnostics and Variable Selection
 ######################
@@ -1186,7 +1186,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         %%\clearpage
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  core model
 ######################
@@ -1229,7 +1229,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 %% \subsection{check for overdispersion}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  check for overdispersion
 ######################
@@ -1262,7 +1262,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
         \clearpage
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  check climate
 ######################
@@ -1319,7 +1319,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 
 %% \subsection{check interaction combinations}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  check interaction combinations
 ######################
@@ -1465,7 +1465,7 @@ print(xtable(foo, caption = 'Correlations', label = 'tab:Correlations',
 %% \subsection{show aic table}
 
 
-<<label=tab3,echo=FALSE,results=tex>>=
+<<label=tab3,echo=FALSE,results=tex, cache = TRUE>>=
 library(xtable)
 
 foo1=read.csv('aic_table.csv', as.is=T)
@@ -1510,7 +1510,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
         The eleven regions were classified as rural or urban based on the locations of the three major cities of NSW: Sydney, Newcastle and Wollongong. All other regions were classed as rural.
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Suicide and Drought Model by Age, Sex and Region
 ######################
@@ -1583,7 +1583,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 %% \subsection{Final drought model}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Final drought model
 ######################
@@ -1619,7 +1619,10 @@ caption.placement = 'top', include.rownames = FALSE)
         print(endd-strt)
 
         # great so how many degrees of freedom to allow in the parametric glm splines?
-        summary(interactionDrtAgeSexRuralModel2)
+        #summary(interactionDrtAgeSexRuralModel2)
+        # WHEN I FIRST RAN THIS IN 2011 I GOT THE FOLLOWING TABLE OF EDF
+        # NOW I GET Error in b$smooth[[m]]$S[[1]] : subscript out of bounds (2015-11-26)
+        
         #  Approximate significance of smooth terms:
         #                            edf Ref.df Chi.sq  p-value
         # s(mm)                    2.000  2.000 18.750 8.48e-05 ***
@@ -1637,7 +1640,6 @@ caption.placement = 'top', include.rownames = FALSE)
         # s(DrtFemales50plusurban) 1.002  1.004  0.906 0.342291
         # s(tmax_anomaly)          1.098  1.191 12.249 0.000662 ***
         # ---
-
         #
         # R-sq.(adj) =   0.66   Deviance explained = 24.7%
         # UBRE score = -0.44662  Scale est. = 1         n = 69916
@@ -1692,7 +1694,7 @@ caption.placement = 'top', include.rownames = FALSE)
         %\clearpage
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  summary of model
 ######################
@@ -1711,8 +1713,10 @@ caption.placement = 'top', include.rownames = FALSE)
 
         # make a plot of each group effect
         ylimits <- 0.5
-        # for the names
-        summary(interactionDrtAgeSexRuralModel2)$formula[3]
+        # TODO note here that the original formula used bs = 'cc' and k = 4?  
+        # subsequent changes meant this was bs = 'cp' and k = 3
+        # this is just for the names
+        # summary(interactionDrtAgeSexRuralModel2)$formula[3]
         #  s(mm, k = 4, fx = T, bs = 'cc') + s(DrtMales10_29rural) + s(DrtMales30_49rural) +
         #     s(DrtMales50plusrural) + s(DrtFemales10_29rural) + s(DrtFemales30_49rural) +
         #     s(DrtFemales50plusrural) + s(DrtMales10_29urban) + s(DrtMales30_49urban) +
@@ -1782,7 +1786,7 @@ caption.placement = 'top', include.rownames = FALSE)
 
 %% \subsection{best figures}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  best figures
 ######################
@@ -1842,7 +1846,7 @@ caption.placement = 'top', include.rownames = FALSE)
         For the temperature anomaly term there was a RR of 1.03 (95CI 1.01 to 1.05) per IQR rise (1.6 degrees C).
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  The final drought model estimates by age, sex and region
 ######################
@@ -1982,7 +1986,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         % \textbf{TASK, this formula is not right yet, needs work on the agegroupings, decided not to include in the document anyway}
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Attributable Number of Deaths
 ######################
@@ -2006,7 +2010,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         # calculate baseline incidence
 
         names(data)
-        desc <- sqldf('
+        desc <- sqldf(drv="SQLite",'
     select sd_group, sex, agegp,avg(deaths) as avgMonthlyDeaths, avg(pop) as avgPop,
         avg(deaths)/avg(pop) as avgRate
         from data
@@ -2015,7 +2019,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         ')
   head(desc)
         desc[1:40,]
-        sqldf(
+        sqldf(drv="SQLite",
         'select sd_group, sum(avgMonthlyDeaths), sum(avgPop)
    from desc
         group by sd_group
@@ -2058,7 +2062,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
 
 
         # now summarise by year
-        summaryAttributable <- sqldf(
+        summaryAttributable <- sqldf(drv="SQLite",
         'select dthyy, sum(deathsAttributable) as deathsAttributable,
      sum(deaths) as deaths,
         sum(pop) as pop,
@@ -2082,7 +2086,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         )
         # calcualte estimate
 
-        estOut <- sqldf(
+        estOut <- sqldf(drv="SQLite",
         'select sum(deaths) as deaths,
     sum(deathsAttributable) as deathsAttributable,
         sum(deathsAttributableLower) as deathsAttributableLower,
@@ -2105,7 +2109,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         # to calculate number of drought years get average of the number of drought years by Rural Regions
         # DROUGHT MONTHS DEFINED AS ANY MONTH WHERE THE DROUGHT INDEX IS
         # GREATER THAN OR EQUAL TO 5.
-        droughtyears <- sqldf("select sd_group, sum(droughtmonth)/12 as droughtyears
+        droughtyears <- sqldf(drv="SQLite","select sd_group, sum(droughtmonth)/12 as droughtyears
        from
         (
         select sd_group, agegp, sex, time, avcount,
@@ -2118,7 +2122,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         ")
 
         # sanity check
-        qc <- sqldf("select sd_group, agegp, sex, time, avcount,
+        qc <- sqldf(drv="SQLite","select sd_group, agegp, sex, time, avcount,
               case when avcount >= 5 then 1 else 0 end as droughtmonth
         from data
         where agegp = '10_19' and sex = 1 and sd_group = 'Central West'
@@ -2197,7 +2201,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
 
 
         # now summarise by year
-        summaryAttributable <- sqldf(
+        summaryAttributable <- sqldf(drv="SQLite",
         'select dthyy, sum(deathsAttributable) as deathsAttributable,
      sum(deaths) as deaths,
         sum(pop) as pop,
@@ -2222,7 +2226,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         #    )
         # calcualte estimate
 
-        estOut <- sqldf(
+        estOut <- sqldf(drv="SQLite",
         'select sum(deaths) as deaths,
     sum(deathsAttributable) as deathsAttributable,
         sum(deathsAttributableLower) as deathsAttributableLower,
@@ -2246,7 +2250,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
 
 %% \subsection{Attributable Number of Deaths, rural males 10-29}
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Attributable Number of Deaths, rural males 10-29
 ######################
@@ -2271,7 +2275,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         # calculate baseline incidence
 
         names(data)
-        desc <- sqldf('
+        desc <- sqldf(drv="SQLite",'
     select sd_group, sex, agegp,avg(deaths) as avgMonthlyDeaths, avg(pop) as avgPop,
         avg(deaths)/avg(pop) as avgRate
         from data
@@ -2280,7 +2284,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         ')
   head(desc)
         desc[1:40,]
-        sqldf(
+        sqldf(drv="SQLite",
         'select sd_group, sum(avgMonthlyDeaths), sum(avgPop)
    from desc
         group by sd_group
@@ -2323,7 +2327,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
 
 
         # now summarise by year
-        summaryAttributable <- sqldf(
+        summaryAttributable <- sqldf(drv="SQLite",
         'select dthyy, sum(deathsAttributable) as deathsAttributable,
      sum(deaths) as deaths,
         sum(pop) as pop,
@@ -2347,7 +2351,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         )
         # calcualte estimate
 
-        estOut <- sqldf(
+        estOut <- sqldf(drv="SQLite",
         'select sum(deaths) as deaths,
     sum(deathsAttributable) as deathsAttributable,
         sum(deathsAttributableLower) as deathsAttributableLower,
@@ -2370,7 +2374,7 @@ As drought is a rare and episodic event this estimate is obviously an underestim
 
 %% \subsection{Attributable Number of Female Deaths}
 The predicted number of rural female suicides aged 30-49 per annum associated with droughts are estimated for comparison with the figure for males. The decreased number of rural female suicides aged 30-49 per annum associated with droughts over our study period was -0.72 (95\%CI -1.32 to -0.01,  p = 0.041787).
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Attributable Number of Female Deaths
 ######################
@@ -2394,7 +2398,7 @@ The predicted number of rural female suicides aged 30-49 per annum associated wi
         # calculate baseline incidence
 
         names(data)
-        desc <- sqldf('
+        desc <- sqldf(drv="SQLite",'
     select sd_group, sex, agegp,avg(deaths) as avgMonthlyDeaths, avg(pop) as avgPop,
         avg(deaths)/avg(pop) as avgRate
         from data
@@ -2403,7 +2407,7 @@ The predicted number of rural female suicides aged 30-49 per annum associated wi
         ')
   head(desc)
         desc[1:40,]
-        sqldf(
+        sqldf(drv="SQLite",
         'select sd_group, sum(avgMonthlyDeaths), sum(avgPop)
    from desc
         group by sd_group
@@ -2458,7 +2462,7 @@ The predicted number of rural female suicides aged 30-49 per annum associated wi
 
 
         # now summarise by year
-        summaryAttributable <- sqldf(
+        summaryAttributable <- sqldf(drv="SQLite",
         'select dthyy, sum(deathsAttributable) as deathsAttributable,
      sum(deaths) as deaths,
         sum(pop) as pop,
@@ -2482,7 +2486,7 @@ The predicted number of rural female suicides aged 30-49 per annum associated wi
         )
         # calcualte estimate
 
-        estOut <- sqldf(
+        estOut <- sqldf(drv="SQLite",
         'select sum(deaths) as deaths,
     sum(deathsAttributable) as deathsAttributable,
         sum(deathsAttributableLower) as deathsAttributableLower,
@@ -2508,7 +2512,7 @@ The predicted number of rural female suicides aged 30-49 per annum associated wi
 
 \subsection{Test the Sex Stratification}
 To find out if the inclusion of a seperate term for Rural Males and Rural Females aged 30-49 is warranted we performed a likelihood ratio test with an alternative model where the drought effect was not stratified by sex. The model was significantly better when including the Rural 30-49 sex stratification (likelihood ratio test p = 0.000077).
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Test the Sex Stratification
 ######################
@@ -2625,7 +2629,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         \clearpage
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Enhanced Drought Index
 ######################
@@ -2683,7 +2687,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         endd=Sys.time()
         print(endd-strt)
 
-        summary(interactionDrtAgeSexRuralModel2enhanced)
+        #summary(interactionDrtAgeSexRuralModel2enhanced)
         Rsquared.glm.gsm(interactionDrtAgeSexRuralModel2enhanced)
 
         # make a plot of each group effect
@@ -2736,7 +2740,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         \clearpage
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Self-harm Coded as Undetermined
 ######################
@@ -2783,7 +2787,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         endd=Sys.time()
         print(endd-strt)
 
-        summary(interactionDrtAgeSexRuralModel2SuicidePlusUndetermined)
+        #summary(interactionDrtAgeSexRuralModel2SuicidePlusUndetermined)
         Rsquared.glm.gsm(interactionDrtAgeSexRuralModel2SuicidePlusUndetermined)
 
         # make a plot of each group effect
@@ -2827,7 +2831,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 
 
 
-<<eval=FALSE,echo=FALSE,keep.source=TRUE>>=
+<<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  Drop High Leverage Points
 ######################
@@ -2968,7 +2972,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         The R codes to fit the model and display the exposure-response relationships for the drought index on rural suicides (Figures 1 and 2 of the paper) are shown below using Sweave.
         % unabridged change the echoCode
 
-<<eval=FALSE,echo=TRUE,keep.source=TRUE>>=
+<<eval=TRUE,echo=TRUE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  show model fig1 and 2
 ######################
@@ -3007,7 +3011,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         \clearpage
         The code to create this graph is shown next:
 
-<<eval=FALSE,echo=TRUE,keep.source=TRUE>>=
+<<eval=TRUE,echo=TRUE,keep.source=TRUE, cache = TRUE>>=
 ######################
 #do,  show plot fig 1 and 2
 ######################
@@ -3054,8 +3058,11 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 
 @
 
-%% \subsection{The end}
+\subsection{The software packages and operating system}
 
+<<, cache = TRUE>>=
+sessionInfo()
+@
 
 
 
