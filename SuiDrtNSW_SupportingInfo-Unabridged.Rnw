@@ -3011,7 +3011,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         \clearpage
         The code to create this graph is shown next:
 
-<<eval=TRUE,echo=TRUE,keep.source=TRUE, cache = TRUE>>=
+<<eval=FALSE,echo=TRUE,keep.source=TRUE>>=
 ######################
 #do,  show plot fig 1 and 2
 ######################
@@ -3060,7 +3060,7 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 
 \subsection{The software packages and operating system}
 
-<<, cache = TRUE>>=
+<<>>=
 sessionInfo()
 @
 
