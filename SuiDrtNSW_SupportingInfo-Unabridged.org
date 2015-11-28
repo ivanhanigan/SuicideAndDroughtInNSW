@@ -512,7 +512,12 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
   
   
   @
-  
+
+#+end_src
+** COMMENT nsw sd avg stations
+
+#+begin_src R :session *shell* :tangle SuiDrtNSW_SupportingInfo-Unabridged.Rnw :exports none :eval no
+    
   %% \subsection{go for a SD wide average rainfall using these stations}
   
   <<eval=TRUE,echo=FALSE,keep.source=TRUE, cache = true>>=
@@ -551,7 +556,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
           # i <- 1
           mm <- df2[i,'month']
           df2$rain[i] <- ifelse(is.na(df2$Monthly.Precipitation.Total..millimetres.[i]),
-          mean(subset(df2, month == mm,select = c(Monthly.Precipitation.Total..millimetres.)),na.rm=T),
+          mean(subset(df2, month == mm,select = c(Monthly.Precipitation.Total..millimetres.))[,1], na.rm=T),
           df2$Monthly.Precipitation.Total..millimetres.[i])
           }
   
