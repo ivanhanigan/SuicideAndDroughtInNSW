@@ -725,7 +725,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
           # i <- 1
           mm <- df2[i,'month']
           df2$rain[i] <- ifelse(is.na(df2$Monthly.Precipitation.Total..millimetres.[i]),
-          mean(subset(df2, month == mm,select =c(Monthly.Precipitation.Total..millimetres.))[,1],na.rm=T),
+          mean(subset(df2, month == mm,select =c(Monthly.Precipitation.Total..millimetres.))[,1], na.rm=T),
           df2$Monthly.Precipitation.Total..millimetres.[i])
           }
   
