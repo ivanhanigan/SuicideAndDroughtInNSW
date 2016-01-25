@@ -840,7 +840,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\textwidth]{SeymourDrought9499enhanced.png}
-\caption{SeymourDrought9499enhanced.png}
+\caption{Drought in Seymour Victoria 1994-99 using the enhanced Hutchinson index}
 \label{fig:SeymourDrought9499enhanced.png}
 \end{figure}
 %\clearpage
@@ -1262,7 +1262,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
         \begin{figure}[!h]
         \centering
         \includegraphics[width=\textwidth]{coreModelDiagnosticPlot.png}
-        \caption{coreModelDiagnosticPlot.png}
+        \caption{Core model diagnostic plots}
         \label{fig:coreModelDiagnosticPlot.png}
         \end{figure}
         \clearpage
@@ -1338,7 +1338,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
         \begin{figure}[!h]
         \centering
         \includegraphics[width=.6\textwidth]{droughtTmaxAnomGAMS.png}
-        \caption{droughtTmaxAnomGAMS.png}
+        \caption{Drought and maximum temperature anomalies GAM results}
         \label{fig:droughtTmaxAnomGAMS.png}
         \end{figure}
         \clearpage
@@ -2691,7 +2691,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
 
  %%\subsection{Enhanced Drought Index}
 
-        We conducted sensitivity analyses for the drought exposure variable.  The drought index was enhanced with the threshold needed to end a drought made more stringent.  For example in Figure~\ref{fig:CentralWestDrought8283.png} the drought in 1980 would not have ended in the middle of that year given the new threshold but would have continued into 1981 (the fourth panel).
+        We conducted sensitivity analyses for the drought exposure variable.  The drought index was enhanced with the threshold needed to end a drought made more stringent.  For example in Figure~\ref{fig:SeymourDrought9499enhanced.png} the drought in 1980 would not have ended in the middle of that year given the new threshold but would have continued into 1981 (the fourth panel).
 
         The drought effects estimated were similar to those from our previous modeling.
 
@@ -2701,7 +2701,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
         \begin{figure}[!h]
         \centering
         \includegraphics[width=.8\textwidth]{interactionDrtAgeSexRuralModel2enhanced.png}
-        \caption{interactionDrtAgeSexRuralModel2enhanced.png}
+        \caption{Interaction between drought and age, sex and rural using the enhanced Hutchinson index}
         \label{fig:interactionDrtAgeSexRuralModel2enhanced.png}
         \end{figure}
         \clearpage
@@ -2812,7 +2812,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
         \begin{figure}[!h]
         \centering
         \includegraphics[width=.8\textwidth]{interactionDrtAgeSexRuralModel2SuicidePlusUndetermined.png}
-        \caption{interactionDrtAgeSexRuralModel2SuicidePlusUndetermined.png}
+        \caption{Interaction of drought, age, sex and rural for all suicides along with deaths with undetermined intent}
         \label{fig:interactionDrtAgeSexRuralModel2SuicidePlusUndetermined.png}
         \end{figure}
         \clearpage
@@ -2996,7 +2996,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
         \begin{figure}[!h]
         \centering
         \includegraphics[width=.6\textwidth]{interactionDrtAgeSexRuralModel3checkLeverage.png}
-        \caption{interactionDrtAgeSexRuralModel3checkLeverage.png}
+        \caption{Interaction of drought, age, sex and rural: checks for high leverage}
         \label{fig:interactionDrtAgeSexRuralModel3checkLeverage.png}
         \end{figure}
         \clearpage
@@ -3008,7 +3008,7 @@ When the index is calculated using the sum of each consecutive month's rainfall 
  \begin{figure}[!h]
         \centering
         \includegraphics[width=.8\textwidth]{interactionDrtAgeSexRuralModel3noLeverage.png}
-        \caption{interactionDrtAgeSexRuralModel3noLeverage.png}
+        \caption{Interaction of drought, age, sex and rural: no leverage points}
         \label{fig:interactionDrtAgeSexRuralModel3noLeverage.png}
         \end{figure}
         \clearpage

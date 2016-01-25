@@ -1,7 +1,7 @@
 % NOTES
 % ONLY THE DROUGHT INDEX CODES WILL RUN UNLESS YOU ARE AN AUTHORISED USER OF AUSTRALIAN SUICIDE DATA
 % THEREFORE THE ENTIRE SWEAVE FILE CANNOT BE COMPILED UNTIL ACCESS IS ARRANGED
-% USERS ARE RECOMMENDED TO REPLACE eval=FALSE with TRUE
+% USERS ARE RECOMMENDED TO REPLACE eval=TRUE with TRUE
 % AND THEN USE > Stangle('SuiDrtNSW_SupportingInfo.Rnw') TO CREATE AN R FILE FIRST
 % THEN RUN EACH R CHUNK INDIVIDUALLY (AND NOTE INSTRUCTIONS IN THE COMMENTS)
 % SORRY FOR THE INCONVENIENCE AND THANKYOU FOR YOUR PATIENCE
@@ -40,7 +40,7 @@
 \author{Ivan C. Hanigan$^1$$^,$$^2$ \and Colin D. Butler$^1$ \and
   Philip N. Kokic$^2$ \and
   Michael F. Hutchinson$^3$}
-\date{}
+\date{\today}
 \maketitle
 
 
@@ -124,9 +124,19 @@
 
 %% \subsection{subset the SDs to NSW}
 
+\begin{Schunk}
+\begin{Soutput}
+[1] "STATE_CODE_2006" "SD_CODE_2006"    "SD_NAME_2006"   
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{subset the SDs to Vic}
 
+\begin{Schunk}
+\begin{Soutput}
+[1] "STATE_CODE_2006" "SD_CODE_2006"    "SD_NAME_2006"   
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{Download the Rainfall Station location data}
 
@@ -134,12 +144,65 @@
 
 %% \subsection{revert to project root dir}
 
-
 %% \subsection{Plot the NSW SD and stations}
 
+\begin{Schunk}
+\begin{Soutput}
+Object of class SpatialPointsDataFrame
+Coordinates:
+             min    max
+coords.x1 113.67 153.47
+coords.x2 -42.93 -11.65
+Is projected: FALSE 
+proj4string :
+[+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs]
+Number of points: 307
+Data attributes:
+       V1              V2               V3              V4        
+ Min.   : 2014   Min.   :-42.93   Min.   :113.7   Min.   :   3.0  
+ 1st Qu.:12040   1st Qu.:-34.25   1st Qu.:122.6   1st Qu.:  63.0  
+ Median :26026   Median :-31.48   Median :140.2   Median : 195.0  
+ Mean   :35472   Mean   :-30.03   Mean   :136.8   Mean   : 220.5  
+ 3rd Qu.:52511   3rd Qu.:-26.71   3rd Qu.:147.1   3rd Qu.: 310.0  
+ Max.   :99005   Max.   :-11.65   Max.   :153.5   Max.   :1270.0  
+                                                                  
+                     V5     
+ ABERDEEN (MAIN RD)   :  1  
+ ALCOOTA              :  1  
+ ALICE SPRINGS AIRPORT:  1  
+ ANNA CREEK           :  1  
+ ANNA PLAINS          :  1  
+ ANNEAN               :  1  
+ (Other)              :301  
+\end{Soutput}
+\begin{Soutput}
+       V1     V2     V3  V4                           V5
+223 50004 -33.11 147.80 240       BOGAN GATE POST OFFICE
+224 50018 -32.29 147.67 210            DANDALOO (KELVIN)
+225 50028 -32.90 147.52 264       TRUNDLE  (MURRUMBOGIE)
+226 50031 -32.73 148.19 285        PEAK HILL POST OFFICE
+227 50052 -33.07 147.23 195   CONDOBOLIN AG RESEARCH STN
+229 51049 -31.99 147.95 215 TRANGIE RESEARCH STATION AWS
+\end{Soutput}
+\begin{Soutput}
+       V1     V2     V3  V4                            V5
+223 50004 -33.11 147.80 240        BOGAN GATE POST OFFICE
+224 50018 -32.29 147.67 210             DANDALOO (KELVIN)
+225 50028 -32.90 147.52 264        TRUNDLE  (MURRUMBOGIE)
+226 50031 -32.73 148.19 285         PEAK HILL POST OFFICE
+227 50052 -33.07 147.23 195    CONDOBOLIN AG RESEARCH STN
+229 51049 -31.99 147.95 215  TRANGIE RESEARCH STATION AWS
+251 63005 -33.43 149.56 713 BATHURST AGRICULTURAL STATION
+253 65022 -33.16 148.59 530          MANILDRA (HAZELDALE)
+262 73038 -34.41 147.52 270                 TEMORA A.R.S.
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{go for a SD wide average rainfall using these stations}
-
 
 \subsection{Calculate the Drought Index}
 
@@ -157,19 +220,84 @@
         %\clearpage
 
 
+\begin{Schunk}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{replicate Fig3.5 from Hutchinson}
 
 
 %% \subsection{plot the Victorian SD and stations}
 
+\begin{Schunk}
+\begin{Soutput}
+Object of class SpatialPointsDataFrame
+Coordinates:
+             min    max
+coords.x1 113.67 153.47
+coords.x2 -42.93 -11.65
+Is projected: FALSE 
+proj4string :
+[+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs]
+Number of points: 307
+Data attributes:
+       V1              V2               V3              V4        
+ Min.   : 2014   Min.   :-42.93   Min.   :113.7   Min.   :   3.0  
+ 1st Qu.:12040   1st Qu.:-34.25   1st Qu.:122.6   1st Qu.:  63.0  
+ Median :26026   Median :-31.48   Median :140.2   Median : 195.0  
+ Mean   :35472   Mean   :-30.03   Mean   :136.8   Mean   : 220.5  
+ 3rd Qu.:52511   3rd Qu.:-26.71   3rd Qu.:147.1   3rd Qu.: 310.0  
+ Max.   :99005   Max.   :-11.65   Max.   :153.5   Max.   :1270.0  
+                                                                  
+                     V5     
+ ABERDEEN (MAIN RD)   :  1  
+ ALCOOTA              :  1  
+ ALICE SPRINGS AIRPORT:  1  
+ ANNA CREEK           :  1  
+ ANNA PLAINS          :  1  
+ ANNEAN               :  1  
+ (Other)              :301  
+\end{Soutput}
+\begin{Soutput}
+       V1     V2     V3  V4                        V5
+264 74128 -35.55 144.95  93    DENILIQUIN POST OFFICE
+279 80065 -35.88 145.55 115                YARROWEYAH
+280 82001 -36.37 146.71 580      BEECHWORTH COMPOSITE
+282 83032 -36.85 146.32 816 WHITLANDS (BURDER'S LANE)
+285 85046 -38.05 145.80  60               LABERTOUCHE
+287 86117 -37.48 145.15 244               TOOROURRONG
+\end{Soutput}
+\begin{Soutput}
+       V1     V2     V3  V4                        V5
+264 74128 -35.55 144.95  93    DENILIQUIN POST OFFICE
+279 80065 -35.88 145.55 115                YARROWEYAH
+280 82001 -36.37 146.71 580      BEECHWORTH COMPOSITE
+282 83032 -36.85 146.32 816 WHITLANDS (BURDER'S LANE)
+285 85046 -38.05 145.80  60               LABERTOUCHE
+287 86117 -37.48 145.15 244               TOOROURRONG
+288 86131 -37.56 145.13 198                  YAN YEAN
+292 88060 -37.45 145.21 520        WALLABY CREEK WEIR
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{SD wide average}
 
 
 %% \subsection{Seymour drought index}
 
-
+\begin{Schunk}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 %% \subsection{Integration by Conditional Summation}
 
  %% unabridged
@@ -186,7 +314,28 @@
         %\clearpage
 
 
-
+\begin{Schunk}
+\begin{Soutput}
+           date year month      rain sixmnthtot       index indexBelowThreshold
+1709 1998-05-01 1998     5  44.18750   237.2457 -2.79738562           -2.797386
+1710 1998-06-01 1998     6  91.80000   313.0207 -1.03896104           -1.038961
+1711 1998-07-01 1998     7 106.46250   375.0082 -0.05194805            0.000000
+1712 1998-08-01 1998     8  46.17500   376.3582 -1.09090909           -1.090909
+1770 2003-06-01 2003     6  80.13179   315.1445 -0.98701299            0.000000
+1818 2007-06-01 2007     6  71.66050   320.7478 -0.72727273            0.000000
+     count count2      sums     sums2
+1709     3     15 -6.875817 -35.64248
+1710     4     16 -7.914778 -36.68144
+1711     0     17  0.000000 -36.73338
+1712     1     18 -1.090909 -37.82429
+1770     0     12  0.000000 -33.10245
+1818     0     13  0.000000 -35.44351
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 \section{Suicide and Drought Modeling}
 
 %%\section{Suicide and Drought Modeling}
@@ -197,10 +346,585 @@
 
 %% \subsection{Load data to R server}
 
+\begin{Schunk}
+\begin{Soutput}
+'data.frame':	69916 obs. of  19 variables:
+ $ time           : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ sd_group       : Factor w/ 11 levels "Central West",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ sex            : int  1 1 1 2 2 1 2 2 1 2 ...
+ $ agegp          : Factor w/ 7 levels "10_19","20_29",..: 1 4 6 4 5 7 6 7 2 1 ...
+ $ dthyy          : int  1970 1970 1970 1970 1970 1970 1970 1970 1970 1970 ...
+ $ dthmm          : Factor w/ 12 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ deaths         : num  0 1 0 0 0 0 0 0 0 0 ...
+ $ sui_und        : num  0 1 0 0 0 0 0 0 0 0 ...
+ $ pop            : num  15432 9128 5237 8488 7436 ...
+ $ avrain         : num  76.3 76.3 76.3 76.3 76.3 ...
+ $ avcount        : num  0.0221 0.0221 0.0221 0.0221 0.0221 ...
+ $ tmax_anomaly   : num  -2.16 -2.16 -2.16 -2.16 -2.16 ...
+ $ tmax           : num  28.7 28.7 28.7 28.7 28.7 ...
+ $ avsums         : num  -1.31 -1.31 -1.31 -1.31 -1.31 ...
+ $ avcount2       : num  0.0221 0.0221 0.0221 0.0221 0.0221 ...
+ $ avsums2        : num  -1.31 -1.31 -1.31 -1.31 -1.31 ...
+ $ logDroughtCount: num  0.0218 0.0218 0.0218 0.0218 0.0218 ...
+ $ mm             : num  1 1 1 1 1 1 1 1 1 1 ...
+ $ timevar        : num  0.0833 0.0833 0.0833 0.0833 0.0833 ...
+\end{Soutput}
+\end{Schunk}
 
 \subsection{Descriptive Statistics of Drought and Suicide}
 Descriptive statistics for the Drought Index are shown in Table~1.  Summary statistics for Suicide rates are shown in Table~2.
 
+\begin{Schunk}
+\begin{Soutput}
+'data.frame':	4994 obs. of  20 variables:
+ $ time           : Date, format: "1970-01-01" "1970-02-01" ...
+ $ sd_group       : Factor w/ 11 levels "Central West",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ sex            : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ agegp          : Factor w/ 7 levels "10_19","20_29",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ dthyy          : int  1970 1970 1970 1970 1970 1970 1970 1970 1970 1970 ...
+ $ dthmm          : Factor w/ 12 levels "1","2","3","4",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ deaths         : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ sui_und        : num  0 0 0 0 0 0 0 0 0 0 ...
+ $ pop            : num  15432 15432 15432 15432 15432 ...
+ $ avrain         : num  76.3 32.2 52.4 62.2 41 ...
+ $ avcount        : num  0.0221 0.0441 0 0 0.1103 ...
+ $ tmax_anomaly   : num  -2.157 0.547 -1.864 -0.451 -2.251 ...
+ $ tmax           : num  28.7 30.5 25.3 22.2 15.5 ...
+ $ avsums         : num  -1.31 -1.88 0 0 -1.48 ...
+ $ avcount2       : num  0.0221 0.0441 0 0 0.1103 ...
+ $ avsums2        : num  -1.31 -1.88 0 0 -1.48 ...
+ $ logDroughtCount: num  0.0218 0.0432 0 0 0.1046 ...
+ $ mm             : num  1 2 3 4 5 6 7 8 9 10 ...
+ $ timevar        : num  0.0833 0.1667 0.25 0.3333 0.4167 ...
+ $ drought        : num  0 0 0 0 0 0 0 0 0 0 ...
+\end{Soutput}
+\begin{Soutput}
+            time     sd_group sex agegp dthyy dthmm deaths sui_und   pop
+19765 1980-09-01 Central West   1 10_19  1980     9      0       0 15090
+19867 1980-10-01 Central West   1 10_19  1980    10      0       0 15090
+20120 1980-11-01 Central West   1 10_19  1980    11      0       0 15090
+20214 1980-12-01 Central West   1 10_19  1980    12      1       1 15090
+20331 1981-01-01 Central West   1 10_19  1981     1      0       0 14977
+20547 1981-02-01 Central West   1 10_19  1981     2      0       0 14977
+20681 1981-03-01 Central West   1 10_19  1981     3      2       2 14977
+20793 1981-04-01 Central West   1 10_19  1981     4      1       1 14977
+        avrain  avcount tmax_anomaly     tmax    avsums avcount2   avsums2
+19765 13.79706 5.272059    2.0988534 20.50662 -17.51445 13.19118 -28.22017
+19867 39.35147 6.073529    2.4887044 24.77794 -16.68169 14.19118 -29.84662
+20120 10.69853 7.073529    2.9252282 28.84559 -17.60253 15.19118 -32.97533
+20214 46.90882 8.029412    1.5389452 30.73676 -20.85849 16.19118 -36.00951
+20331 35.57647 9.029412    3.1375374 33.94706 -23.81067 17.19118 -39.26844
+20547 89.97353 8.382353    0.8280783 30.82279 -28.09290 18.19118 -40.69177
+20681  9.68750 8.911765   -0.1268819 27.08309 -28.02559 19.19118 -42.36396
+20793 31.86471 8.830882    1.4207627 24.04706 -28.87741 20.19118 -44.18900
+      logDroughtCount mm  timevar drought
+19765        1.836105  9 10.75000       3
+19867        1.956360 10 10.83333       3
+20120        2.088591 11 10.91667       3
+20214        2.200487 12 11.00000       3
+20331        2.305522  1 11.08333       3
+20547        2.238831  2 11.16667       3
+20681        2.293722  3 11.25000       3
+20793        2.285529  4 11.33333       3
+\end{Soutput}
+\begin{Soutput}
+      sd_group drought max(avcount) min(dthyy) max(dthyy)
+1 Central West       1     5.779412       1972       1972
+2 Central West       2     7.948529       1980       1980
+3 Central West       3     9.029412       1980       1981
+4 Central West       4    11.264706       1982       1983
+5 Central West       5     5.955882       1985       1985
+6 Central West       6     6.948529       1994       1994
+7 Central West       7     7.661765       2002       2003
+8 Central West       8     5.794118       2004       2004
+9 Central West       9    11.566176       2006       2007
+\end{Soutput}
+\begin{Soutput}
+                sd_group numberOfDroughts avgDuration maxDuration
+1           Central West                9    7.994281    11.56618
+2                 Hunter               11    7.375160    14.77465
+3              Illawarra                7    8.920000    16.48000
+4        Mid-North Coast                8    8.420635    14.69841
+5                 Murray                7    7.732348    11.01724
+6           Murrumbidgee               10    7.010448    11.02239
+7  North and Far Western                8    7.197887    11.53284
+8               Northern                5    8.465896    10.99422
+9         Richmond-Tweed               13    8.230769    16.95238
+10         South Eastern                8    7.906818    11.02727
+11                Sydney                9    8.764706    20.00000
+\end{Soutput}
+\begin{Soutput}
+                sd_group avgMonthlyDeaths     avgPop     rate
+1           Central West        1.5198238  138202.17 13.19653
+2                 Hunter        4.5308370  430402.66 12.63237
+3              Illawarra        3.0462555  280036.88 13.05366
+4        Mid-North Coast        1.9074890  183520.63 12.47264
+5                 Murray        0.9735683   86220.51 13.54993
+6           Murrumbidgee        1.3303965  118778.27 13.44081
+7  North and Far Western        1.5462555  114460.50 16.21089
+8               Northern        1.7268722  146464.55 14.14845
+9         Richmond-Tweed        1.6629956  139356.23 14.32010
+10         South Eastern        1.5748899  135091.01 13.98959
+11                Sydney       34.0044053 3040952.32 13.41859
+\end{Soutput}
+\begin{Soutput}
+    sd_group dthyy dthmm summary     pop
+1     Sydney  1970     1      38 2408289
+2     Sydney  1970    10      38 2408289
+3     Sydney  1970    11      33 2408289
+4     Sydney  1970    12      38 2408289
+5     Sydney  1970     2      29 2408289
+6     Sydney  1970     3      42 2408289
+7     Sydney  1970     4      27 2408289
+8     Sydney  1970     5      23 2408289
+9     Sydney  1970     6      44 2408289
+10    Sydney  1970     7      36 2408289
+11    Sydney  1970     8      29 2408289
+12    Sydney  1970     9      43 2408289
+13    Sydney  1971     1      47 2425781
+14    Sydney  1971    10      34 2425781
+15    Sydney  1971    11      43 2425781
+16    Sydney  1971    12      39 2425781
+17    Sydney  1971     2      31 2425781
+18    Sydney  1971     3      28 2425781
+19    Sydney  1971     4      31 2425781
+20    Sydney  1971     5      42 2425781
+21    Sydney  1971     6      47 2425781
+22    Sydney  1971     7      33 2425781
+23    Sydney  1971     8      33 2425781
+24    Sydney  1971     9      36 2425781
+25    Sydney  1972     1      35 2443263
+26    Sydney  1972    10      38 2443263
+27    Sydney  1972    11      38 2443263
+28    Sydney  1972    12      33 2443263
+29    Sydney  1972     2      35 2443263
+30    Sydney  1972     3      39 2443263
+31    Sydney  1972     4      35 2443263
+32    Sydney  1972     5      49 2443263
+33    Sydney  1972     6      35 2443263
+34    Sydney  1972     7      27 2443263
+35    Sydney  1972     8      35 2443263
+36    Sydney  1972     9      41 2443263
+37    Sydney  1973     1      37 2460750
+38    Sydney  1973    10      44 2460750
+39    Sydney  1973    11      29 2460750
+40    Sydney  1973    12      37 2460750
+41    Sydney  1973     2      28 2460750
+42    Sydney  1973     3      42 2460750
+43    Sydney  1973     4      44 2460750
+44    Sydney  1973     5      37 2460750
+45    Sydney  1973     6      39 2460750
+46    Sydney  1973     7      36 2460750
+47    Sydney  1973     8      26 2460750
+48    Sydney  1973     9      28 2460750
+49    Sydney  1974     1      32 2478238
+50    Sydney  1974    10      32 2478238
+51    Sydney  1974    11      34 2478238
+52    Sydney  1974    12      29 2478238
+53    Sydney  1974     2      24 2478238
+54    Sydney  1974     3      37 2478238
+55    Sydney  1974     4      33 2478238
+56    Sydney  1974     5      37 2478238
+57    Sydney  1974     6      37 2478238
+58    Sydney  1974     7      39 2478238
+59    Sydney  1974     8      27 2478238
+60    Sydney  1974     9      25 2478238
+61    Sydney  1975     1      38 2495725
+62    Sydney  1975    10      43 2495725
+63    Sydney  1975    11      46 2495725
+64    Sydney  1975    12      27 2495725
+65    Sydney  1975     2      23 2495725
+66    Sydney  1975     3      27 2495725
+67    Sydney  1975     4      39 2495725
+68    Sydney  1975     5      34 2495725
+69    Sydney  1975     6      38 2495725
+70    Sydney  1975     7      41 2495725
+71    Sydney  1975     8      43 2495725
+72    Sydney  1975     9      30 2495725
+73    Sydney  1976     1      40 2513217
+74    Sydney  1976    10      30 2513217
+75    Sydney  1976    11      32 2513217
+76    Sydney  1976    12      25 2513217
+77    Sydney  1976     2      27 2513217
+78    Sydney  1976     3      28 2513217
+79    Sydney  1976     4      24 2513217
+80    Sydney  1976     5      39 2513217
+81    Sydney  1976     6      32 2513217
+82    Sydney  1976     7      37 2513217
+83    Sydney  1976     8      36 2513217
+84    Sydney  1976     9      29 2513217
+85    Sydney  1977     1      30 2552783
+86    Sydney  1977    10      26 2552783
+87    Sydney  1977    11      31 2552783
+88    Sydney  1977    12      23 2552783
+89    Sydney  1977     2      28 2552783
+90    Sydney  1977     3      30 2552783
+91    Sydney  1977     4      21 2552783
+92    Sydney  1977     5      29 2552783
+93    Sydney  1977     6      39 2552783
+94    Sydney  1977     7      33 2552783
+95    Sydney  1977     8      37 2552783
+96    Sydney  1977     9      24 2552783
+97    Sydney  1978     1      35 2592354
+98    Sydney  1978    10      48 2592354
+99    Sydney  1978    11      33 2592354
+100   Sydney  1978    12      25 2592354
+101   Sydney  1978     2      33 2592354
+102   Sydney  1978     3      37 2592354
+103   Sydney  1978     4      21 2592354
+104   Sydney  1978     5      22 2592354
+105   Sydney  1978     6      26 2592354
+106   Sydney  1978     7      41 2592354
+107   Sydney  1978     8      33 2592354
+108   Sydney  1978     9      41 2592354
+109   Sydney  1979     1      21 2631924
+110   Sydney  1979    10      34 2631924
+111   Sydney  1979    11      31 2631924
+112   Sydney  1979    12      30 2631924
+113   Sydney  1979     2      25 2631924
+114   Sydney  1979     3      34 2631924
+115   Sydney  1979     4      25 2631924
+116   Sydney  1979     5      31 2631924
+117   Sydney  1979     6      37 2631924
+118   Sydney  1979     7      34 2631924
+119   Sydney  1979     8      35 2631924
+120   Sydney  1979     9      32 2631924
+121   Sydney  1980     1      37 2671495
+122   Sydney  1980    10      29 2671495
+123   Sydney  1980    11      26 2671495
+124   Sydney  1980    12      23 2671495
+125   Sydney  1980     2      36 2671495
+126   Sydney  1980     3      37 2671495
+127   Sydney  1980     4      28 2671495
+128   Sydney  1980     5      31 2671495
+129   Sydney  1980     6      23 2671495
+130   Sydney  1980     7      26 2671495
+131   Sydney  1980     8      23 2671495
+132   Sydney  1980     9      31 2671495
+133   Sydney  1981     1      32 2711070
+134   Sydney  1981    10      36 2711070
+135   Sydney  1981    11      29 2711070
+136   Sydney  1981    12      31 2711070
+137   Sydney  1981     2      25 2711070
+138   Sydney  1981     3      26 2711070
+139   Sydney  1981     4      29 2711070
+140   Sydney  1981     5      24 2711070
+141   Sydney  1981     6      22 2711070
+142   Sydney  1981     7      29 2711070
+143   Sydney  1981     8      33 2711070
+144   Sydney  1981     9      38 2711070
+145   Sydney  1982     1      27 2744594
+146   Sydney  1982    10      35 2744594
+147   Sydney  1982    11      38 2744594
+148   Sydney  1982    12      40 2744594
+149   Sydney  1982     2      23 2744594
+150   Sydney  1982     3      40 2744594
+151   Sydney  1982     4      25 2744594
+152   Sydney  1982     5      33 2744594
+153   Sydney  1982     6      24 2744594
+154   Sydney  1982     7      34 2744594
+155   Sydney  1982     8      26 2744594
+156   Sydney  1982     9      30 2744594
+157   Sydney  1983     1      36 2778125
+158   Sydney  1983    10      23 2778125
+159   Sydney  1983    11      27 2778125
+160   Sydney  1983    12      30 2778125
+161   Sydney  1983     2      31 2778125
+162   Sydney  1983     3      32 2778125
+163   Sydney  1983     4      25 2778125
+164   Sydney  1983     5      28 2778125
+165   Sydney  1983     6      37 2778125
+166   Sydney  1983     7      37 2778125
+167   Sydney  1983     8      25 2778125
+168   Sydney  1983     9      25 2778125
+169   Sydney  1984     1      24 2811656
+170   Sydney  1984    10      32 2811656
+171   Sydney  1984    11      34 2811656
+172   Sydney  1984    12      40 2811656
+173   Sydney  1984     2      24 2811656
+174   Sydney  1984     3      23 2811656
+175   Sydney  1984     4      26 2811656
+176   Sydney  1984     5      22 2811656
+177   Sydney  1984     6      33 2811656
+178   Sydney  1984     7      38 2811656
+179   Sydney  1984     8      21 2811656
+180   Sydney  1984     9      34 2811656
+181   Sydney  1985     1      29 2845187
+182   Sydney  1985    10      28 2845187
+183   Sydney  1985    11      34 2845187
+184   Sydney  1985    12      26 2845187
+185   Sydney  1985     2      25 2845187
+186   Sydney  1985     3      31 2845187
+187   Sydney  1985     4      36 2845187
+188   Sydney  1985     5      35 2845187
+189   Sydney  1985     6      24 2845187
+190   Sydney  1985     7      37 2845187
+191   Sydney  1985     8      39 2845187
+192   Sydney  1985     9      33 2845187
+193   Sydney  1986     1      32 2878723
+194   Sydney  1986    10      36 2878723
+195   Sydney  1986    11      36 2878723
+196   Sydney  1986    12      34 2878723
+197   Sydney  1986     2      32 2878723
+198   Sydney  1986     3      50 2878723
+199   Sydney  1986     4      36 2878723
+200   Sydney  1986     5      35 2878723
+201   Sydney  1986     6      21 2878723
+202   Sydney  1986     7      27 2878723
+203   Sydney  1986     8      38 2878723
+204   Sydney  1986     9      26 2878723
+205   Sydney  1987     1      31 2936629
+206   Sydney  1987    10      42 2936629
+207   Sydney  1987    11      50 2936629
+208   Sydney  1987    12      46 2936629
+209   Sydney  1987     2      32 2936629
+210   Sydney  1987     3      30 2936629
+211   Sydney  1987     4      26 2936629
+212   Sydney  1987     5      31 2936629
+213   Sydney  1987     6      31 2936629
+214   Sydney  1987     7      39 2936629
+215   Sydney  1987     8      35 2936629
+216   Sydney  1987     9      43 2936629
+217   Sydney  1988     1      42 2994539
+218   Sydney  1988    10      41 2994539
+219   Sydney  1988    11      28 2994539
+220   Sydney  1988    12      33 2994539
+221   Sydney  1988     2      32 2994539
+222   Sydney  1988     3      39 2994539
+223   Sydney  1988     4      23 2994539
+224   Sydney  1988     5      36 2994539
+225   Sydney  1988     6      32 2994539
+226   Sydney  1988     7      43 2994539
+227   Sydney  1988     8      31 2994539
+228   Sydney  1988     9      26 2994539
+229   Sydney  1989     1      35 3052453
+230   Sydney  1989    10      28 3052453
+231   Sydney  1989    11      28 3052453
+232   Sydney  1989    12      32 3052453
+233   Sydney  1989     2      39 3052453
+234   Sydney  1989     3      42 3052453
+235   Sydney  1989     4      36 3052453
+236   Sydney  1989     5      44 3052453
+237   Sydney  1989     6      37 3052453
+238   Sydney  1989     7      46 3052453
+239   Sydney  1989     8      32 3052453
+240   Sydney  1989     9      39 3052453
+241   Sydney  1990     1      34 3110363
+242   Sydney  1990    10      41 3110363
+243   Sydney  1990    11      27 3110363
+244   Sydney  1990    12      47 3110363
+245   Sydney  1990     2      33 3110363
+246   Sydney  1990     3      37 3110363
+247   Sydney  1990     4      26 3110363
+248   Sydney  1990     5      32 3110363
+249   Sydney  1990     6      28 3110363
+250   Sydney  1990     7      44 3110363
+251   Sydney  1990     8      46 3110363
+252   Sydney  1990     9      31 3110363
+253   Sydney  1991     1      35 3168281
+254   Sydney  1991    10      34 3168281
+255   Sydney  1991    11      33 3168281
+256   Sydney  1991    12      31 3168281
+257   Sydney  1991     2      28 3168281
+258   Sydney  1991     3      45 3168281
+259   Sydney  1991     4      27 3168281
+260   Sydney  1991     5      52 3168281
+261   Sydney  1991     6      43 3168281
+262   Sydney  1991     7      45 3168281
+263   Sydney  1991     8      40 3168281
+264   Sydney  1991     9      38 3168281
+265   Sydney  1992     1      29 3205280
+266   Sydney  1992    10      47 3205280
+267   Sydney  1992    11      45 3205280
+268   Sydney  1992    12      48 3205280
+269   Sydney  1992     2      27 3205280
+270   Sydney  1992     3      32 3205280
+271   Sydney  1992     4      38 3205280
+272   Sydney  1992     5      37 3205280
+273   Sydney  1992     6      38 3205280
+274   Sydney  1992     7      38 3205280
+275   Sydney  1992     8      30 3205280
+276   Sydney  1992     9      43 3205280
+277   Sydney  1993     1      28 3242281
+278   Sydney  1993    10      27 3242281
+279   Sydney  1993    11      29 3242281
+280   Sydney  1993    12      41 3242281
+281   Sydney  1993     2      31 3242281
+282   Sydney  1993     3      35 3242281
+283   Sydney  1993     4      36 3242281
+284   Sydney  1993     5      30 3242281
+285   Sydney  1993     6      30 3242281
+286   Sydney  1993     7      39 3242281
+287   Sydney  1993     8      33 3242281
+288   Sydney  1993     9      32 3242281
+289   Sydney  1994     1      42 3279284
+290   Sydney  1994    10      32 3279284
+291   Sydney  1994    11      49 3279284
+292   Sydney  1994    12      53 3279284
+293   Sydney  1994     2      29 3279284
+294   Sydney  1994     3      49 3279284
+295   Sydney  1994     4      35 3279284
+296   Sydney  1994     5      42 3279284
+297   Sydney  1994     6      50 3279284
+298   Sydney  1994     7      44 3279284
+299   Sydney  1994     8      31 3279284
+300   Sydney  1994     9      38 3279284
+301   Sydney  1995     1      43 3316285
+302   Sydney  1995    10      41 3316285
+303   Sydney  1995    11      37 3316285
+304   Sydney  1995    12      40 3316285
+305   Sydney  1995     2      34 3316285
+306   Sydney  1995     3      37 3316285
+307   Sydney  1995     4      26 3316285
+308   Sydney  1995     5      45 3316285
+309   Sydney  1995     6      49 3316285
+310   Sydney  1995     7      31 3316285
+311   Sydney  1995     8      41 3316285
+312   Sydney  1995     9      40 3316285
+313   Sydney  1996     1      44 3353295
+314   Sydney  1996    10      32 3353295
+315   Sydney  1996    11      45 3353295
+316   Sydney  1996    12      42 3353295
+317   Sydney  1996     2      43 3353295
+318   Sydney  1996     3      34 3353295
+319   Sydney  1996     4      36 3353295
+320   Sydney  1996     5      42 3353295
+321   Sydney  1996     6      38 3353295
+322   Sydney  1996     7      32 3353295
+323   Sydney  1996     8      32 3353295
+324   Sydney  1996     9      32 3353295
+325   Sydney  1997     1      37 3398466
+326   Sydney  1997    10      51 3398466
+327   Sydney  1997    11      59 3398466
+328   Sydney  1997    12      66 3398466
+329   Sydney  1997     2      46 3398466
+330   Sydney  1997     3      39 3398466
+331   Sydney  1997     4      40 3398466
+332   Sydney  1997     5      42 3398466
+333   Sydney  1997     6      41 3398466
+334   Sydney  1997     7      34 3398466
+335   Sydney  1997     8      38 3398466
+336   Sydney  1997     9      52 3398466
+337   Sydney  1998     1      47 3443640
+338   Sydney  1998    10      32 3443640
+339   Sydney  1998    11      36 3443640
+340   Sydney  1998    12      35 3443640
+341   Sydney  1998     2      40 3443640
+342   Sydney  1998     3      51 3443640
+343   Sydney  1998     4      40 3443640
+344   Sydney  1998     5      41 3443640
+345   Sydney  1998     6      37 3443640
+346   Sydney  1998     7      34 3443640
+347   Sydney  1998     8      44 3443640
+348   Sydney  1998     9      37 3443640
+349   Sydney  1999     1      41 3488815
+350   Sydney  1999    10      42 3488815
+351   Sydney  1999    11      39 3488815
+352   Sydney  1999    12      35 3488815
+353   Sydney  1999     2      39 3488815
+354   Sydney  1999     3      47 3488815
+355   Sydney  1999     4      44 3488815
+356   Sydney  1999     5      37 3488815
+357   Sydney  1999     6      34 3488815
+358   Sydney  1999     7      41 3488815
+359   Sydney  1999     8      48 3488815
+360   Sydney  1999     9      48 3488815
+361   Sydney  2000     1      45 3533989
+362   Sydney  2000    10      23 3533989
+363   Sydney  2000    11      36 3533989
+364   Sydney  2000    12      35 3533989
+365   Sydney  2000     2      36 3533989
+366   Sydney  2000     3      43 3533989
+367   Sydney  2000     4      41 3533989
+368   Sydney  2000     5      37 3533989
+369   Sydney  2000     6      31 3533989
+370   Sydney  2000     7      29 3533989
+371   Sydney  2000     8      22 3533989
+372   Sydney  2000     9      27 3533989
+373   Sydney  2001     1      33 3579170
+374   Sydney  2001    10      40 3579170
+375   Sydney  2001    11      37 3579170
+376   Sydney  2001    12      34 3579170
+377   Sydney  2001     2      34 3579170
+378   Sydney  2001     3      29 3579170
+379   Sydney  2001     4      32 3579170
+380   Sydney  2001     5      32 3579170
+381   Sydney  2001     6      42 3579170
+382   Sydney  2001     7      35 3579170
+383   Sydney  2001     8      41 3579170
+384   Sydney  2001     9      35 3579170
+385   Sydney  2002     1      35 3610412
+386   Sydney  2002    10      30 3610412
+387   Sydney  2002    11      32 3610412
+388   Sydney  2002    12      37 3610412
+389   Sydney  2002     2      30 3610412
+390   Sydney  2002     3      35 3610412
+391   Sydney  2002     4      37 3610412
+392   Sydney  2002     5      20 3610412
+393   Sydney  2002     6      24 3610412
+394   Sydney  2002     7      42 3610412
+395   Sydney  2002     8      32 3610412
+396   Sydney  2002     9      33 3610412
+397   Sydney  2003     1      49 3641661
+398   Sydney  2003    10      23 3641661
+399   Sydney  2003    11      17 3641661
+400   Sydney  2003    12      28 3641661
+401   Sydney  2003     2      35 3641661
+402   Sydney  2003     3      28 3641661
+403   Sydney  2003     4      25 3641661
+404   Sydney  2003     5      35 3641661
+405   Sydney  2003     6      32 3641661
+406   Sydney  2003     7      37 3641661
+407   Sydney  2003     8      26 3641661
+408   Sydney  2003     9      35 3641661
+409   Sydney  2004     1      34 3672906
+410   Sydney  2004    10      28 3672906
+411   Sydney  2004    11      31 3672906
+412   Sydney  2004    12      22 3672906
+413   Sydney  2004     2      27 3672906
+414   Sydney  2004     3      34 3672906
+415   Sydney  2004     4      32 3672906
+416   Sydney  2004     5      25 3672906
+417   Sydney  2004     6      29 3672906
+418   Sydney  2004     7      36 3672906
+419   Sydney  2004     8      31 3672906
+420   Sydney  2004     9      26 3672906
+421   Sydney  2005     1      28 3704155
+422   Sydney  2005    10      33 3704155
+423   Sydney  2005    11      35 3704155
+424   Sydney  2005    12      22 3704155
+425   Sydney  2005     2      24 3704155
+426   Sydney  2005     3      29 3704155
+427   Sydney  2005     4      39 3704155
+428   Sydney  2005     5      26 3704155
+429   Sydney  2005     6      29 3704155
+430   Sydney  2005     7      27 3704155
+431   Sydney  2005     8      22 3704155
+432   Sydney  2005     9      28 3704155
+433   Sydney  2006     1      38 3735409
+434   Sydney  2006    10      24 3735409
+435   Sydney  2006    11      34 3735409
+436   Sydney  2006    12      23 3735409
+437   Sydney  2006     2      23 3735409
+438   Sydney  2006     3      29 3735409
+439   Sydney  2006     4      29 3735409
+440   Sydney  2006     5      24 3735409
+441   Sydney  2006     6      28 3735409
+442   Sydney  2006     7      20 3735409
+443   Sydney  2006     8      26 3735409
+444   Sydney  2006     9      19 3735409
+445   Sydney  2007     1      36 3766651
+446   Sydney  2007    10      33 3766651
+447   Sydney  2007     2      27 3766651
+448   Sydney  2007     3      24 3766651
+449   Sydney  2007     4      24 3766651
+450   Sydney  2007     5      31 3766651
+451   Sydney  2007     6      36 3766651
+452   Sydney  2007     7      36 3766651
+453   Sydney  2007     8      34 3766651
+454   Sydney  2007     9      27 3766651
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{Descriptive statistics of Drought}
 
@@ -270,11 +994,11 @@ Descriptive statistics for the Drought Index are shown in Table~1.  Summary stat
         %Table \ref{tab:Correlations}
 
 
-% latex table generated in R 2.15.0 by xtable 1.7-0 package
-% Tue Aug  7 00:23:57 2012
+% latex table generated in R 3.2.2 by xtable 1.7-1 package
+% Sun Nov 29 06:20:08 2015
 \begin{table}[ht]
-\begin{center}
-\caption{Correlations}
+\centering
+\caption{Correlations} 
 \label{tab:Correlations}
 \begin{tabular}{lr}
   \hline
@@ -285,7 +1009,6 @@ cor(logDroughtCount,tmax) & 0.05 \\
   cor(logDroughtCount,tmaxanomaly) & 0.35 \\ 
    \hline
 \end{tabular}
-\end{center}
 \end{table}
 \subsection{Core Model Diagnostics and Variable Selection}
 
@@ -315,9 +1038,123 @@ cor(logDroughtCount,tmax) & 0.05 \\
         %%\clearpage
 
 
+\begin{Schunk}
+\begin{Soutput}
+Single term deletions
+
+Model:
+deaths ~ sin(timevar * 2 * pi) + cos(timevar * 2 * pi) + sd_group + 
+    agegp * sex * ns(time, 3) + offset(log(pop))
+                      Df Deviance   AIC    LRT  Pr(>Chi)    
+<none>                      38654 69814                     
+sin(timevar * 2 * pi)  1    38661 69809  6.908 0.0085794 ** 
+cos(timevar * 2 * pi)  1    38670 69818 15.640 7.662e-05 ***
+sd_group              10    38698 69745 43.418 4.187e-06 ***
+agegp:sex:ns(time, 3) 18    38703 69662 48.849 0.0001125 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{check for overdispersion}
 
+\begin{Schunk}
+\begin{Soutput}
+Call:
+glm(formula = deaths ~ sin(timevar * 2 * pi) + cos(timevar * 
+    2 * pi) + sd_group + agegp * sex * ns(time, 3) + offset(log(pop)), 
+    family = quasipoisson, data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-3.3136  -0.5555  -0.3750  -0.2603   4.5152  
+
+Coefficients:
+                                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                   -12.032410   0.314846 -38.217  < 2e-16 ***
+sin(timevar * 2 * pi)          -0.023747   0.008771  -2.707 0.006784 ** 
+cos(timevar * 2 * pi)           0.035846   0.008800   4.073 4.64e-05 ***
+sd_groupHunter                 -0.051679   0.042713  -1.210 0.226318    
+sd_groupIllawarra              -0.011850   0.045256  -0.262 0.793438    
+sd_groupMid-North Coast        -0.049794   0.049570  -1.005 0.315130    
+sd_groupMurray                  0.020954   0.059147   0.354 0.723130    
+sd_groupMurrumbidgee            0.021933   0.054096   0.405 0.685154    
+sd_groupNorth and Far Western   0.189563   0.052044   3.642 0.000270 ***
+sd_groupNorthern                0.075051   0.050676   1.481 0.138614    
+sd_groupRichmond-Tweed          0.093430   0.051156   1.826 0.067797 .  
+sd_groupSouth Eastern           0.047643   0.051815   0.919 0.357844    
+sd_groupSydney                  0.002005   0.037784   0.053 0.957688    
+agegp20_29                      1.644248   0.349193   4.709 2.50e-06 ***
+agegp30_39                      1.733754   0.353111   4.910 9.13e-07 ***
+agegp40_49                      1.971013   0.344237   5.726 1.03e-08 ***
+agegp50_59                      1.914973   0.349739   5.475 4.38e-08 ***
+agegp60_69                      2.304978   0.369740   6.234 4.57e-10 ***
+agegp70plus                     2.771488   0.389821   7.110 1.17e-12 ***
+sex                            -0.529196   0.226636  -2.335 0.019546 *  
+ns(time, 3)1                    1.663505   0.349557   4.759 1.95e-06 ***
+ns(time, 3)2                    1.634941   0.783576   2.087 0.036936 *  
+ns(time, 3)3                   -1.101448   0.319517  -3.447 0.000567 ***
+agegp20_29:sex                 -0.092501   0.253569  -0.365 0.715266    
+agegp30_39:sex                  0.011911   0.255105   0.047 0.962760    
+agegp40_49:sex                  0.062950   0.248133   0.254 0.799734    
+agegp50_59:sex                  0.127925   0.250718   0.510 0.609889    
+agegp60_69:sex                 -0.267726   0.266730  -1.004 0.315511    
+agegp70plus:sex                -0.655146   0.280701  -2.334 0.019600 *  
+agegp20_29:ns(time, 3)1         0.177973   0.393660   0.452 0.651199    
+agegp30_39:ns(time, 3)1        -0.368994   0.393097  -0.939 0.347896    
+agegp40_49:ns(time, 3)1        -0.878825   0.395656  -2.221 0.026342 *  
+agegp50_59:ns(time, 3)1        -0.941833   0.409045  -2.303 0.021309 *  
+agegp60_69:ns(time, 3)1        -0.897216   0.428994  -2.091 0.036492 *  
+agegp70plus:ns(time, 3)1       -1.114998   0.426582  -2.614 0.008956 ** 
+agegp20_29:ns(time, 3)2         0.146763   0.877317   0.167 0.867145    
+agegp30_39:ns(time, 3)2        -0.463293   0.883382  -0.524 0.599965    
+agegp40_49:ns(time, 3)2        -1.103259   0.868271  -1.271 0.203861    
+agegp50_59:ns(time, 3)2        -1.795455   0.883603  -2.032 0.042161 *  
+agegp60_69:ns(time, 3)2        -2.272281   0.931814  -2.439 0.014749 *  
+agegp70plus:ns(time, 3)2       -2.066445   0.968902  -2.133 0.032947 *  
+agegp20_29:ns(time, 3)3         0.860112   0.364637   2.359 0.018336 *  
+agegp30_39:ns(time, 3)3         1.732837   0.356072   4.867 1.14e-06 ***
+agegp40_49:ns(time, 3)3         1.533726   0.356512   4.302 1.69e-05 ***
+agegp50_59:ns(time, 3)3         0.873315   0.368233   2.372 0.017712 *  
+agegp60_69:ns(time, 3)3         0.649004   0.388460   1.671 0.094783 .  
+agegp70plus:ns(time, 3)3        0.681943   0.383660   1.777 0.075496 .  
+sex:ns(time, 3)1               -0.661840   0.269927  -2.452 0.014212 *  
+sex:ns(time, 3)2               -1.331060   0.576645  -2.308 0.020986 *  
+sex:ns(time, 3)3                0.619020   0.234437   2.640 0.008281 ** 
+agegp20_29:sex:ns(time, 3)1    -0.267845   0.306426  -0.874 0.382070    
+agegp30_39:sex:ns(time, 3)1     0.027449   0.303414   0.090 0.927916    
+agegp40_49:sex:ns(time, 3)1    -0.031321   0.304750  -0.103 0.918141    
+agegp50_59:sex:ns(time, 3)1    -0.080661   0.312566  -0.258 0.796360    
+agegp60_69:sex:ns(time, 3)1    -0.088821   0.328832  -0.270 0.787076    
+agegp70plus:sex:ns(time, 3)1    0.331360   0.324803   1.020 0.307644    
+agegp20_29:sex:ns(time, 3)2    -0.400812   0.648523  -0.618 0.536552    
+agegp30_39:sex:ns(time, 3)2    -0.270145   0.649315  -0.416 0.677378    
+agegp40_49:sex:ns(time, 3)2    -0.067988   0.636593  -0.107 0.914949    
+agegp50_59:sex:ns(time, 3)2     0.317770   0.643469   0.494 0.621422    
+agegp60_69:sex:ns(time, 3)2     0.863718   0.681788   1.267 0.205216    
+agegp70plus:sex:ns(time, 3)2    0.997710   0.707429   1.410 0.158446    
+agegp20_29:sex:ns(time, 3)3    -0.856757   0.273391  -3.134 0.001726 ** 
+agegp30_39:sex:ns(time, 3)3    -1.215554   0.265223  -4.583 4.59e-06 ***
+agegp40_49:sex:ns(time, 3)3    -1.271706   0.264904  -4.801 1.58e-06 ***
+agegp50_59:sex:ns(time, 3)3    -1.003265   0.271174  -3.700 0.000216 ***
+agegp60_69:sex:ns(time, 3)3    -0.797518   0.287447  -2.774 0.005530 ** 
+agegp70plus:sex:ns(time, 3)3   -0.872378   0.283996  -3.072 0.002129 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for quasipoisson family taken to be 0.9424658)
+
+    Null deviance: 51106  on 69915  degrees of freedom
+Residual deviance: 38654  on 69848  degrees of freedom
+AIC: NA
+
+Number of Fisher Scoring iterations: 6
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{check climate}
 
@@ -332,18 +1169,80 @@ cor(logDroughtCount,tmax) & 0.05 \\
         \clearpage
 
 
+\begin{Schunk}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{check interaction combinations}
 
+\begin{Schunk}
+\begin{Soutput}
+                                       model param              aic
+estats                          sd_group*sex    78  69000.724261418
+estats.1               age*sex*ns(time,df=3)    68 69190.9940743366
+estats.2                       tmaxanomModel    69 69184.2292611656
+estats.3                    tmax_anomaly*sex    70 69186.1069405509
+estats.4                           tmaxModel    71 69179.6061480822
+estats.5                      ns(tmax,3)*sex    74 69153.7168874518
+estats.6                 ageSexTrendSineXtra    70 69194.1865008069
+estats.7                        droughtModel    73 69186.0550358559
+estats.8             tmax_anomaly*ns(time,3)    72 69187.7436924085
+estats.9                 sd_group*ns(time,3)    98 68961.9666698443
+estats.10            ns(tmax,3)*tmax_anomaly    75  69186.919932702
+estats.11                 tmax_anomaly*agegp    75 69190.7857471075
+estats.12 ns(logDroughtCount,5)*tmax_anomaly    79 69179.0007307755
+estats.13          ns(logDroughtCount,5)*sex    78 69189.2500666982
+estats.14              tmax_anomaly*sd_group    79 69180.5151463649
+estats.15              ns(tmax,3)*ns(time,3)    80 69176.2429803571
+estats.16   ns(logDroughtCount,5)*ns(time,3)    88 69193.7860016232
+estats.17   ns(logDroughtCount,5)*ns(tmax,3)    91 69171.0663574609
+estats.18                   ns(tmax,3)*agegp    89  69196.830666324
+estats.19            sd_group*sex*ns(time,3)   138 68811.5937008125
+estats.20        ns(logDroughtCount,5)*agegp   103 69200.9627012294
+estats.21                ns(tmax,3)*sd_group   101 69192.4898214451
+estats.22     ns(logDroughtCount,5)*sd_group   123  69224.748071169
+estats.23                     agegp*sd_group   128 69175.4649453144
+estats.24     sd_group*age*sex*ns(time,df=3)   618 69143.3206231067
+                       bic     percentChDev
+estats    69714.8181458535 24.7768091375964
+estats.1  69813.5374607675 24.3653745244352
+estats.2   69815.927697397 24.3825246206206
+estats.3  69826.9604265827 24.3827639651755
+estats.4  69829.6146839145 24.3993974524668
+estats.5  69831.1905726855 24.4617951187288
+estats.6  69835.0399868388 24.3669547022941
+estats.7  69845.2186214886 24.3906923207374
+estats.8  69846.9072780413 24.3873881291093
+estats.9  69859.1615502889 24.9309139935094
+estats.10 69873.5486677362 24.4007401690249
+estats.11 69877.4144821416 24.3931759360408
+estats.12 69883.9395654106  24.424062452741
+estats.13 69885.0338515328 24.4000941963524
+estats.14 69903.7640806009  24.428925991859
+estats.15 69908.6469643935 24.4411987292496
+estats.16 69962.8101848614  24.422525914505
+estats.17 69967.5556901005  24.478721597195
+estats.18 70011.6300985645 24.4361354081766
+estats.19 70074.9905732753 25.3816844207085
+estats.20 70079.8474820731 24.4554440400007
+estats.21  70117.149851291 24.4915898949028
+estats.22   70250.11364882 24.4715175937565
+estats.23 70347.3113197726  24.630564158636
+estats.24 74801.1413997879  26.611025366504
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{show aic table}
 
 
-% latex table generated in R 2.15.0 by xtable 1.7-0 package
-% Tue Aug  7 00:23:57 2012
+% latex table generated in R 3.2.2 by xtable 1.7-1 package
+% Sun Nov 29 06:32:24 2015
 \begin{table}[!ht]
-\begin{center}
-\caption{Models ranked by Bayesian Information Criterion (BIC).}
+\centering
+\caption{Models ranked by Bayesian Information Criterion (BIC).} 
 \label{tab:tab3}
 \begin{tabular}{lrrr}
   \hline
@@ -359,15 +1258,12 @@ sd\_group*sex & 78 & 69715 & 69001 \\
   droughtModel & 73 & 69845 & 69186 \\ 
   tmax\_anomaly*ns(time,3) & 72 & 69847 & 69188 \\ 
   sd\_group*ns(time,3) & 98 & 69859 & 68962 \\ 
-  With Rural 30-49 Sex Strata & 98 & 69869 & 69127 \\ 
-  Without Rural 30-49 Sex Strata & 97 & 69873 & 69141 \\ 
   ns(tmax,3)*tmax\_anomaly & 75 & 69874 & 69187 \\ 
   tmax\_anomaly*agegp & 75 & 69877 & 69191 \\ 
   ns(logDroughtCount,5)*tmax\_anomaly & 79 & 69884 & 69179 \\ 
   ns(logDroughtCount,5)*sex & 78 & 69885 & 69189 \\ 
   tmax\_anomaly*sd\_group & 79 & 69904 & 69181 \\ 
   ns(tmax,3)*ns(time,3) & 80 & 69909 & 69176 \\ 
-  interactionDrtAgeSexRuralModel2 & 188 & 69937 & 69091 \\ 
   ns(logDroughtCount,5)*ns(time,3) & 88 & 69963 & 69194 \\ 
   ns(logDroughtCount,5)*ns(tmax,3) & 91 & 69968 & 69171 \\ 
   ns(tmax,3)*agegp & 89 & 70012 & 69197 \\ 
@@ -379,7 +1275,6 @@ sd\_group*sex & 78 & 69715 & 69001 \\
   sd\_group*age*sex*ns(time,df=3) & 618 & 74801 & 69143 \\ 
    \hline
 \end{tabular}
-\end{center}
 \end{table}
 
 
@@ -410,9 +1305,171 @@ sd\_group*sex & 78 & 69715 & 69001 \\
 
         The eleven regions were classified as rural or urban based on the locations of the three major cities of NSW: Sydney, Newcastle and Wollongong. All other regions were classed as rural.
 
+\begin{Schunk}
+\begin{Soutput}
+data$DrtMales10_29urban <- ifelse(data$agegp2 == 10_29 & data$sex == 1 & data$rural == 0, data$logDroughtCount, 0)
+data$DrtMales30_49urban <- ifelse(data$agegp2 == 30_49 & data$sex == 1 & data$rural == 0, data$logDroughtCount, 0)
+data$DrtMales50plusurban <- ifelse(data$agegp2 == 50plus & data$sex == 1 & data$rural == 0, data$logDroughtCount, 0)
+
+data$DrtMales10_29rural <- ifelse(data$agegp2 == 10_29 & data$sex == 1 & data$rural == 1, data$logDroughtCount, 0)
+data$DrtMales30_49rural <- ifelse(data$agegp2 == 30_49 & data$sex == 1 & data$rural == 1, data$logDroughtCount, 0)
+data$DrtMales50plusrural <- ifelse(data$agegp2 == 50plus & data$sex == 1 & data$rural == 1, data$logDroughtCount, 0)
+
+data$DrtFemales10_29urban <- ifelse(data$agegp2 == 10_29 & data$sex == 2 & data$rural == 0, data$logDroughtCount, 0)
+data$DrtFemales30_49urban <- ifelse(data$agegp2 == 30_49 & data$sex == 2 & data$rural == 0, data$logDroughtCount, 0)
+data$DrtFemales50plusurban <- ifelse(data$agegp2 == 50plus & data$sex == 2 & data$rural == 0, data$logDroughtCount, 0)
+
+data$DrtFemales10_29rural <- ifelse(data$agegp2 == 10_29 & data$sex == 2 & data$rural == 1, data$logDroughtCount, 0)
+data$DrtFemales30_49rural <- ifelse(data$agegp2 == 30_49 & data$sex == 2 & data$rural == 1, data$logDroughtCount, 0)
+data$DrtFemales50plusrural <- ifelse(data$agegp2 == 50plus & data$sex == 2 & data$rural == 1, data$logDroughtCount, 0)
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{Final drought model}
 
+\begin{Schunk}
+\begin{Soutput}
+Time difference of 18.75566 mins
+\end{Soutput}
+\begin{Soutput}
+pseudo.Rsquared 
+      0.6747133 
+\end{Soutput}
+\begin{Soutput}
+Time difference of 1.158233 mins
+\end{Soutput}
+\begin{Soutput}
+Call:
+glm(formula = deaths ~ sin(timevar * 2 * pi) + cos(timevar * 
+    2 * pi) + DrtMales10_29rural + DrtMales30_49rural + DrtMales50plusrural + 
+    DrtFemales10_29rural + DrtFemales30_49rural + ns(DrtFemales50plusrural, 
+    df = 5) + ns(DrtMales10_29urban, df = 6) + DrtMales30_49urban + 
+    ns(DrtMales50plusurban, df = 4) + DrtFemales10_29urban + 
+    ns(DrtFemales30_49urban, df = 3) + DrtFemales50plusurban + 
+    tmax_anomaly + agegp2 + rural + sd_group + sex + agegp + 
+    agegp * sex * ns(time, 3) + offset(log(pop)), family = poisson, 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-3.2777  -0.5583  -0.3657  -0.2420   4.4990  
+
+Coefficients: (17 not defined because of singularities)
+                                     Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                        -12.804520   0.372817 -34.345  < 2e-16 ***
+sin(timevar * 2 * pi)               -0.024895   0.009093  -2.738 0.006185 ** 
+cos(timevar * 2 * pi)                0.036617   0.009077   4.034 5.49e-05 ***
+DrtMales10_29rural                   0.094124   0.034488   2.729 0.006349 ** 
+DrtMales30_49rural                   0.124349   0.028181   4.413 1.02e-05 ***
+DrtMales50plusrural                 -0.020010   0.031372  -0.638 0.523581    
+DrtFemales10_29rural                -0.041776   0.075984  -0.550 0.582451    
+DrtFemales30_49rural                -0.116702   0.058770  -1.986 0.047063 *  
+ns(DrtFemales50plusrural, df = 5)1         NA         NA      NA       NA    
+ns(DrtFemales50plusrural, df = 5)2   0.994347   0.199104   4.994 5.91e-07 ***
+ns(DrtFemales50plusrural, df = 5)3         NA         NA      NA       NA    
+ns(DrtFemales50plusrural, df = 5)4         NA         NA      NA       NA    
+ns(DrtFemales50plusrural, df = 5)5         NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)1            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)2            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)3      0.082090   0.069906   1.174 0.240280    
+ns(DrtMales10_29urban, df = 6)4            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)5            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)6            NA         NA      NA       NA    
+DrtMales30_49urban                  -0.030154   0.018166  -1.660 0.096934 .  
+ns(DrtMales50plusurban, df = 4)1     0.122997   0.066174   1.859 0.063070 .  
+ns(DrtMales50plusurban, df = 4)2           NA         NA      NA       NA    
+ns(DrtMales50plusurban, df = 4)3           NA         NA      NA       NA    
+ns(DrtMales50plusurban, df = 4)4           NA         NA      NA       NA    
+DrtFemales10_29urban                 0.039441   0.040135   0.983 0.325749    
+ns(DrtFemales30_49urban, df = 3)1   -0.092972   0.225054  -0.413 0.679527    
+ns(DrtFemales30_49urban, df = 3)2          NA         NA      NA       NA    
+ns(DrtFemales30_49urban, df = 3)3          NA         NA      NA       NA    
+DrtFemales50plusurban               -0.011791   0.029629  -0.398 0.690655    
+tmax_anomaly                         0.017101   0.005301   3.226 0.001256 ** 
+agegp230_49                          1.960199   0.356029   5.506 3.68e-08 ***
+agegp250plus                         2.771552   0.402857   6.880 6.00e-12 ***
+rural                               -0.025243   0.040861  -0.618 0.536733    
+sd_groupHunter                      -0.056708   0.023494  -2.414 0.015791 *  
+sd_groupIllawarra                   -0.014606   0.028087  -0.520 0.603054    
+sd_groupMid-North Coast             -0.051399   0.051121  -1.005 0.314686    
+sd_groupMurray                       0.019829   0.060928   0.325 0.744836    
+sd_groupMurrumbidgee                 0.020024   0.055724   0.359 0.719347    
+sd_groupNorth and Far Western        0.187027   0.053629   3.487 0.000488 ***
+sd_groupNorthern                     0.073939   0.052203   1.416 0.156661    
+sd_groupRichmond-Tweed               0.087991   0.052768   1.667 0.095417 .  
+sd_groupSouth Eastern                0.046142   0.053384   0.864 0.387400    
+sd_groupSydney                             NA         NA      NA       NA    
+sex                                 -0.536378   0.234220  -2.290 0.022018 *  
+agegp20_29                           1.650884   0.359818   4.588 4.47e-06 ***
+agegp30_39                          -0.239459   0.224669  -1.066 0.286499    
+agegp40_49                                 NA         NA      NA       NA    
+agegp50_59                          -0.860949   0.289032  -2.979 0.002894 ** 
+agegp60_69                          -0.469606   0.314352  -1.494 0.135206    
+agegp70plus                                NA         NA      NA       NA    
+ns(time, 3)1                         1.665084   0.359982   4.625 3.74e-06 ***
+ns(time, 3)2                         1.603827   0.808198   1.984 0.047206 *  
+ns(time, 3)3                        -1.124896   0.330435  -3.404 0.000663 ***
+sex:agegp20_29                      -0.097433   0.261216  -0.373 0.709151    
+sex:agegp30_39                       0.025172   0.263895   0.095 0.924009    
+sex:agegp40_49                       0.074650   0.256738   0.291 0.771234    
+sex:agegp50_59                       0.147160   0.259337   0.567 0.570412    
+sex:agegp60_69                      -0.249028   0.275778  -0.903 0.366526    
+sex:agegp70plus                     -0.639387   0.290154  -2.204 0.027552 *  
+agegp20_29:ns(time, 3)1              0.180015   0.405286   0.444 0.656921    
+agegp30_39:ns(time, 3)1             -0.370431   0.404870  -0.915 0.360224    
+agegp40_49:ns(time, 3)1             -0.879169   0.407503  -2.157 0.030970 *  
+agegp50_59:ns(time, 3)1             -0.947184   0.421396  -2.248 0.024594 *  
+agegp60_69:ns(time, 3)1             -0.902334   0.441980  -2.042 0.041194 *  
+agegp70plus:ns(time, 3)1            -1.122060   0.439461  -2.553 0.010672 *  
+agegp20_29:ns(time, 3)2              0.157326   0.903823   0.174 0.861813    
+agegp30_39:ns(time, 3)2             -0.481038   0.911420  -0.528 0.597645    
+agegp40_49:ns(time, 3)2             -1.140874   0.895864  -1.273 0.202844    
+agegp50_59:ns(time, 3)2             -1.802382   0.912024  -1.976 0.048127 *  
+agegp60_69:ns(time, 3)2             -2.289795   0.961609  -2.381 0.017256 *  
+agegp70plus:ns(time, 3)2            -2.084793   0.999615  -2.086 0.037015 *  
+agegp20_29:ns(time, 3)3              0.880390   0.375797   2.343 0.019143 *  
+agegp30_39:ns(time, 3)3              1.730928   0.368591   4.696 2.65e-06 ***
+agegp40_49:ns(time, 3)3              1.512589   0.369043   4.099 4.16e-05 ***
+agegp50_59:ns(time, 3)3              0.867469   0.381063   2.276 0.022819 *  
+agegp60_69:ns(time, 3)3              0.635607   0.401809   1.582 0.113681    
+agegp70plus:ns(time, 3)3             0.667298   0.396897   1.681 0.092707 .  
+sex:ns(time, 3)1                    -0.658662   0.277883  -2.370 0.017774 *  
+sex:ns(time, 3)2                    -1.339703   0.594572  -2.253 0.024245 *  
+sex:ns(time, 3)3                     0.614396   0.242536   2.533 0.011302 *  
+sex:agegp20_29:ns(time, 3)1         -0.268550   0.315363  -0.852 0.394459    
+sex:agegp30_39:ns(time, 3)1          0.027399   0.312412   0.088 0.930115    
+sex:agegp40_49:ns(time, 3)1         -0.032419   0.313783  -0.103 0.917711    
+sex:agegp50_59:ns(time, 3)1         -0.080014   0.321919  -0.249 0.803705    
+sex:agegp60_69:ns(time, 3)1         -0.087884   0.338715  -0.259 0.795279    
+sex:agegp70plus:ns(time, 3)1         0.334230   0.334535   0.999 0.317753    
+sex:agegp20_29:ns(time, 3)2         -0.407945   0.667788  -0.611 0.541273    
+sex:agegp30_39:ns(time, 3)2         -0.250953   0.669793  -0.375 0.707904    
+sex:agegp40_49:ns(time, 3)2         -0.035435   0.656674  -0.054 0.956966    
+sex:agegp50_59:ns(time, 3)2          0.355181   0.664044   0.535 0.592736    
+sex:agegp60_69:ns(time, 3)2          0.910105   0.703491   1.294 0.195770    
+sex:agegp70plus:ns(time, 3)2         1.044673   0.729753   1.432 0.152275    
+sex:agegp20_29:ns(time, 3)3         -0.870108   0.281792  -3.088 0.002017 ** 
+sex:agegp30_39:ns(time, 3)3         -1.208394   0.274666  -4.399 1.09e-05 ***
+sex:agegp40_49:ns(time, 3)3         -1.251666   0.274327  -4.563 5.05e-06 ***
+sex:agegp50_59:ns(time, 3)3         -0.975801   0.280716  -3.476 0.000509 ***
+sex:agegp60_69:ns(time, 3)3         -0.762613   0.297392  -2.564 0.010337 *  
+sex:agegp70plus:ns(time, 3)3        -0.836479   0.293878  -2.846 0.004422 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 51106  on 69915  degrees of freedom
+Residual deviance: 38565  on 69835  degrees of freedom
+AIC: 69127
+
+Number of Fisher Scoring iterations: 6
+\end{Soutput}
+\begin{Soutput}
+pseudo.Rsquared 
+      0.6742745 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{summary of model}
 
@@ -426,9 +1483,33 @@ sd\_group*sex & 78 & 69715 & 69001 \\
         %\clearpage
 
 
+\begin{Schunk}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{best figures}
 
+\begin{Schunk}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{The final drought model estimates by age, sex and region}
 
@@ -437,6 +1518,193 @@ sd\_group*sex & 78 & 69715 & 69001 \\
         For the temperature anomaly term there was a RR of 1.03 (95CI 1.01 to 1.05) per IQR rise (1.6 degrees C).
 
 
+\begin{Schunk}
+\begin{Soutput}
+Time difference of 1.158547 mins
+\end{Soutput}
+\begin{Soutput}
+Call:
+glm(formula = deaths ~ sin(timevar * 2 * pi) + cos(timevar * 
+    2 * pi) + tmax_anomaly + DrtMales10_29rural + DrtMales30_49rural + 
+    DrtMales50plusrural + DrtFemales10_29rural + DrtFemales30_49rural + 
+    ns(DrtFemales50plusrural, df = 5) + ns(DrtMales10_29urban, 
+    df = 6) + DrtMales30_49urban + ns(DrtMales50plusurban, df = 4) + 
+    DrtFemales10_29urban + ns(DrtFemales30_49urban, df = 3) + 
+    DrtFemales50plusurban + agegp2 + rural + sd_group + sex + 
+    agegp + agegp * sex * ns(time, 3) + offset(log(pop)), family = poisson, 
+    data = data)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-3.2777  -0.5583  -0.3657  -0.2420   4.4990  
+
+Coefficients: (17 not defined because of singularities)
+                                     Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                        -12.804520   0.372817 -34.345  < 2e-16 ***
+sin(timevar * 2 * pi)               -0.024895   0.009093  -2.738 0.006185 ** 
+cos(timevar * 2 * pi)                0.036617   0.009077   4.034 5.49e-05 ***
+tmax_anomaly                         0.017101   0.005301   3.226 0.001256 ** 
+DrtMales10_29rural                   0.094124   0.034488   2.729 0.006349 ** 
+DrtMales30_49rural                   0.124349   0.028181   4.413 1.02e-05 ***
+DrtMales50plusrural                 -0.020010   0.031372  -0.638 0.523581    
+DrtFemales10_29rural                -0.041776   0.075984  -0.550 0.582451    
+DrtFemales30_49rural                -0.116702   0.058770  -1.986 0.047063 *  
+ns(DrtFemales50plusrural, df = 5)1         NA         NA      NA       NA    
+ns(DrtFemales50plusrural, df = 5)2   0.994347   0.199104   4.994 5.91e-07 ***
+ns(DrtFemales50plusrural, df = 5)3         NA         NA      NA       NA    
+ns(DrtFemales50plusrural, df = 5)4         NA         NA      NA       NA    
+ns(DrtFemales50plusrural, df = 5)5         NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)1            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)2            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)3      0.082090   0.069906   1.174 0.240280    
+ns(DrtMales10_29urban, df = 6)4            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)5            NA         NA      NA       NA    
+ns(DrtMales10_29urban, df = 6)6            NA         NA      NA       NA    
+DrtMales30_49urban                  -0.030154   0.018166  -1.660 0.096934 .  
+ns(DrtMales50plusurban, df = 4)1     0.122997   0.066174   1.859 0.063070 .  
+ns(DrtMales50plusurban, df = 4)2           NA         NA      NA       NA    
+ns(DrtMales50plusurban, df = 4)3           NA         NA      NA       NA    
+ns(DrtMales50plusurban, df = 4)4           NA         NA      NA       NA    
+DrtFemales10_29urban                 0.039441   0.040135   0.983 0.325749    
+ns(DrtFemales30_49urban, df = 3)1   -0.092972   0.225054  -0.413 0.679527    
+ns(DrtFemales30_49urban, df = 3)2          NA         NA      NA       NA    
+ns(DrtFemales30_49urban, df = 3)3          NA         NA      NA       NA    
+DrtFemales50plusurban               -0.011791   0.029629  -0.398 0.690655    
+agegp230_49                          1.960199   0.356029   5.506 3.68e-08 ***
+agegp250plus                         2.771552   0.402857   6.880 6.00e-12 ***
+rural                               -0.025243   0.040861  -0.618 0.536733    
+sd_groupHunter                      -0.056708   0.023494  -2.414 0.015791 *  
+sd_groupIllawarra                   -0.014606   0.028087  -0.520 0.603054    
+sd_groupMid-North Coast             -0.051399   0.051121  -1.005 0.314686    
+sd_groupMurray                       0.019829   0.060928   0.325 0.744836    
+sd_groupMurrumbidgee                 0.020024   0.055724   0.359 0.719347    
+sd_groupNorth and Far Western        0.187027   0.053629   3.487 0.000488 ***
+sd_groupNorthern                     0.073939   0.052203   1.416 0.156661    
+sd_groupRichmond-Tweed               0.087991   0.052768   1.667 0.095417 .  
+sd_groupSouth Eastern                0.046142   0.053384   0.864 0.387400    
+sd_groupSydney                             NA         NA      NA       NA    
+sex                                 -0.536378   0.234220  -2.290 0.022018 *  
+agegp20_29                           1.650884   0.359818   4.588 4.47e-06 ***
+agegp30_39                          -0.239459   0.224669  -1.066 0.286499    
+agegp40_49                                 NA         NA      NA       NA    
+agegp50_59                          -0.860949   0.289032  -2.979 0.002894 ** 
+agegp60_69                          -0.469606   0.314352  -1.494 0.135206    
+agegp70plus                                NA         NA      NA       NA    
+ns(time, 3)1                         1.665084   0.359982   4.625 3.74e-06 ***
+ns(time, 3)2                         1.603827   0.808198   1.984 0.047206 *  
+ns(time, 3)3                        -1.124896   0.330435  -3.404 0.000663 ***
+sex:agegp20_29                      -0.097433   0.261216  -0.373 0.709151    
+sex:agegp30_39                       0.025172   0.263895   0.095 0.924009    
+sex:agegp40_49                       0.074650   0.256738   0.291 0.771234    
+sex:agegp50_59                       0.147160   0.259337   0.567 0.570412    
+sex:agegp60_69                      -0.249028   0.275778  -0.903 0.366526    
+sex:agegp70plus                     -0.639387   0.290154  -2.204 0.027552 *  
+agegp20_29:ns(time, 3)1              0.180015   0.405286   0.444 0.656921    
+agegp30_39:ns(time, 3)1             -0.370431   0.404870  -0.915 0.360224    
+agegp40_49:ns(time, 3)1             -0.879169   0.407503  -2.157 0.030970 *  
+agegp50_59:ns(time, 3)1             -0.947184   0.421396  -2.248 0.024594 *  
+agegp60_69:ns(time, 3)1             -0.902334   0.441980  -2.042 0.041194 *  
+agegp70plus:ns(time, 3)1            -1.122060   0.439461  -2.553 0.010672 *  
+agegp20_29:ns(time, 3)2              0.157326   0.903823   0.174 0.861813    
+agegp30_39:ns(time, 3)2             -0.481038   0.911420  -0.528 0.597645    
+agegp40_49:ns(time, 3)2             -1.140874   0.895864  -1.273 0.202844    
+agegp50_59:ns(time, 3)2             -1.802382   0.912024  -1.976 0.048127 *  
+agegp60_69:ns(time, 3)2             -2.289795   0.961609  -2.381 0.017256 *  
+agegp70plus:ns(time, 3)2            -2.084793   0.999615  -2.086 0.037015 *  
+agegp20_29:ns(time, 3)3              0.880390   0.375797   2.343 0.019143 *  
+agegp30_39:ns(time, 3)3              1.730928   0.368591   4.696 2.65e-06 ***
+agegp40_49:ns(time, 3)3              1.512589   0.369043   4.099 4.16e-05 ***
+agegp50_59:ns(time, 3)3              0.867469   0.381063   2.276 0.022819 *  
+agegp60_69:ns(time, 3)3              0.635607   0.401809   1.582 0.113681    
+agegp70plus:ns(time, 3)3             0.667298   0.396897   1.681 0.092707 .  
+sex:ns(time, 3)1                    -0.658662   0.277883  -2.370 0.017774 *  
+sex:ns(time, 3)2                    -1.339703   0.594572  -2.253 0.024245 *  
+sex:ns(time, 3)3                     0.614396   0.242536   2.533 0.011302 *  
+sex:agegp20_29:ns(time, 3)1         -0.268550   0.315363  -0.852 0.394459    
+sex:agegp30_39:ns(time, 3)1          0.027399   0.312412   0.088 0.930115    
+sex:agegp40_49:ns(time, 3)1         -0.032419   0.313783  -0.103 0.917711    
+sex:agegp50_59:ns(time, 3)1         -0.080014   0.321919  -0.249 0.803705    
+sex:agegp60_69:ns(time, 3)1         -0.087884   0.338715  -0.259 0.795279    
+sex:agegp70plus:ns(time, 3)1         0.334230   0.334535   0.999 0.317753    
+sex:agegp20_29:ns(time, 3)2         -0.407945   0.667788  -0.611 0.541273    
+sex:agegp30_39:ns(time, 3)2         -0.250953   0.669793  -0.375 0.707904    
+sex:agegp40_49:ns(time, 3)2         -0.035435   0.656674  -0.054 0.956966    
+sex:agegp50_59:ns(time, 3)2          0.355181   0.664044   0.535 0.592736    
+sex:agegp60_69:ns(time, 3)2          0.910105   0.703491   1.294 0.195770    
+sex:agegp70plus:ns(time, 3)2         1.044673   0.729753   1.432 0.152275    
+sex:agegp20_29:ns(time, 3)3         -0.870108   0.281792  -3.088 0.002017 ** 
+sex:agegp30_39:ns(time, 3)3         -1.208394   0.274666  -4.399 1.09e-05 ***
+sex:agegp40_49:ns(time, 3)3         -1.251666   0.274327  -4.563 5.05e-06 ***
+sex:agegp50_59:ns(time, 3)3         -0.975801   0.280716  -3.476 0.000509 ***
+sex:agegp60_69:ns(time, 3)3         -0.762613   0.297392  -2.564 0.010337 *  
+sex:agegp70plus:ns(time, 3)3        -0.836479   0.293878  -2.846 0.004422 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 51106  on 69915  degrees of freedom
+Residual deviance: 38565  on 69835  degrees of freedom
+AIC: 69127
+
+Number of Fisher Scoring iterations: 6
+\end{Soutput}
+\begin{Soutput}
+pseudo.Rsquared 
+      0.6742745 
+\end{Soutput}
+\begin{Soutput}
+[1] 1.122753
+\end{Soutput}
+\begin{Soutput}
+[1] 2.073303
+\end{Soutput}
+\begin{Soutput}
+[1] 1.149829
+\end{Soutput}
+\begin{Soutput}
+[1] 1.080688
+\end{Soutput}
+\begin{Soutput}
+[1] 1.223392
+\end{Soutput}
+\begin{Soutput}
+Single term deletions
+
+Model:
+deaths ~ sin(timevar * 2 * pi) + cos(timevar * 2 * pi) + tmax_anomaly + 
+    DrtMales10_29rural + DrtMales30_49rural + DrtMales50plusrural + 
+    DrtFemales10_29rural + DrtFemales30_49rural + ns(DrtFemales50plusrural, 
+    df = 5) + ns(DrtMales10_29urban, df = 6) + DrtMales30_49urban + 
+    ns(DrtMales50plusurban, df = 4) + DrtFemales10_29urban + 
+    ns(DrtFemales30_49urban, df = 3) + DrtFemales50plusurban + 
+    agegp2 + rural + sd_group + sex + agegp + agegp * sex * ns(time, 
+    3) + offset(log(pop))
+                                  Df Deviance   AIC    LRT  Pr(>Chi)    
+<none>                                  38565 69127                     
+sin(timevar * 2 * pi)              1    38572 69133  7.496 0.0061829 ** 
+cos(timevar * 2 * pi)              1    38581 69142 16.275 5.478e-05 ***
+tmax_anomaly                       1    38575 69136 10.388 0.0012687 ** 
+DrtMales10_29rural                 1    38572 69132  7.191 0.0073256 ** 
+DrtMales30_49rural                 1    38583 69144 18.677 1.548e-05 ***
+DrtMales50plusrural                1    38565 69126  0.410 0.5221160    
+DrtFemales10_29rural               1    38565 69126  0.308 0.5790212    
+DrtFemales30_49rural               1    38569 69129  4.144 0.0417870 *  
+ns(DrtFemales50plusrural, df = 5)  1    38593 69154 28.533 9.210e-08 ***
+ns(DrtMales10_29urban, df = 6)     1    38566 69127  1.388 0.2386939    
+DrtMales30_49urban                 1    38567 69128  2.776 0.0956671 .  
+ns(DrtMales50plusurban, df = 4)    1    38568 69129  3.490 0.0617570 .  
+DrtFemales10_29urban               1    38565 69126  0.955 0.3284023    
+ns(DrtFemales30_49urban, df = 3)   1    38565 69125  0.170 0.6800571    
+DrtFemales50plusurban              1    38565 69125  0.159 0.6901503    
+agegp2                             0    38565 69127  0.000              
+rural                              0    38565 69127  0.000              
+sd_group                           9    38596 69141 31.883 0.0002086 ***
+sex:agegp:ns(time, 3)             18    38613 69140 48.602 0.0001225 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\end{Schunk}
 \clearpage
 
 \subsection{Attributable Number of Deaths}
@@ -474,15 +1742,897 @@ As drought is a rare and episodic event this estimate is obviously an underestim
         % \textbf{TASK, this formula is not right yet, needs work on the agegroupings, decided not to include in the document anyway}
 
 
+\begin{Schunk}
+\begin{Soutput}
+[1] "sd_group','sex','agegp','dthyy','dthmm','deaths','sui_und','pop','logDroughtCount"
+\end{Soutput}
+\begin{Soutput}
+      sd_group rural sex  agegp agegp2 dthyy dthmm deaths   pop logDroughtCount
+1 Central West     1   1  10_19  10_29  1970     1      0 15432      0.02181905
+2 Central West     1   1  40_49  30_49  1970     1      1  9128      0.02181905
+3 Central West     1   1  60_69 50plus  1970     1      0  5237      0.02181905
+4 Central West     1   2  40_49  30_49  1970     1      0  8488      0.02181905
+5 Central West     1   2  50_59 50plus  1970     1      0  7436      0.02181905
+6 Central West     1   1 70plus 50plus  1970     1      0  3353      0.02181905
+\end{Soutput}
+\begin{Soutput}
+ [1] "time"                  "sd_group"              "sex"                  
+ [4] "agegp"                 "dthyy"                 "dthmm"                
+ [7] "deaths"                "sui_und"               "pop"                  
+[10] "avrain"                "avcount"               "tmax_anomaly"         
+[13] "tmax"                  "avsums"                "avcount2"             
+[16] "avsums2"               "logDroughtCount"       "mm"                   
+[19] "timevar"               "rural"                 "agegp2"               
+[22] "DrtMales10_29urban"    "DrtMales30_49urban"    "DrtMales50plusurban"  
+[25] "DrtMales10_29rural"    "DrtMales30_49rural"    "DrtMales50plusrural"  
+[28] "DrtFemales10_29urban"  "DrtFemales30_49urban"  "DrtFemales50plusurban"
+[31] "DrtFemales10_29rural"  "DrtFemales30_49rural"  "DrtFemales50plusrural"
+\end{Soutput}
+\begin{Soutput}
+      sd_group sex agegp avgMonthlyDeaths    avgPop      avgRate
+1 Central West   1 10_19        0.1057269 14565.220 7.258858e-06
+2 Central West   1 20_29        0.2599119 11640.225 2.232877e-05
+3 Central West   1 30_39        0.2312775 11523.846 2.006947e-05
+4 Central West   1 40_49        0.2048458 10639.692 1.925298e-05
+5 Central West   1 50_59        0.1806167  8938.379 2.020688e-05
+6 Central West   1 60_69        0.1189427  6731.930 1.766845e-05
+\end{Soutput}
+\begin{Soutput}
+       sd_group sex  agegp avgMonthlyDeaths    avgPop      avgRate
+1  Central West   1  10_19       0.10572687 14565.220 7.258858e-06
+2  Central West   1  20_29       0.25991189 11640.225 2.232877e-05
+3  Central West   1  30_39       0.23127753 11523.846 2.006947e-05
+4  Central West   1  40_49       0.20484581 10639.692 1.925298e-05
+5  Central West   1  50_59       0.18061674  8938.379 2.020688e-05
+6  Central West   1  60_69       0.11894273  6731.930 1.766845e-05
+7  Central West   1 70plus       0.12555066  5339.344 2.351425e-05
+8  Central West   2  10_19       0.01982379 13704.617 1.446504e-06
+9  Central West   2  20_29       0.05726872 11026.568 5.193703e-06
+10 Central West   2  30_39       0.06828194 11114.850 6.143307e-06
+11 Central West   2  40_49       0.04625551 10023.815 4.614561e-06
+12 Central West   2  50_59       0.04845815  8534.661 5.677806e-06
+13 Central West   2  60_69       0.03303965  6897.189 4.790306e-06
+14 Central West   2 70plus       0.01982379  7521.837 2.635498e-06
+15       Hunter   1  10_19       0.23568282 40563.498 5.810219e-06
+16       Hunter   1  20_29       0.75550661 37565.392 2.011177e-05
+17       Hunter   1  30_39       0.77312775 35575.727 2.173189e-05
+18       Hunter   1  40_49       0.69603524 32485.344 2.142613e-05
+19       Hunter   1  50_59       0.43171806 27655.278 1.561069e-05
+20       Hunter   1  60_69       0.34361233 21938.938 1.566221e-05
+21       Hunter   1 70plus       0.41850220 17866.123 2.342434e-05
+22       Hunter   2  10_19       0.03083700 38518.357 8.005794e-07
+23       Hunter   2  20_29       0.14317181 35609.533 4.020603e-06
+24       Hunter   2  30_39       0.15638767 34917.326 4.478798e-06
+25       Hunter   2  40_49       0.18942731 31770.912 5.962288e-06
+26       Hunter   2  50_59       0.14096916 27452.987 5.134930e-06
+27       Hunter   2  60_69       0.11233480 23226.225 4.836550e-06
+28       Hunter   2 70plus       0.10352423 25257.018 4.098830e-06
+29    Illawarra   1  10_19       0.14977974 27128.877 5.521045e-06
+30    Illawarra   1  20_29       0.55066079 24321.881 2.264055e-05
+31    Illawarra   1  30_39       0.49779736 23603.176 2.109027e-05
+32    Illawarra   1  40_49       0.44273128 21569.819 2.052550e-05
+33    Illawarra   1  50_59       0.28414097 17923.987 1.585255e-05
+34    Illawarra   1  60_69       0.23348018 14400.520 1.621332e-05
+35    Illawarra   1 70plus       0.24008811 11162.366 2.150871e-05
+36    Illawarra   2  10_19       0.02202643 25456.159 8.652693e-07
+37    Illawarra   2  20_29       0.07488987 22969.824 3.260359e-06
+38    Illawarra   2  30_39       0.11233480 23346.053 4.811726e-06
+39    Illawarra   2  40_49       0.14757709 20922.137 7.053634e-06
+40    Illawarra   2  50_59       0.14977974 17703.181 8.460612e-06
+\end{Soutput}
+\begin{Soutput}
+                sd_group sum(avgMonthlyDeaths) sum(avgPop)
+1           Central West             1.5198238   138202.17
+2                 Hunter             4.5308370   430402.66
+3              Illawarra             3.0462555   280036.88
+4        Mid-North Coast             1.9074890   183520.63
+5                 Murray             0.9735683    86220.51
+6           Murrumbidgee             1.3303965   118778.27
+7  North and Far Western             1.5462555   114460.50
+8               Northern             1.7268722   146464.55
+9         Richmond-Tweed             1.6629956   139356.23
+10         South Eastern             1.5748899   135091.01
+11                Sydney            34.0044053  3040952.32
+\end{Soutput}
+\begin{Soutput}
+    sd_group sex  agegp avgMonthlyDeaths   avgPop      avgRate
+141   Sydney   1  10_19        1.1916300 269031.3 4.429336e-06
+142   Sydney   1  20_29        5.9317181 292341.6 2.029037e-05
+143   Sydney   1  30_39        5.1828194 276223.6 1.876313e-05
+144   Sydney   1  40_49        4.4735683 236838.1 1.888872e-05
+145   Sydney   1  50_59        3.2819383 188307.1 1.742865e-05
+146   Sydney   1  60_69        2.4493392 129867.6 1.886027e-05
+147   Sydney   1 70plus        2.3392070 102487.3 2.282437e-05
+148   Sydney   2  10_19        0.4339207 257540.7 1.684863e-06
+149   Sydney   2  20_29        1.5550661 292093.0 5.323873e-06
+150   Sydney   2  30_39        1.7048458 273605.7 6.231033e-06
+151   Sydney   2  40_49        1.6894273 232950.9 7.252289e-06
+152   Sydney   2  50_59        1.5704846 186502.3 8.420726e-06
+153   Sydney   2  60_69        1.0242291 142361.8 7.194550e-06
+154   Sydney   2 70plus        1.1762115 160801.5 7.314681e-06
+\end{Soutput}
+\begin{Soutput}
+       sd_group sex  agegp avgMonthlyDeaths    avgPop      avgRate
+1  Central West   1  10_19       0.10572687 14565.220 7.258858e-06
+2  Central West   1  20_29       0.25991189 11640.225 2.232877e-05
+3  Central West   1  30_39       0.23127753 11523.846 2.006947e-05
+4  Central West   1  40_49       0.20484581 10639.692 1.925298e-05
+5  Central West   1  50_59       0.18061674  8938.379 2.020688e-05
+6  Central West   1  60_69       0.11894273  6731.930 1.766845e-05
+7  Central West   1 70plus       0.12555066  5339.344 2.351425e-05
+8  Central West   2  10_19       0.01982379 13704.617 1.446504e-06
+9  Central West   2  20_29       0.05726872 11026.568 5.193703e-06
+10 Central West   2  30_39       0.06828194 11114.850 6.143307e-06
+11 Central West   2  40_49       0.04625551 10023.815 4.614561e-06
+12 Central West   2  50_59       0.04845815  8534.661 5.677806e-06
+13 Central West   2  60_69       0.03303965  6897.189 4.790306e-06
+14 Central West   2 70plus       0.01982379  7521.837 2.635498e-06
+\end{Soutput}
+\begin{Soutput}
+      sd_group sex agegp rural agegp2 dthyy dthmm deaths   pop logDroughtCount
+1 Central West   1 10_19     1  10_29  1970     1      0 15432      0.02181905
+2 Central West   1 10_19     1  10_29  1977     2      0 15432      0.00000000
+3 Central West   1 10_19     1  10_29  2005     7      0 13694      0.97622307
+4 Central West   1 10_19     1  10_29  1974     2      0 15508      0.00000000
+5 Central West   1 10_19     1  10_29  1984     1      0 14776      0.00000000
+6 Central West   1 10_19     1  10_29  1984    10      0 14776      0.01459880
+  avgMonthlyDeaths   avgPop      avgRate
+1        0.1057269 14565.22 7.258858e-06
+2        0.1057269 14565.22 7.258858e-06
+3        0.1057269 14565.22 7.258858e-06
+4        0.1057269 14565.22 7.258858e-06
+5        0.1057269 14565.22 7.258858e-06
+6        0.1057269 14565.22 7.258858e-06
+\end{Soutput}
+\begin{Soutput}
+         Central West                Hunter             Illawarra 
+                  908                     0                     0 
+      Mid-North Coast                Murray          Murrumbidgee 
+                  908                   908                   908 
+North and Far Western              Northern        Richmond-Tweed 
+                  908                   908                   908 
+        South Eastern                Sydney 
+                  908                     0 
+\end{Soutput}
+\begin{Soutput}
+        sd_group sex agegp rural agegp2 dthyy dthmm deaths   pop
+909 Central West   1 30_39     1  30_49  1978     5      0 10601
+910 Central West   1 30_39     1  30_49  1973    11      1  9625
+911 Central West   1 30_39     1  30_49  1995     6      0 12719
+912 Central West   1 30_39     1  30_49  2005     4      0 11485
+913 Central West   1 30_39     1  30_49  1985     1      1 11870
+914 Central West   1 30_39     1  30_49  1986    11      1 11980
+    logDroughtCount avgMonthlyDeaths   avgPop      avgRate deathsAttributable
+909      0.00000000        0.2312775 11523.85 2.006947e-05        0.000000000
+910      0.00000000        0.2312775 11523.85 2.006947e-05        0.000000000
+911      0.05715841        0.2312775 11523.85 2.006947e-05        0.001820768
+912      0.72925219        0.2312775 11523.85 2.006947e-05        0.021878924
+913      0.44393139        0.2312775 11523.85 2.006947e-05        0.013520287
+914      0.00000000        0.2312775 11523.85 2.006947e-05        0.000000000
+    deathsAttributableLower deathsAttributableUpper
+909             0.000000000             0.000000000
+910             0.000000000             0.000000000
+911             0.001010401             0.002633697
+912             0.011915218             0.032252159
+913             0.007422476             0.019769467
+914             0.000000000             0.000000000
+\end{Soutput}
+\begin{Soutput}
+   dthyy deathsAttributable deaths     pop logDroughtCount
+1   1970          2.4653205     26 1461300               1
+2   1971          1.5649079     28 1472340               0
+3   1972          2.8457617     36 1483212               1
+4   1973          1.6568028     35 1494180               0
+5   1974          0.5198329     36 1505136               0
+6   1975          2.4070181     23 1516104               1
+7   1976          1.1402979     31 1527144               0
+8   1977          2.0880939     24 1571340               0
+9   1978          2.4468371     24 1615632               1
+10  1979          2.6854265     25 1659876               1
+11  1980          7.4951577     40 1704168               1
+12  1981          3.7687632     22 1748532               1
+13  1982          5.3215368     28 1791048               1
+14  1983          3.5201086     35 1833600               1
+15  1984          0.1263017     25 1876164               0
+16  1985          3.4662494     33 1918716               1
+17  1986          4.8652618     36 1961376               1
+18  1987          1.9104383     51 2028264               0
+19  1988          0.9463116     50 2095212               0
+20  1989          0.7664546     35 2162196               0
+21  1990          1.7828060     50 2229144               0
+22  1991          8.5090255     73 2296188               1
+23  1992          4.7500627     59 2323500               1
+24  1993          6.4081406     65 2350884               1
+25  1994          7.9437583     71 2378280               1
+26  1995          4.1391121     62 2405664               1
+27  1996          0.5710331     59 2433132               0
+28  1997          4.7635099     68 2432088               1
+29  1998          5.1368548     79 2431068               1
+30  1999          1.4771274     65 2430084               0
+31  2000          4.1397594     80 2429064               0
+32  2001          3.6205015     67 2428152               1
+33  2002         12.1173317     52 2417748               1
+34  2003         11.1516601     72 2407392               1
+35  2004          6.7551563     53 2397072               1
+36  2005          3.3710618     40 2386716               0
+37  2006          5.9728904     30 2376456               1
+38  2007          7.7310444     31 1971710               1
+\end{Soutput}
+\begin{Soutput}
+[1] 152.3477
+\end{Soutput}
+\begin{Soutput}
+[1] 38
+\end{Soutput}
+\begin{Soutput}
+[1] 4.009151
+\end{Soutput}
+\begin{Soutput}
+[1] 2.136019
+\end{Soutput}
+\begin{Soutput}
+[1] 6.046266
+\end{Soutput}
+\begin{Soutput}
+       [,1] [,2]
+ [1,] -1825   36
+ [2,] 15612  121
+ [3,] 15612  129
+ [4,] -1825  153
+ [5,] -1825  186
+ [6,] 15612  299
+ [7,] 15612  395
+ [8,] -1825  417
+ [9,] -1825  441
+[10,] 15612   36
+[11,] 15612  121
+[12,] -1825  129
+[13,] -1825  153
+[14,] 15612  186
+[15,] 15612  299
+[16,] -1825  395
+[17,] -1825  417
+[18,] 15612  441
+[19,] 15612   36
+[20,] -1825  126
+[21,] -1825  136
+[22,] 15612  160
+[23,] 15612  187
+[24,] -1825  300
+[25,] -1825  402
+[26,] 15612  417
+[27,] 15612  448
+[28,] -1825   36
+[29,] -1825  126
+[30,] 15612  136
+[31,] 15612  160
+[32,] -1825  187
+[33,] -1825  300
+[34,] 15612  402
+[35,] 15612  417
+[36,] -1825  448
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\begin{Soutput}
+[1] 3
+\end{Soutput}
+\begin{Soutput}
+[1] 7.894737
+\end{Soutput}
+\begin{Soutput}
+         Central West                Hunter             Illawarra 
+                  908                     0                     0 
+      Mid-North Coast                Murray          Murrumbidgee 
+                  908                   908                   908 
+North and Far Western              Northern        Richmond-Tweed 
+                  908                   908                   908 
+        South Eastern                Sydney 
+                  908                     0 
+\end{Soutput}
+\begin{Soutput}
+        sd_group sex agegp rural agegp2 dthyy dthmm deaths   pop
+932 Central West   1 30_39     1  30_49  1983     4      0 11651
+949 Central West   1 30_39     1  30_49  1982     9      0 11542
+951 Central West   1 30_39     1  30_49  1980    10      1 11155
+953 Central West   1 30_39     1  30_49  1980     5      0 11155
+956 Central West   1 30_39     1  30_49  1980    11      0 11155
+982 Central West   1 30_39     1  30_49  1981     3      0 11433
+    logDroughtCount avgMonthlyDeaths   avgPop      avgRate deathsAttributable
+932        2.483680        0.2312775 11523.85 2.006947e-05         0.08461065
+949        1.834932        0.2312775 11523.85 2.006947e-05         0.05936994
+951        1.956360        0.2312775 11523.85 2.006947e-05         0.06165828
+953        2.189021        0.2312775 11523.85 2.006947e-05         0.07003974
+956        2.088591        0.2312775 11523.85 2.006947e-05         0.06639205
+982        2.293722        0.2312775 11523.85 2.006947e-05         0.07573286
+    deathsAttributableLower deathsAttributableUpper logDroughtCountDeclared
+932              0.04378946              0.13143419                2.483680
+949              0.03132083              0.09041093                1.834932
+951              0.03241251              0.09424137                1.956360
+953              0.03656698              0.10781452                2.189021
+956              0.03476547              0.10188592                2.088591
+982              0.03941690              0.11695395                2.293722
+\end{Soutput}
+\begin{Soutput}
+   dthyy deathsAttributable deaths     pop logDroughtCountDeclared
+1   1970         0.50266888     26 1461300                     0.1
+2   1971         0.00000000     28 1472340                     0.0
+3   1972         0.68434507     36 1483212                     0.2
+4   1973         0.25607449     35 1494180                     0.1
+5   1974         0.00000000     36 1505136                     0.0
+6   1975         0.00000000     23 1516104                     0.0
+7   1976         0.00000000     31 1527144                     0.0
+8   1977         0.05794209     24 1571340                     0.0
+9   1978         0.54601179     24 1615632                     0.1
+10  1979         0.20245274     25 1659876                     0.0
+11  1980         3.94306323     40 1704168                     0.7
+12  1981         2.27810344     22 1748532                     0.4
+13  1982         2.06845481     28 1791048                     0.4
+14  1983         2.86378052     35 1833600                     0.5
+15  1984         0.00000000     25 1876164                     0.0
+16  1985         0.60873299     33 1918716                     0.1
+17  1986         1.22963945     36 1961376                     0.2
+18  1987         0.14301429     51 2028264                     0.0
+19  1988         0.00000000     50 2095212                     0.0
+20  1989         0.00000000     35 2162196                     0.0
+21  1990         0.00000000     50 2229144                     0.0
+22  1991         3.54113149     73 2296188                     0.4
+23  1992         0.30032308     59 2323500                     0.0
+24  1993         4.11377232     65 2350884                     0.4
+25  1994         3.45735108     71 2378280                     0.4
+26  1995         0.66099467     62 2405664                     0.1
+27  1996         0.00000000     59 2433132                     0.0
+28  1997         0.11963073     68 2432088                     0.0
+29  1998         0.70348266     79 2431068                     0.1
+30  1999         0.00000000     65 2430084                     0.0
+31  2000         1.34440422     80 2429064                     0.1
+32  2001         0.25600125     67 2428152                     0.0
+33  2002         8.05803307     52 2417748                     0.9
+34  2003         7.40377088     72 2407392                     1.0
+35  2004         1.62276055     53 2397072                     0.2
+36  2005         0.00000000     40 2386716                     0.0
+37  2006         1.95250493     30 2376456                     0.3
+38  2007         4.27803326     31 1971710                     0.8
+\end{Soutput}
+\begin{Soutput}
+[1] 53.19648
+\end{Soutput}
+\begin{Soutput}
+[1] 17.73216
+\end{Soutput}
+\begin{Soutput}
+[1] 9.260883
+\end{Soutput}
+\begin{Soutput}
+[1] 27.28826
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{Attributable Number of Deaths, rural males 10-29}
 
+\begin{Schunk}
+\begin{Soutput}
+      sd_group rural sex  agegp agegp2 dthyy dthmm deaths   pop logDroughtCount
+1 Central West     1   1  10_19  10_29  1970     1      0 15432      0.02181905
+2 Central West     1   1  40_49  30_49  1970     1      1  9128      0.02181905
+3 Central West     1   1  60_69 50plus  1970     1      0  5237      0.02181905
+4 Central West     1   2  40_49  30_49  1970     1      0  8488      0.02181905
+5 Central West     1   2  50_59 50plus  1970     1      0  7436      0.02181905
+6 Central West     1   1 70plus 50plus  1970     1      0  3353      0.02181905
+\end{Soutput}
+\begin{Soutput}
+ [1] "time"                  "sd_group"              "sex"                  
+ [4] "agegp"                 "dthyy"                 "dthmm"                
+ [7] "deaths"                "sui_und"               "pop"                  
+[10] "avrain"                "avcount"               "tmax_anomaly"         
+[13] "tmax"                  "avsums"                "avcount2"             
+[16] "avsums2"               "logDroughtCount"       "mm"                   
+[19] "timevar"               "rural"                 "agegp2"               
+[22] "DrtMales10_29urban"    "DrtMales30_49urban"    "DrtMales50plusurban"  
+[25] "DrtMales10_29rural"    "DrtMales30_49rural"    "DrtMales50plusrural"  
+[28] "DrtFemales10_29urban"  "DrtFemales30_49urban"  "DrtFemales50plusurban"
+[31] "DrtFemales10_29rural"  "DrtFemales30_49rural"  "DrtFemales50plusrural"
+\end{Soutput}
+\begin{Soutput}
+      sd_group sex agegp avgMonthlyDeaths    avgPop      avgRate
+1 Central West   1 10_19        0.1057269 14565.220 7.258858e-06
+2 Central West   1 20_29        0.2599119 11640.225 2.232877e-05
+3 Central West   1 30_39        0.2312775 11523.846 2.006947e-05
+4 Central West   1 40_49        0.2048458 10639.692 1.925298e-05
+5 Central West   1 50_59        0.1806167  8938.379 2.020688e-05
+6 Central West   1 60_69        0.1189427  6731.930 1.766845e-05
+\end{Soutput}
+\begin{Soutput}
+       sd_group sex  agegp avgMonthlyDeaths    avgPop      avgRate
+1  Central West   1  10_19       0.10572687 14565.220 7.258858e-06
+2  Central West   1  20_29       0.25991189 11640.225 2.232877e-05
+3  Central West   1  30_39       0.23127753 11523.846 2.006947e-05
+4  Central West   1  40_49       0.20484581 10639.692 1.925298e-05
+5  Central West   1  50_59       0.18061674  8938.379 2.020688e-05
+6  Central West   1  60_69       0.11894273  6731.930 1.766845e-05
+7  Central West   1 70plus       0.12555066  5339.344 2.351425e-05
+8  Central West   2  10_19       0.01982379 13704.617 1.446504e-06
+9  Central West   2  20_29       0.05726872 11026.568 5.193703e-06
+10 Central West   2  30_39       0.06828194 11114.850 6.143307e-06
+11 Central West   2  40_49       0.04625551 10023.815 4.614561e-06
+12 Central West   2  50_59       0.04845815  8534.661 5.677806e-06
+13 Central West   2  60_69       0.03303965  6897.189 4.790306e-06
+14 Central West   2 70plus       0.01982379  7521.837 2.635498e-06
+15       Hunter   1  10_19       0.23568282 40563.498 5.810219e-06
+16       Hunter   1  20_29       0.75550661 37565.392 2.011177e-05
+17       Hunter   1  30_39       0.77312775 35575.727 2.173189e-05
+18       Hunter   1  40_49       0.69603524 32485.344 2.142613e-05
+19       Hunter   1  50_59       0.43171806 27655.278 1.561069e-05
+20       Hunter   1  60_69       0.34361233 21938.938 1.566221e-05
+21       Hunter   1 70plus       0.41850220 17866.123 2.342434e-05
+22       Hunter   2  10_19       0.03083700 38518.357 8.005794e-07
+23       Hunter   2  20_29       0.14317181 35609.533 4.020603e-06
+24       Hunter   2  30_39       0.15638767 34917.326 4.478798e-06
+25       Hunter   2  40_49       0.18942731 31770.912 5.962288e-06
+26       Hunter   2  50_59       0.14096916 27452.987 5.134930e-06
+27       Hunter   2  60_69       0.11233480 23226.225 4.836550e-06
+28       Hunter   2 70plus       0.10352423 25257.018 4.098830e-06
+29    Illawarra   1  10_19       0.14977974 27128.877 5.521045e-06
+30    Illawarra   1  20_29       0.55066079 24321.881 2.264055e-05
+31    Illawarra   1  30_39       0.49779736 23603.176 2.109027e-05
+32    Illawarra   1  40_49       0.44273128 21569.819 2.052550e-05
+33    Illawarra   1  50_59       0.28414097 17923.987 1.585255e-05
+34    Illawarra   1  60_69       0.23348018 14400.520 1.621332e-05
+35    Illawarra   1 70plus       0.24008811 11162.366 2.150871e-05
+36    Illawarra   2  10_19       0.02202643 25456.159 8.652693e-07
+37    Illawarra   2  20_29       0.07488987 22969.824 3.260359e-06
+38    Illawarra   2  30_39       0.11233480 23346.053 4.811726e-06
+39    Illawarra   2  40_49       0.14757709 20922.137 7.053634e-06
+40    Illawarra   2  50_59       0.14977974 17703.181 8.460612e-06
+\end{Soutput}
+\begin{Soutput}
+                sd_group sum(avgMonthlyDeaths) sum(avgPop)
+1           Central West             1.5198238   138202.17
+2                 Hunter             4.5308370   430402.66
+3              Illawarra             3.0462555   280036.88
+4        Mid-North Coast             1.9074890   183520.63
+5                 Murray             0.9735683    86220.51
+6           Murrumbidgee             1.3303965   118778.27
+7  North and Far Western             1.5462555   114460.50
+8               Northern             1.7268722   146464.55
+9         Richmond-Tweed             1.6629956   139356.23
+10         South Eastern             1.5748899   135091.01
+11                Sydney            34.0044053  3040952.32
+\end{Soutput}
+\begin{Soutput}
+    sd_group sex  agegp avgMonthlyDeaths   avgPop      avgRate
+141   Sydney   1  10_19        1.1916300 269031.3 4.429336e-06
+142   Sydney   1  20_29        5.9317181 292341.6 2.029037e-05
+143   Sydney   1  30_39        5.1828194 276223.6 1.876313e-05
+144   Sydney   1  40_49        4.4735683 236838.1 1.888872e-05
+145   Sydney   1  50_59        3.2819383 188307.1 1.742865e-05
+146   Sydney   1  60_69        2.4493392 129867.6 1.886027e-05
+147   Sydney   1 70plus        2.3392070 102487.3 2.282437e-05
+148   Sydney   2  10_19        0.4339207 257540.7 1.684863e-06
+149   Sydney   2  20_29        1.5550661 292093.0 5.323873e-06
+150   Sydney   2  30_39        1.7048458 273605.7 6.231033e-06
+151   Sydney   2  40_49        1.6894273 232950.9 7.252289e-06
+152   Sydney   2  50_59        1.5704846 186502.3 8.420726e-06
+153   Sydney   2  60_69        1.0242291 142361.8 7.194550e-06
+154   Sydney   2 70plus        1.1762115 160801.5 7.314681e-06
+\end{Soutput}
+\begin{Soutput}
+       sd_group sex  agegp avgMonthlyDeaths    avgPop      avgRate
+1  Central West   1  10_19       0.10572687 14565.220 7.258858e-06
+2  Central West   1  20_29       0.25991189 11640.225 2.232877e-05
+3  Central West   1  30_39       0.23127753 11523.846 2.006947e-05
+4  Central West   1  40_49       0.20484581 10639.692 1.925298e-05
+5  Central West   1  50_59       0.18061674  8938.379 2.020688e-05
+6  Central West   1  60_69       0.11894273  6731.930 1.766845e-05
+7  Central West   1 70plus       0.12555066  5339.344 2.351425e-05
+8  Central West   2  10_19       0.01982379 13704.617 1.446504e-06
+9  Central West   2  20_29       0.05726872 11026.568 5.193703e-06
+10 Central West   2  30_39       0.06828194 11114.850 6.143307e-06
+11 Central West   2  40_49       0.04625551 10023.815 4.614561e-06
+12 Central West   2  50_59       0.04845815  8534.661 5.677806e-06
+13 Central West   2  60_69       0.03303965  6897.189 4.790306e-06
+14 Central West   2 70plus       0.01982379  7521.837 2.635498e-06
+\end{Soutput}
+\begin{Soutput}
+      sd_group sex agegp rural agegp2 dthyy dthmm deaths   pop logDroughtCount
+1 Central West   1 10_19     1  10_29  1970     1      0 15432      0.02181905
+2 Central West   1 10_19     1  10_29  1977     2      0 15432      0.00000000
+3 Central West   1 10_19     1  10_29  2005     7      0 13694      0.97622307
+4 Central West   1 10_19     1  10_29  1974     2      0 15508      0.00000000
+5 Central West   1 10_19     1  10_29  1984     1      0 14776      0.00000000
+6 Central West   1 10_19     1  10_29  1984    10      0 14776      0.01459880
+  avgMonthlyDeaths   avgPop      avgRate
+1        0.1057269 14565.22 7.258858e-06
+2        0.1057269 14565.22 7.258858e-06
+3        0.1057269 14565.22 7.258858e-06
+4        0.1057269 14565.22 7.258858e-06
+5        0.1057269 14565.22 7.258858e-06
+6        0.1057269 14565.22 7.258858e-06
+\end{Soutput}
+\begin{Soutput}
+         Central West                Hunter             Illawarra 
+                  908                     0                     0 
+      Mid-North Coast                Murray          Murrumbidgee 
+                  908                   908                   908 
+North and Far Western              Northern        Richmond-Tweed 
+                  908                   908                   908 
+        South Eastern                Sydney 
+                  908                     0 
+\end{Soutput}
+\begin{Soutput}
+      sd_group sex agegp rural agegp2 dthyy dthmm deaths   pop logDroughtCount
+1 Central West   1 10_19     1  10_29  1970     1      0 15432      0.02181905
+2 Central West   1 10_19     1  10_29  1977     2      0 15432      0.00000000
+3 Central West   1 10_19     1  10_29  2005     7      0 13694      0.97622307
+4 Central West   1 10_19     1  10_29  1974     2      0 15508      0.00000000
+5 Central West   1 10_19     1  10_29  1984     1      0 14776      0.00000000
+6 Central West   1 10_19     1  10_29  1984    10      0 14776      0.01459880
+  avgMonthlyDeaths   avgPop      avgRate deathsAttributable
+1        0.1057269 14565.22 7.258858e-06       0.0002302894
+2        0.1057269 14565.22 7.258858e-06       0.0000000000
+3        0.1057269 14565.22 7.258858e-06       0.0095665393
+4        0.1057269 14565.22 7.258858e-06       0.0000000000
+5        0.1057269 14565.22 7.258858e-06       0.0000000000
+6        0.1057269 14565.22 7.258858e-06       0.0001474831
+  deathsAttributableLower deathsAttributableUpper
+1            6.485518e-05            0.0003959677
+2            0.000000e+00            0.0000000000
+3            2.607809e-03            0.0169999643
+4            0.000000e+00            0.0000000000
+5            0.000000e+00            0.0000000000
+6            4.154503e-05            0.0002535258
+\end{Soutput}
+\begin{Soutput}
+   dthyy deathsAttributable deaths     pop logDroughtCount
+1   1970         1.63722697     20 2078736               1
+2   1971         1.06014388     15 2105040               0
+3   1972         2.07627616     22 2131224               1
+4   1973         1.15590250     11 2157480               0
+5   1974         0.38449382     23 2183712               0
+6   1975         1.63806960     18 2209968               1
+7   1976         0.86054449     18 2236272               0
+8   1977         1.51017367     20 2265312               0
+9   1978         1.67348785     29 2294424               1
+10  1979         1.87494430     25 2323560               1
+11  1980         5.15318618     27 2352672               1
+12  1981         2.56183741     36 2381856               1
+13  1982         3.69884074     31 2378976               1
+14  1983         2.39790832     29 2376168               1
+15  1984         0.08597138     32 2373324               0
+16  1985         2.30888670     40 2370516               1
+17  1986         2.74146267     48 2367756               1
+18  1987         1.02054459     49 2366136               0
+19  1988         0.56320097     47 2364648               0
+20  1989         0.45029052     53 2363160               0
+21  1990         0.99635270     47 2361672               0
+22  1991         4.03599733     36 2360232               1
+23  1992         2.38881487     44 2344416               1
+24  1993         2.62388149     38 2328672               1
+25  1994         3.53839404     49 2312952               1
+26  1995         1.87885198     34 2297208               1
+27  1996         0.27609580     57 2281512               0
+28  1997         2.23570167     69 2281044               1
+29  1998         2.17970956     51 2280648               1
+30  1999         0.71169131     44 2280240               0
+31  2000         1.56398250     25 2279844               0
+32  2001         1.56706840     34 2279532               1
+33  2002         5.05160372     42 2280432               1
+34  2003         4.82395392     22 2281428               1
+35  2004         3.00120794     20 2282424               1
+36  2005         1.53841601     22 2283420               0
+37  2006         2.80890725     22 2284488               1
+38  2007         3.57316259     15 1904490               1
+\end{Soutput}
+\begin{Soutput}
+[1] 79.64719
+\end{Soutput}
+\begin{Soutput}
+[1] 2.095979
+\end{Soutput}
+\begin{Soutput}
+[1] 0.5618928
+\end{Soutput}
+\begin{Soutput}
+[1] 3.791449
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{Attributable Number of Female Deaths}
 The predicted number of rural female suicides aged 30-49 per annum associated with droughts are estimated for comparison with the figure for males. The decreased number of rural female suicides aged 30-49 per annum associated with droughts over our study period was -0.72 (95\%CI -1.32 to -0.01,  p = 0.041787).
+\begin{Schunk}
+\begin{Soutput}
+[1] "sd_group','sex','agegp','dthyy','dthmm','deaths','sui_und','pop','logDroughtCount"
+\end{Soutput}
+\begin{Soutput}
+      sd_group rural sex  agegp agegp2 dthyy dthmm deaths   pop logDroughtCount
+1 Central West     1   1  10_19  10_29  1970     1      0 15432      0.02181905
+2 Central West     1   1  40_49  30_49  1970     1      1  9128      0.02181905
+3 Central West     1   1  60_69 50plus  1970     1      0  5237      0.02181905
+4 Central West     1   2  40_49  30_49  1970     1      0  8488      0.02181905
+5 Central West     1   2  50_59 50plus  1970     1      0  7436      0.02181905
+6 Central West     1   1 70plus 50plus  1970     1      0  3353      0.02181905
+\end{Soutput}
+\begin{Soutput}
+ [1] "time"                  "sd_group"              "sex"                  
+ [4] "agegp"                 "dthyy"                 "dthmm"                
+ [7] "deaths"                "sui_und"               "pop"                  
+[10] "avrain"                "avcount"               "tmax_anomaly"         
+[13] "tmax"                  "avsums"                "avcount2"             
+[16] "avsums2"               "logDroughtCount"       "mm"                   
+[19] "timevar"               "rural"                 "agegp2"               
+[22] "DrtMales10_29urban"    "DrtMales30_49urban"    "DrtMales50plusurban"  
+[25] "DrtMales10_29rural"    "DrtMales30_49rural"    "DrtMales50plusrural"  
+[28] "DrtFemales10_29urban"  "DrtFemales30_49urban"  "DrtFemales50plusurban"
+[31] "DrtFemales10_29rural"  "DrtFemales30_49rural"  "DrtFemales50plusrural"
+\end{Soutput}
+\begin{Soutput}
+      sd_group sex agegp avgMonthlyDeaths    avgPop      avgRate
+1 Central West   1 10_19        0.1057269 14565.220 7.258858e-06
+2 Central West   1 20_29        0.2599119 11640.225 2.232877e-05
+3 Central West   1 30_39        0.2312775 11523.846 2.006947e-05
+4 Central West   1 40_49        0.2048458 10639.692 1.925298e-05
+5 Central West   1 50_59        0.1806167  8938.379 2.020688e-05
+6 Central West   1 60_69        0.1189427  6731.930 1.766845e-05
+\end{Soutput}
+\begin{Soutput}
+       sd_group sex  agegp avgMonthlyDeaths    avgPop      avgRate
+1  Central West   1  10_19       0.10572687 14565.220 7.258858e-06
+2  Central West   1  20_29       0.25991189 11640.225 2.232877e-05
+3  Central West   1  30_39       0.23127753 11523.846 2.006947e-05
+4  Central West   1  40_49       0.20484581 10639.692 1.925298e-05
+5  Central West   1  50_59       0.18061674  8938.379 2.020688e-05
+6  Central West   1  60_69       0.11894273  6731.930 1.766845e-05
+7  Central West   1 70plus       0.12555066  5339.344 2.351425e-05
+8  Central West   2  10_19       0.01982379 13704.617 1.446504e-06
+9  Central West   2  20_29       0.05726872 11026.568 5.193703e-06
+10 Central West   2  30_39       0.06828194 11114.850 6.143307e-06
+11 Central West   2  40_49       0.04625551 10023.815 4.614561e-06
+12 Central West   2  50_59       0.04845815  8534.661 5.677806e-06
+13 Central West   2  60_69       0.03303965  6897.189 4.790306e-06
+14 Central West   2 70plus       0.01982379  7521.837 2.635498e-06
+15       Hunter   1  10_19       0.23568282 40563.498 5.810219e-06
+16       Hunter   1  20_29       0.75550661 37565.392 2.011177e-05
+17       Hunter   1  30_39       0.77312775 35575.727 2.173189e-05
+18       Hunter   1  40_49       0.69603524 32485.344 2.142613e-05
+19       Hunter   1  50_59       0.43171806 27655.278 1.561069e-05
+20       Hunter   1  60_69       0.34361233 21938.938 1.566221e-05
+21       Hunter   1 70plus       0.41850220 17866.123 2.342434e-05
+22       Hunter   2  10_19       0.03083700 38518.357 8.005794e-07
+23       Hunter   2  20_29       0.14317181 35609.533 4.020603e-06
+24       Hunter   2  30_39       0.15638767 34917.326 4.478798e-06
+25       Hunter   2  40_49       0.18942731 31770.912 5.962288e-06
+26       Hunter   2  50_59       0.14096916 27452.987 5.134930e-06
+27       Hunter   2  60_69       0.11233480 23226.225 4.836550e-06
+28       Hunter   2 70plus       0.10352423 25257.018 4.098830e-06
+29    Illawarra   1  10_19       0.14977974 27128.877 5.521045e-06
+30    Illawarra   1  20_29       0.55066079 24321.881 2.264055e-05
+31    Illawarra   1  30_39       0.49779736 23603.176 2.109027e-05
+32    Illawarra   1  40_49       0.44273128 21569.819 2.052550e-05
+33    Illawarra   1  50_59       0.28414097 17923.987 1.585255e-05
+34    Illawarra   1  60_69       0.23348018 14400.520 1.621332e-05
+35    Illawarra   1 70plus       0.24008811 11162.366 2.150871e-05
+36    Illawarra   2  10_19       0.02202643 25456.159 8.652693e-07
+37    Illawarra   2  20_29       0.07488987 22969.824 3.260359e-06
+38    Illawarra   2  30_39       0.11233480 23346.053 4.811726e-06
+39    Illawarra   2  40_49       0.14757709 20922.137 7.053634e-06
+40    Illawarra   2  50_59       0.14977974 17703.181 8.460612e-06
+\end{Soutput}
+\begin{Soutput}
+                sd_group sum(avgMonthlyDeaths) sum(avgPop)
+1           Central West             1.5198238   138202.17
+2                 Hunter             4.5308370   430402.66
+3              Illawarra             3.0462555   280036.88
+4        Mid-North Coast             1.9074890   183520.63
+5                 Murray             0.9735683    86220.51
+6           Murrumbidgee             1.3303965   118778.27
+7  North and Far Western             1.5462555   114460.50
+8               Northern             1.7268722   146464.55
+9         Richmond-Tweed             1.6629956   139356.23
+10         South Eastern             1.5748899   135091.01
+11                Sydney            34.0044053  3040952.32
+\end{Soutput}
+\begin{Soutput}
+    sd_group sex  agegp avgMonthlyDeaths   avgPop      avgRate
+141   Sydney   1  10_19        1.1916300 269031.3 4.429336e-06
+142   Sydney   1  20_29        5.9317181 292341.6 2.029037e-05
+143   Sydney   1  30_39        5.1828194 276223.6 1.876313e-05
+144   Sydney   1  40_49        4.4735683 236838.1 1.888872e-05
+145   Sydney   1  50_59        3.2819383 188307.1 1.742865e-05
+146   Sydney   1  60_69        2.4493392 129867.6 1.886027e-05
+147   Sydney   1 70plus        2.3392070 102487.3 2.282437e-05
+148   Sydney   2  10_19        0.4339207 257540.7 1.684863e-06
+149   Sydney   2  20_29        1.5550661 292093.0 5.323873e-06
+150   Sydney   2  30_39        1.7048458 273605.7 6.231033e-06
+151   Sydney   2  40_49        1.6894273 232950.9 7.252289e-06
+152   Sydney   2  50_59        1.5704846 186502.3 8.420726e-06
+153   Sydney   2  60_69        1.0242291 142361.8 7.194550e-06
+154   Sydney   2 70plus        1.1762115 160801.5 7.314681e-06
+\end{Soutput}
+\begin{Soutput}
+       sd_group sex  agegp avgMonthlyDeaths    avgPop      avgRate
+1  Central West   1  10_19       0.10572687 14565.220 7.258858e-06
+2  Central West   1  20_29       0.25991189 11640.225 2.232877e-05
+3  Central West   1  30_39       0.23127753 11523.846 2.006947e-05
+4  Central West   1  40_49       0.20484581 10639.692 1.925298e-05
+5  Central West   1  50_59       0.18061674  8938.379 2.020688e-05
+6  Central West   1  60_69       0.11894273  6731.930 1.766845e-05
+7  Central West   1 70plus       0.12555066  5339.344 2.351425e-05
+8  Central West   2  10_19       0.01982379 13704.617 1.446504e-06
+9  Central West   2  20_29       0.05726872 11026.568 5.193703e-06
+10 Central West   2  30_39       0.06828194 11114.850 6.143307e-06
+11 Central West   2  40_49       0.04625551 10023.815 4.614561e-06
+12 Central West   2  50_59       0.04845815  8534.661 5.677806e-06
+13 Central West   2  60_69       0.03303965  6897.189 4.790306e-06
+14 Central West   2 70plus       0.01982379  7521.837 2.635498e-06
+\end{Soutput}
+\begin{Soutput}
+      sd_group sex agegp rural agegp2 dthyy dthmm deaths   pop logDroughtCount
+1 Central West   1 10_19     1  10_29  1970     1      0 15432      0.02181905
+2 Central West   1 10_19     1  10_29  1977     2      0 15432      0.00000000
+3 Central West   1 10_19     1  10_29  2005     7      0 13694      0.97622307
+4 Central West   1 10_19     1  10_29  1974     2      0 15508      0.00000000
+5 Central West   1 10_19     1  10_29  1984     1      0 14776      0.00000000
+6 Central West   1 10_19     1  10_29  1984    10      0 14776      0.01459880
+  avgMonthlyDeaths   avgPop      avgRate
+1        0.1057269 14565.22 7.258858e-06
+2        0.1057269 14565.22 7.258858e-06
+3        0.1057269 14565.22 7.258858e-06
+4        0.1057269 14565.22 7.258858e-06
+5        0.1057269 14565.22 7.258858e-06
+6        0.1057269 14565.22 7.258858e-06
+\end{Soutput}
+\begin{Soutput}
+[1] 1.122753
+\end{Soutput}
+\begin{Soutput}
+[1] 0.8771938
+\end{Soutput}
+\begin{Soutput}
+[1] 0.7707765
+\end{Soutput}
+\begin{Soutput}
+[1] 0.9983036
+\end{Soutput}
+\begin{Soutput}
+         Central West                Hunter             Illawarra 
+                  908                     0                     0 
+      Mid-North Coast                Murray          Murrumbidgee 
+                  908                   908                   908 
+North and Far Western              Northern        Richmond-Tweed 
+                  908                   908                   908 
+        South Eastern                Sydney 
+                  908                     0 
+\end{Soutput}
+\begin{Soutput}
+         sd_group sex agegp rural agegp2 dthyy dthmm deaths   pop
+4087 Central West   2 30_39     1  30_49  1997     2      0 12345
+4088 Central West   2 30_39     1  30_49  1984    12      0 11263
+4089 Central West   2 30_39     1  30_49  1990     9      0 12124
+4090 Central West   2 30_39     1  30_49  1999     8      0 12153
+4091 Central West   2 30_39     1  30_49  1970    12      0  8576
+4092 Central West   2 30_39     1  30_49  1987     4      0 11670
+     logDroughtCount avgMonthlyDeaths   avgPop      avgRate deathsAttributable
+4087      0.00732604       0.06828194 11114.85 6.143307e-06      -6.481191e-05
+4088      0.00000000       0.06828194 11114.85 6.143307e-06       0.000000e+00
+4089      0.00000000       0.06828194 11114.85 6.143307e-06       0.000000e+00
+4090      0.36545977       0.06828194 11114.85 6.143307e-06      -3.117272e-03
+4091      0.00000000       0.06828194 11114.85 6.143307e-06       0.000000e+00
+4092      0.05715841       0.06828194 11114.85 6.143307e-06      -4.766322e-04
+     deathsAttributableLower deathsAttributableUpper
+4087           -0.0001287297           -8.401947e-07
+4088            0.0000000000            0.000000e+00
+4089            0.0000000000            0.000000e+00
+4090           -0.0060664906           -4.125010e-05
+4091            0.0000000000            0.000000e+00
+4092           -0.0009439806           -6.196610e-06
+\end{Soutput}
+\begin{Soutput}
+   dthyy deathsAttributable deaths     pop logDroughtCount
+1   1970        -0.44761392      6 1352916               1
+2   1971        -0.28372594     10 1365960               0
+3   1972        -0.47315370      5 1378836               1
+4   1973        -0.27526310      8 1391808               0
+5   1974        -0.09513828      7 1404768               0
+6   1975        -0.42138006      8 1417740               1
+7   1976        -0.19420653      6 1430784               0
+8   1977        -0.37763565      9 1474680               0
+9   1978        -0.42266244      5 1518648               1
+10  1979        -0.47742077      6 1562616               1
+11  1980        -1.23212695      6 1606584               1
+12  1981        -0.62747899      9 1650648               1
+13  1982        -0.89295101      5 1696272               1
+14  1983        -0.56061194      5 1741980               1
+15  1984        -0.02468488      6 1787652               0
+16  1985        -0.60050787     11 1833360               1
+17  1986        -0.87703153      8 1879128               1
+18  1987        -0.33800723      5 1948968               0
+19  1988        -0.16425048     13 2018880               0
+20  1989        -0.15368815      7 2088816               0
+21  1990        -0.33476771     13 2158728               0
+22  1991        -1.51028103     11 2228712               1
+23  1992        -0.86526537     10 2263320               1
+24  1993        -1.14948309     18 2297976               1
+25  1994        -1.36343794     10 2332680               1
+26  1995        -0.80755410     12 2367336               1
+27  1996        -0.11445042     16 2402112               0
+28  1997        -0.88881596     19 2411388               1
+29  1998        -0.93455336     16 2420736               1
+30  1999        -0.28791068     26 2430072               0
+31  2000        -0.81366598      9 2439420               0
+32  2001        -0.70779796     17 2448852               1
+33  2002        -2.17149123     13 2443776               1
+34  2003        -1.96685752      8 2438832               1
+35  2004        -1.28527338     17 2433864               1
+36  2005        -0.68875988     15 2428920               0
+37  2006        -1.06121092      6 2424012               1
+38  2007        -1.40764692      7 2015780               1
+\end{Soutput}
+\begin{Soutput}
+[1] -27.29876
+\end{Soutput}
+\begin{Soutput}
+[1] 38
+\end{Soutput}
+\begin{Soutput}
+[1] -0.7183885
+\end{Soutput}
+\begin{Soutput}
+[1] -1.318613
+\end{Soutput}
+\begin{Soutput}
+[1] -0.01011795
+\end{Soutput}
+\end{Schunk}
 
 \subsection{Test the Sex Stratification}
 To find out if the inclusion of a seperate term for Rural Males and Rural Females aged 30-49 is warranted we performed a likelihood ratio test with an alternative model where the drought effect was not stratified by sex. The model was significantly better when including the Rural 30-49 sex stratification (likelihood ratio test p = 0.000077).
+\begin{Schunk}
+\begin{Soutput}
+Time difference of 1.23547 mins
+\end{Soutput}
+\begin{Soutput}
+Likelihood ratio test
+
+Model 1: deaths ~ sin(timevar * 2 * pi) + cos(timevar * 2 * pi) + tmax_anomaly + 
+    DrtMales10_29rural + DrtMales30_49rural + DrtMales50plusrural + 
+    DrtFemales10_29rural + DrtFemales30_49rural + ns(DrtFemales50plusrural, 
+    df = 5) + ns(DrtMales10_29urban, df = 6) + DrtMales30_49urban + 
+    ns(DrtMales50plusurban, df = 4) + DrtFemales10_29urban + 
+    ns(DrtFemales30_49urban, df = 3) + DrtFemales50plusurban + 
+    agegp2 + rural + sd_group + sex + agegp + agegp * sex * ns(time, 
+    3) + offset(log(pop))
+Model 2: deaths ~ Drt30_49rural + sin(timevar * 2 * pi) + cos(timevar * 
+    2 * pi) + DrtMales10_29rural + DrtMales50plusrural + DrtFemales10_29rural + 
+    ns(DrtFemales50plusrural, df = 5) + ns(DrtMales10_29urban, 
+    df = 6) + DrtMales30_49urban + ns(DrtMales50plusurban, df = 4) + 
+    DrtFemales10_29urban + ns(DrtFemales30_49urban, df = 3) + 
+    DrtFemales50plusurban + tmax_anomaly + agegp2 + rural + sd_group + 
+    sex + agegp + agegp * sex * ns(time, 3) + offset(log(pop))
+  #Df LogLik Df Chisq Pr(>Chisq)    
+1  81 -34483                        
+2  80 -34490 -1 15.64   7.66e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\begin{Soutput}
+     [,1]     
+[1,] factor,26
+[2,] factor,26
+[3,] factor,26
+[4,] factor,26
+[5,] factor,26
+\end{Soutput}
+\begin{Soutput}
+     [,1]     
+[1,] factor,26
+[2,] factor,26
+[3,] factor,26
+[4,] factor,26
+[5,] factor,26
+\end{Soutput}
+\end{Schunk}
 
 \section{Sensitivity Analyses}
 
@@ -511,6 +2661,19 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         \clearpage
 
 
+\begin{Schunk}
+\begin{Soutput}
+Time difference of 14.46496 mins
+\end{Soutput}
+\begin{Soutput}
+pseudo.Rsquared 
+       0.674864 
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 \subsection{Self-harm Coded as Undetermined}
 
@@ -530,6 +2693,23 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
         \clearpage
 
 
+\begin{Schunk}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\begin{Soutput}
+Time difference of 10.45511 mins
+\end{Soutput}
+\begin{Soutput}
+pseudo.Rsquared 
+      0.6887485 
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\end{Schunk}
 
 \subsection{Drop High Leverage Points}
 
@@ -539,6 +2719,73 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 
 
 
+\begin{Schunk}
+\begin{Soutput}
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0001246 0.0003591 0.0005495 0.0011590 0.0008562 0.0273500 
+\end{Soutput}
+\begin{Soutput}
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.55300 -0.39680 -0.25990 -0.00661 -0.17250 17.11000 
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\begin{Soutput}
+pdf 
+  2 
+\end{Soutput}
+\begin{Soutput}
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+0.0001245 0.0003596 0.0005505 0.0011590 0.0008575 0.0259000 
+\end{Soutput}
+\begin{Soutput}
+[1] 1.150108
+\end{Soutput}
+\begin{Soutput}
+[1] 1.080953
+\end{Soutput}
+\begin{Soutput}
+[1] 1.223687
+\end{Soutput}
+\begin{Soutput}
+Single term deletions
+
+Model:
+deaths ~ sin(timevar * 2 * pi) + cos(timevar * 2 * pi) + tmax_anomaly + 
+    DrtMales10_29rural + DrtMales30_49rural + DrtMales50plusrural + 
+    DrtFemales10_29rural + DrtFemales30_49rural + ns(DrtFemales50plusrural, 
+    df = 5) + ns(DrtMales10_29urban, df = 6) + DrtMales30_49urban + 
+    ns(DrtMales50plusurban, df = 4) + DrtFemales10_29urban + 
+    ns(DrtFemales30_49urban, df = 3) + DrtFemales50plusurban + 
+    agegp2 + rural + sd_group + sex + agegp + agegp * sex * ns(time, 
+    3) + offset(log(pop))
+                                  Df Deviance   AIC    LRT  Pr(>Chi)    
+<none>                                  38549 69085                     
+sin(timevar * 2 * pi)              1    38556 69090  7.123 0.0076095 ** 
+cos(timevar * 2 * pi)              1    38565 69100 16.445 5.008e-05 ***
+tmax_anomaly                       1    38559 69094 10.476 0.0012093 ** 
+DrtMales10_29rural                 1    38556 69091  7.224 0.0071951 ** 
+DrtMales30_49rural                 1    38567 69102 18.742 1.496e-05 ***
+DrtMales50plusrural                1    38549 69084  0.401 0.5267085    
+DrtFemales10_29rural               1    38549 69084  0.391 0.5320226    
+DrtFemales30_49rural               1    38553 69088  4.215 0.0400698 *  
+ns(DrtFemales50plusrural, df = 5)  1    38577 69112 28.353 1.011e-07 ***
+ns(DrtMales10_29urban, df = 6)     1    38550 69085  1.394 0.2377683    
+DrtMales30_49urban                 1    38551 69086  2.785 0.0951707 .  
+ns(DrtMales50plusurban, df = 4)    1    38552 69087  3.500 0.0613767 .  
+DrtFemales10_29urban               1    38549 69083  0.178 0.6727412    
+ns(DrtFemales30_49urban, df = 3)   1    38549 69083  0.151 0.6974145    
+DrtFemales50plusurban              1    38549 69083  0.099 0.7533711    
+agegp2                             0    38549 69085  0.000              
+rural                              0    38549 69085  0.000              
+sd_group                           9    38580 69099 31.862 0.0002103 ***
+sex:agegp:ns(time, 3)             18    38594 69095 45.948 0.0003019 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\end{Schunk}
 
 %% \subsection{plots}
 
@@ -695,10 +2942,48 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 > 
 \end{Sinput}
 \end{Schunk}
+\subsection{The software packages and operating system}
+\begin{Schunk}
+\begin{Sinput}
+> sessionInfo()
+\end{Sinput}
+\begin{Soutput}
+R version 3.2.2 (2015-08-14)
+Platform: x86_64-redhat-linux-gnu (64-bit)
+Running under: Red Hat Enterprise Linux Server release 6.7 (Santiago)
 
-%% \subsection{The end}
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
+attached base packages:
+[1] tcltk     splines   stats     graphics  grDevices utils     datasets 
+[8] methods   base     
 
+other attached packages:
+ [1] lmtest_0.9-31         zoo_1.7-10            xtable_1.7-1         
+ [4] sqldf_0.4-6.4         RSQLite.extfuns_0.0.1 RSQLite_0.11.4       
+ [7] chron_2.3-43          gsubfn_0.6-5          proto_0.3-10         
+[10] mgcv_1.8-7            nlme_3.1-121          RPostgreSQL_0.4      
+[13] DBI_0.2-7             plyr_1.8              geosphere_1.2-28     
+[16] rgdal_0.9-2           sp_1.1-0             
 
+loaded via a namespace (and not attached):
+[1] lattice_0.20-33 grid_3.2.2      Matrix_1.2-2    tools_3.2.2    
+\end{Soutput}
+\end{Schunk}
 
+\subsection{Warnings}
+\begin{Schunk}
+\begin{Sinput}
+> warnings()
+\end{Sinput}
+\begin{Soutput}
+NULL
+\end{Soutput}
+\end{Schunk}
 \end{document}

@@ -850,7 +850,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         rm(pwd)
         return(con)
         }
-        ch <- connect2postgres()
+        ch <- connect2postgres(hostip = '',db = '',user = '',p = '')
         # enter password at console
 
         data <- dbGetQuery(ch,
@@ -3056,5 +3056,10 @@ To find out if the inclusion of a seperate term for Rural Males and Rural Female
 \subsection{The software packages and operating system}
 <<>>=
 sessionInfo()
+@
+
+\subsection{Warnings}
+<<>>=
+warnings()
 @
 \end{document}
