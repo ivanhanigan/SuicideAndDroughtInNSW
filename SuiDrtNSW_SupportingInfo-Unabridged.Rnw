@@ -850,7 +850,7 @@ if(!file.exists(file.path(bomDir,'HQ_monthly_prcp_stations.csv'))){
         rm(pwd)
         return(con)
         }
-        ch <- connect2postgres(hostip = '',db = '',user = '',p = '')
+        ch <- connect2postgres()
         # enter password at console
 
         data <- dbGetQuery(ch,
